@@ -2,7 +2,7 @@
 ## Phase I
 ### Spec Sheet
 - - -
-* Mobile App Frontend
+* Frontend
 	* Written in jQuery Mobile 
 	* RESTful
 	* Components as Plugins allows for easy extension of application 
