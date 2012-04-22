@@ -12,7 +12,7 @@
 		* Directory Manager (DM) Component 
 			* Add, Update, Delete for
 				* Schools
-				* coaches
+				* Coaches
 				* Administrators
 		* Notification Manager (NM) Component
 			* Create arbitrarily complex recipient lists for Twilio notifications
