@@ -2,27 +2,25 @@
 ## Phase I
 ### Spec Sheet
 - - -
-* Mobile App Frontend
+* Frontend
 	* Written in jQuery Mobile 
 	* RESTful
 	* Components as Plugins allows for easy extension of application 
 		* Login Component
 			* Login Timeout
-			* Forgot Password Link (email => athletic director)
-			* Inline Validation (?)
+			* Forgot Password Link (email notification to athletic director)
 		* Directory Manager (DM) Component 
 			* Add, Update, Delete for
 				* Schools
-				* coaches
+				* Coaches
 				* Administrators
 		* Notification Manager (NM) Component
 			* Create arbitrarily complex recipient lists for Twilio notifications
-			* 
+			* Utilize Twilio app to send mass notifications per user specification
 * Backend
 	* Written in MySQL 5 and PHP 5
-	* Individual Backends for Individual Frontend Components
+	* Individual Backends for each Frontend Component
 		* Login Backend
-			* [placeholder]
 		* Directory Manager (DM) Backend
 			* CRUD corresponding to needs of Frontend
 * ETL Layer
