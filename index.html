@@ -1,0 +1,77 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+	  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />
+	  <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+    <script type="text/javascript"> </script>
+	  <script type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>
+	</head> 
+	<body>
+	  <!-- LOGIN -->
+  	  <div data-role="page" id="login_main">
+  	      <div data-role="header">
+            <h1> TSSAA - Login </h1> 
+          </div>	
+          <div data-role="content">
+            <label for="login">School ID: </label>
+      	  	<input type="text" name="login" id="login" value="" />
+
+      	  	<label for="pass">Password: </label>
+      	  	<input type="text" name="pass" id="pass" value="" />
+
+      	  	<br />
+      	  	<a href="#main_page" data-role="button" data-inline="true" id="login-button">Login</a>
+      	  	<a href="#" data-role="button" data-inline="true" id="forgot-pass-button">Forgot Password?</a>
+        </div>
+  	  </div>
+  	  <!-- /LOGIN -->
+
+  	  <!-- MAIN OPTIONS -->
+
+  	  <div data-role="page" id="main_page">
+        <div data-role="header">
+          <h1> TSSAA - Main Options </h1>
+        </div>
+        <div data-role="content"
+    	  	<ul data-role="listview" id="main-options" data-inset="">
+    	  	  <li><a href="#eligibility" data-role="button" id="eligibility"> Eligibility </a></li>
+    	  	  <li><a href="#change_profile"  data-role="button" id="change_profile"> Change Profile</a></li>
+    	  	  <li><a href="#add_delete_sports" data-role="button" id="add_delete"> Add/Delete Sports </a></li>
+            <li><a href="#change_school_dir" data-role="button" id="change_dir"> Change School Directory </a></li>
+    	  	</ul>
+        </div>
+  	  </div>		
+  	  <!-- /MAIN OPTIONS -->
+
+      <!-- ELIGIBILITY -->
+      <div data-role="page" id="eligibility">
+        <div data-role="header" data-add-back-btn="true">
+          <h1>Eligibility</h1>
+        </div>
+        <div data-role="page" id="content">
+          
+        </div>
+      </div>
+      <!-- /ELIGIBLITY -->
+      <div data-role="page" id="change_profile">
+        <div data-role="header" data-add-back-btn="true">
+          <h1>Change Profile</h1>
+        </div>
+        <div data-role="page" id="content">
+          
+        </div>
+      </div>
+      <!-- CHANGE SCHOOL DIR -->
+      <div data-role="page" id="change_school_dir">
+        <div data-role="header" data-add-back-btn="true">
+          <h1>Change School Directory</h1>
+        </div>
+        <div data-role="page" id="content">
+          
+        </div>
+      </div>
+      <!-- /CHANGE SCHOOL DIR -->
+	</body>
+</html>

@@ -64,7 +64,3 @@
 * Week XII
 	* QA Flex 
 	* Deployment Prep 
-
-	
-	
-   
