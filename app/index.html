@@ -1,0 +1,188 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+  	 	
+	  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />
+
+	  <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+	  <script type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>
+
+	  <style>
+		.ui-dialog .ui-header .ui-btn-icon-notext {display:none;}
+	  </style>
+	</head> 
+
+	<body>
+  	  <div data-role="page" id="login" data-theme="b">
+  	      <div data-role="header">
+            <h1> TSSAA - Login </h1> 
+          </div>	
+          <div data-role="content">
+            <label for="login"><strong>School ID: </strong></label>
+      	  	<input type="text" name="login" id="login" value="" />
+
+      	  	<label for="pass"><strong>Password: </strong></label>
+      	  	<input type="text" name="pass" id="pass" value="" />
+
+      	  	<br />
+      	  	<a href="#main_options" data-role="button" data-inline="true" id="login-button">Login</a>
+      	  	<a href="#forgot_password_dialog" 
+				data-role="button" 
+				data-rel="dialog"
+				data-transition="slideup"
+				data-inline="true" 
+				id="forgot-pass-button">Forgot Password?
+			</a>
+          </div>
+		  <div data-role="footer" data-theme="a">
+			&copy; TSSAA
+		  </div>
+  	  </div>
+  	  <!-- /LOGIN -->
+
+	<div data-role="page" id="under_construction" data-theme="b">
+		<div data-role="header">
+			<h1> Under Construction </h1>
+		</div>
+		<div ata-role="content">
+			<h2> Pardon our dust. </h2>
+		</div>
+		<div data-role="footer" data-theme="a">
+			&copy; TSSAA
+		</div>
+	</div>
+	<!-- /UNDER CONSTRUCTION -->
+
+	<div data-role="page" id="forgot_password_dialog" data-theme="b" >
+
+		<div data-role="header" >
+		  <div class="ui-bar ui-bar-b"
+			<h1> Forgot your password? </h1>
+		  </div>
+		</div>
+
+		<div data-role="content">
+			<p> Please confirm your email address and we'll 
+				make sure an administrator gets in touch with you with a new one.
+			</p> 
+			<label for="email"><strong>Submit your address here:</strong></label>
+			<br />
+			<input type="text" name="pass" id="pass" value="" />
+			<br />
+			<a href="#" data-role="button"	
+				id="close_dialog"
+				data-theme="c"
+				data-inline="true"
+				data-rel="back"
+				data-close-btn-text="Nevermind">Nevermind</a>
+
+			<a href="#login" data-role="button" 
+				id="confirm_forgot_password"
+				data-theme="b"
+				data-inline="true"  	
+				data-transition="slideup"
+				data-direction="reverse"
+				id="submit_email">Confirm</a> 
+				
+					</div>
+
+		<div data-role="footer" data-theme="a">
+			&copy; TSSAA		
+		</div>
+		<!-- /FORGOT PASSWORD DIALOG -->
+	
+	</div>
+
+  	  <div data-role="page" id="main_options" data-theme="b" >
+        <div data-role="header" data-add-back-btn="false">
+		  <div class="ui-bar ui-bar-b">
+        	<h1> TSSAA - Main Options </h1>
+		  </div>
+        </div>
+        <div data-role="content">
+    	  	<ul data-role="listview" 
+				id="options_list" 
+				data-theme="c"
+				data-inset="true" 
+				data-autodividers="true"
+				data-dividertheme="d">
+    	  	  <li><a href="#under_construction"  id="eligibility"> Eligibility </a></li>
+    	  	  <li><a href="#under_construction"  id="change_profile"> Change Profile</a></li>
+    	  	  <li><a href="#under_construction"  id="add_delete_sports"> Add/Delete Sports </a></li>
+              <li><a href="#under_construction"  id="change_dir"> Change School Directory </a></li>
+    	  	</ul>
+			<br />
+			<a href="#login" data-role="button" 
+				data-inline="true" 
+				data-transition="slide" 
+				data-direction="reverse"> Logout </a>
+        </div>
+		<div data-role="footer" data-theme="a">
+			&copy; TSSAA		
+		</div>
+  	  </div>		
+  	  <!-- /main options -->
+
+      <div data-role="page" id="eligibility">
+        <div data-role="header" data-add-back-btn="true">
+          <h1>Eligibility</h1>
+        </div>
+
+        <div data-role="page" id="content">
+          
+        </div>
+
+		<div data-role="footer" data-theme="a">
+			&copy; TSSAA		
+		</div>
+      </div>
+      <!-- /ELIGIBLITY -->
+	  
+      <div data-role="page" id="change_profile">
+        <div data-role="header" data-add-back-btn="true">
+          <h1>Change Profile</h1>
+        </div>
+
+        <div data-role="page" id="content">
+          
+        </div>
+		
+		<div data-role="footer" data-theme="a">
+			&copy; TSSAA		
+		</div>
+      </div>
+	  <!--/CHANGE PROFILE -->
+
+      <div data-role="page" id="change_school_dir">
+        <div data-role="header" data-add-back-btn="true">
+          <h1>Change School Directory</h1>
+        </div>
+
+        <div data-role="page" id="content">
+          
+        </div>
+		
+		<div data-role="footer" data-theme="a">
+			&copy; TSSAA		
+		</div>
+      </div>
+      <!-- /CHANGE SCHOOL DIR -->
+
+	  <div data-role="page" id="add_delete_sports">
+	    <div data-role="header" data-add-back-btn="true">
+		  <h1>Add/Delete Sports</h1>
+	    </div>
+
+	    <div data-role="page" id="content">
+		
+	    </div>
+		
+		<div data-role="footer" data-theme="a">
+			&copy; TSSAA		
+		</div>
+	  </div>
+	<!-- /ADD/DELETE SPORTS -->
+  
+	</body>
+</html>
