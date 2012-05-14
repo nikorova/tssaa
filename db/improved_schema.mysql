@@ -1,0 +1,163 @@
+create database tssaa_development;
+USE tssaa_development;
+
+-- First Year can be dynamically inferred
+-- Years Registered can be dynamically inferred
+-- Coach ID can be inferred from coaches table
+create table personnel (
+	id                              int      NOT NULL auto_increment primary key,
+	school_id                       int      NOT NULL,
+	firstname                       char(30) NOT NULL,
+	lastname                        char(30) NOT NULL,
+	middle_initial                  char(5),
+	email                           tinytext,
+	work_phone                      char(15),
+	extension                       char(10),
+	cell_phone                      char(15),
+	personnel_position_id           int,
+	school_type                     ENUM('TSSAA', 'TMSAA') NOT NULL,
+	is_registered_for_alerts        bool NOT NULL default FALSE,
+	record_number_of_alert_database int(16), -- What is this field?
+	is_active                       bool NOT NULL default FALSE,
+	internal_comment                tinytext,
+	created_at                      datetime NOT NULL,
+	updated_at                      datetime NOT NULL,
+	KEY 'schoolid'('schoolid')
+);
+
+create table athletic_associations (
+	id         int      NOT NULL auto_increment primary key,
+	full_name  tinytext NOT NULL,
+    	short_name char(15) NOT NULL,
+	created_at datetime NOT NULL,
+	updated_at datetime NOT NULL
+);
+
+INSERT INTO athletic_associations (full_name, short_name, created_at, update_at) VALUES ('Tennessee Secondary School Athletic Association', 'TSSAA', NOW(),NOW());
+INSERT INTO athletic_associations (full_name, short_name, created_at, update_at) VALUES ('Tennessee Middle School Athletic Association',    'TMSAA', NOW(),NOW());
+
+create table personnel_positions (
+	id             int      NOT NULL auto_increment primary key,
+	position_name  char(25) NOT NULL,
+	created_at     datetime NOT NULL,
+	updated_at     datetime NOT NULL
+);
+
+INSERT INTO personnel_positions (position_name, created_at, update_at) VALUES ('Principal',          NOW(),NOW());
+INSERT INTO personnel_positions (position_name, created_at, update_at) VALUES ('Athletic Director',  NOW(),NOW());
+INSERT INTO personnel_positions (position_name, created_at, update_at) VALUES ('Assistant Principal',NOW(),NOW());
+INSERT INTO personnel_positions (position_name, created_at, update_at) VALUES ('Coach',              NOW(),NOW());
+INSERT INTO personnel_positions (position_name, created_at, update_at) VALUES ('Other',              NOW(),NOW());
+	
+-- Personell."Num Years Took Training" can be inferred from this table
+create table training_events (
+	id                 int      NOT NULL auto_increment primary key,
+	personnel_id       int      NOT NULL,
+	training_course_id int      NOT NULL,
+	date_received      date     NOT NULL,
+	created_at         datetime NOT NULL,
+	updated_at         datetime NOT NULL
+);
+
+create table training_courses (
+	id                 int      NOT NULL auto_increment primary key,
+	course_name	    char(25) NOT NULL,
+	created_at         datetime NOT NULL,
+	updated_at         datetime NOT NULL
+);
+
+INSERT INTO training_courses (course_name, created_at, update_at) VALUES ('NFC', NOW(),NOW());
+INSERT INTO training_courses (course_name, created_at, update_at) VALUES ('ASEP',NOW(),NOW());
+
+create table coaches (
+	coach_id int(11) NOT NULL auto_increment primary key,
+	school_id int(11),
+	coach_sport int(11),
+	sport int(11),
+	date_entered datetime NOT NULL,
+	school_year int(4) NOT NULL,
+	modified_date datetime NOT NULL,
+	is_active bool NOT NULL default FALSE
+);
+
+create table tbltssaa (
+	Schoolid int(10) unsigned NOT NULL primary key default '0',
+	SchoolName varchar(50),
+	id2 ENUM('TSSAA', 'TMSAA'),
+	StreetAddress varchar(50),
+	POBox varchar(15),
+	Shipping ENUM('pobox', 'address'),
+	City varchar(40),
+	State char(2),
+	`Zip` varchar(10),					
+	`PhoneNumber` varchar(50),					
+	`FaxNum` varchar(50),					
+	`PrincipalsNum` varchar(50),					
+	`AthleticDept` varchar(50),					
+	`AthleticExt` varchar(50),					
+	`PRINCIPALEXT` varchar(50),					
+	`Mascot` varchar(50),					
+	`Colors` varchar(50),					
+	`County` varchar(20),					
+	`AthleticDistrict` int(11),					
+	`GrandDivision` varchar(30),					
+	`Private` tinyint(2),					
+	`ShortName` varchar(35),					
+	`Abbr` varchar(10),
+	SchoolSystem varchar(50),
+	SchoolSystemDirector varchar(50),
+	StateSchoolRefID int(32),
+	Latitiude int(16),
+	Longitude int(16),
+	ActiveSchool ENUM('not_active', 'active', 'new'),
+	Enrollment int(16),
+	AdjustedEnrollment int(16),
+	SchoolYear int(4),
+	EnrollmentComment char(255),
+	PRIMARY KEY ('SchoolID'),
+	KEY 'id2' ('id2'),
+	KEY 'SchoolID' ('ShortName'),
+	KEY 'SchoolNameidx' ('SchoolName')
+) 
+
+create table classification (
+	`schoolid` int(11),					
+	`class` char(10),					
+	`d2class` char(15),					
+	`district` smallint(6),					
+	`A2ADistrict` int(6),					
+	`TrackSectionAAA` smallint(6),					
+	`TrackA2A` char(6),					
+	`A2ARegion` smallint(6),					
+	`WrDualA2A` smallint(6),					
+	`wrestling` smallint(6),					
+	`WrestlingAAAregion` smallint(6),					
+	`wrestlingdistrict` smallint(6),					
+	`wrestlingAAAdistrict` smallint(6),					
+	`bowlingdistrict` smallint(6),					
+	`bowlingregion` smallint(6),					
+	`d2fb` char(6),					
+	`fbclass` char(6),					
+	`a1a2computerdistrict` smallint(6),					
+	`a1a2display` char(6),					
+	`FB` char(2),					
+	msclass varchar(50),					
+	schoolyear int(4),					
+	msarea varchar(50),				
+	`recordid` int(11) NOT NULL default '0',					
+	PRIMARY KEY (`recordid`)					
+) 
+
+create table `schoolsport (					
+	`schoolid` int(11),					
+	sportid	ENUM('football', 'basketball','etc'), 
+	# need more sports				
+	active ENUM('not_active', 'active') default '0',					
+	schoolyear int(4) deafult NULL,				
+	coop ENUM('no', 'yes') default '0',					
+	# wat ? 
+	# schoolid of school coop with					
+	# datecreated					
+	# # # #
+	PRIMARY KEY (`recordid`)					
+) 
