@@ -26,7 +26,12 @@
       	  	<input type="text" name="pass" id="pass" value="" />
 
       	  	<br />
-      	  	<a href="#main_options" data-role="button" data-inline="true" id="login-button">Login</a>
+      	  	<a href="#main_options" data-role="button" 
+				id="login-button"
+				data-transition="slideup"
+				data-direction="reverse"
+				data-inline="true">Login</a>
+
       	  	<a href="#forgot_password_dialog" 
 				data-role="button" 
 				data-rel="dialog"
@@ -90,9 +95,8 @@
 		<div data-role="footer" data-theme="a">
 			&copy; TSSAA		
 		</div>
-		<!-- /FORGOT PASSWORD DIALOG -->
-	
 	</div>
+	<!-- /FORGOT PASSWORD DIALOG -->
 
   	  <div data-role="page" id="main_options" data-theme="b" >
         <div data-role="header" data-add-back-btn="false">
@@ -115,8 +119,8 @@
 			<br />
 			<a href="#login" data-role="button" 
 				data-inline="true" 
-				data-transition="slide" 
-				data-direction="reverse"> Logout </a>
+				data-transition="slideup" 
+				data-direction=""> Logout </a>
         </div>
 		<div data-role="footer" data-theme="a">
 			&copy; TSSAA		
