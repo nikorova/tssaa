@@ -1,0 +1,7 @@
+parameters:
+#    ksoft_tssaa_store.example.class: KsoftTssaa\StoreBundle\Example
+
+services:
+#    ksoft_tssaa_store.example:
+#        class: %ksoft_tssaa_store.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

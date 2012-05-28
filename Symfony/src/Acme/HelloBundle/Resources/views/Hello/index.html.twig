@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+<style type"text/css">
+	body { margin: 0px; }
+	#background {
+		background-color: lightblue;
+		position: fixed;
+		padding-top: 1px;
+		margin: 0px 0px;
+		height: 100%;
+		width: 100%;
+	}
+	.container {
+		width: 800px;
+		height: 100%;
+		background-color: grey;
+		margin: 20px auto;
+		padding: 20px;
+	}
+
+	.content {
+		margin: 20px auto;
+	}	
+</style>
+{% endblock %}
+
+{% block body %}
+<div id="background">
+<div class="container">
+		<div class="content">
+			<h2> Repeat after me, {{ name }}</h2>
+
+			<p>I, [recruit's name], do solemnly swear by [recruit's deity of choice] to uphold the Laws and Ordinances of the city of Ankh-Morpork, serve the public trust, and defend the subjects of His/Her [delete whichever is inappropriate] Majesty [name of reigning monarch] without fear, favor, or thought of personal safety; to pursue evil-doers and protect the innocent, laying down my life if necessary in the cause of said duty, so help me [aforesaid deity]. Gods Save the King/Queen [delete which is inappropriate]</p>
+	</div>
+	<div class="content">
+			<h2> No no, say <em>{{ name }}</em>, {{ name }}</h2>
+
+			<p>I, [recruit's name], do solemnly swear by [recruit's deity of choice] to uphold the Laws and Ordinances of the city of Ankh-Morpork, serve the public trust, and defend the subjects of His/Her [delete whichever is inappropriate] Majesty [name of reigning monarch] without fear, favor, or thought of personal safety; to pursue evil-doers and protect the innocent, laying down my life if necessary in the cause of said duty, so help me [aforesaid deity]. Gods Save the King/Queen [delete which is inappropriate]</p>
+	</div>
+	<div class="content">
+		<h2> Ah well. I tried. </h2>
+	</div>
+</div>
+</div>
+{% endblock %}
+
