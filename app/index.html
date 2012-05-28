@@ -14,11 +14,14 @@
 	</head> 
 
 	<body>
+
   	  <div data-role="page" id="login" data-theme="b">
   	      <div data-role="header">
             <h1> TSSAA - Login </h1> 
           </div>	
           <div data-role="content">
+			<!-- FORM -->
+			<form target="_self" method="post" action="/Symfony/web/app_dev.php/login">
             <label for="login"><strong>School ID: </strong></label>
       	  	<input type="text" name="login" id="login" value="" />
 
@@ -26,20 +29,20 @@
       	  	<input type="text" name="pass" id="pass" value="" />
 
       	  	<br />
-      	  	<a href="#main_options" data-role="button" 
-				id="login-button"
-				data-transition="slideup"
-				data-direction="reverse"
-				data-inline="true">Login</a>
+			<button type="submit" 
+				data-theme="b" 
+				name="submit" 
+				value="submit-value"
+				data-inline="true">Submit</button>
 
       	  	<a href="#forgot_password_dialog" 
 				data-role="button" 
 				data-rel="dialog"
 				data-transition="slideup"
 				data-inline="true" 
-				id="forgot-pass-button">Forgot Password?
-			</a>
-          </div>
+				id="forgot-pass-button">Forgot Password?</a>
+			</form>
+			<!-- /FORM -->
 		  <div data-role="footer" data-theme="a">
 			&copy; TSSAA
 		  </div>
@@ -90,7 +93,7 @@
 				data-direction="reverse"
 				id="submit_email">Confirm</a> 
 				
-					</div>
+		</div>
 
 		<div data-role="footer" data-theme="a">
 			&copy; TSSAA		
@@ -121,6 +124,12 @@
 				data-inline="true" 
 				data-transition="slideup" 
 				data-direction=""> Logout </a>
+			<input type="button" 
+				id="get_hash"
+				data-role="button"
+				data-inline="true"
+				value="hash" />
+			
         </div>
 		<div data-role="footer" data-theme="a">
 			&copy; TSSAA		
