@@ -1,0 +1,92 @@
+<!DOCTYPE html> 
+<html> 
+		
+		<head> 
+				
+				<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+				<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />
+
+				<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+				<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>
+				<script type="text/javascript" src="js/login.js"></script>
+				
+				<style>
+						.ui-dialog .ui-header .ui-btn-icon-notext {display:none;}
+				</style>
+		</head> 
+		<body>
+				<div data-role="page" id="login_page" data-theme="b">
+						<div data-role="header">
+								<h1> TSSAA - Login </h1>
+						</div>
+						<div data-role="content">
+								<!-- FORM -->
+								<form id="login_form">
+										<input type="text" name="login" id="login_input" value="" />
+										<input type="text" name="pass" id="pass_input" value="" />
+										<br />
+										<button type="submit"
+											id="submit_button"
+											data-role="button"
+											data-theme="b"
+											data-inline="true">Submit</button>
+								</form>							
+								<!-- /FORM -->
+						</div>
+						<div data-role="footer">
+								<h2> ajax dev page </h2>
+						</div>
+				</div>
+				<!-- /LOGIN_PAGE -->
+
+				<div data-role="page" id="options_page" data-theme="b">
+						<div data-role="header"><h1> Options Menu </h2></div>
+						<div data-role="content">
+								<ul data-role="listview" 
+                                    data-inset="true"
+                                    data-autodividers="true">
+								  <li><a href="#add_user_page" >Add User</a></li>
+								</ul>
+								<br />
+								<h2 id="response_output"></h2>
+						</div>
+						<div data-role="footer"> &copy; TSSAA </div>
+				</div>
+				<!-- /OPTIONS_PAGE -->
+
+				<div data-role="page" id="add_user_page" data-theme="b">
+						<div data-role="header"><h1> Add New User</h1></div>
+						<div data-role="content">
+							<form id="add_user_form">
+								<label for="add_login">Login:</label>
+								<input type="text" name="login" id="add_login"/>
+								<br />
+								<label for="add_email">Email:</label>
+								<input type="text" name="email" id="add_email"/>
+								<br />
+								<label for="add_pass">Password:</label>
+								<input type="text" name="pass" id="add_pass" />
+								<br />
+								<button type="submit"
+									id="add_user_submit"
+									data-role="button"
+									data-theme="b"
+									data-inline="true">Submit</button>
+							</form>
+						</div>
+						<div data-role="footer"> &copy; TSSAA </div>	
+				</div>
+				<!-- /ADD_USER_PAGE -->
+
+				<div data-role="page" id="add_user_confirm_page" data-theme="b">
+
+						<div data-role="header"><h1> New User Added </h2></div>
+						<div data-role="content">
+							<h2 id="add_user_response"></h2>
+						</div>
+						<div data-role="footer"> &copy; TSSAA </div>	
+				</div>
+                <!-- /ADD_USER_CONFIRM_PAGE -->
+		</body>
+</html>
