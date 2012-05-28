@@ -5,7 +5,7 @@ $('#submit_button').live("click", function() {
 
 		$.ajax({
 			type: "POST",
-			url: "/Symfony/web/app_dev.php/login",
+			url: "app_dev.php/login",
 			cache: false,
 			data: formData,
 			success: onSuccess,
@@ -22,7 +22,7 @@ $('#add_user_submit').live('click', function() {
 
 	$.ajax({
 		type: "POST",
-		url: "/Symfony/web/app_dev.php/add_user",
+		url: "app_dev.php/add_user",
 		cache: false,
 		data: formData,
 		success: onAddUser,
