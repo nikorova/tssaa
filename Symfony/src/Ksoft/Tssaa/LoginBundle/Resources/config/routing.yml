@@ -1,0 +1,5 @@
+KsoftTssaaLoginBundle:
+     resource: "@KsoftTssaaLoginBundle/Controller/"
+     type:     annotation
+
+
