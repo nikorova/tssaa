@@ -7,7 +7,7 @@
 @git_repo      = "git@github.com:#{@git_fork}/tssaa.git"
 
 def ssh(message, command)
-  sshified_command = "ssh -l #{@user} #{@server} cd #{@deploy_path}; #{command}"
+  sshified_command = "ssh -l #{@user} #{@server} 'cd #{@deploy_path} && #{command}'"
   puts "#{message}: #{command}"
   puts `#{sshified_command}`
 end
