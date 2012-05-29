@@ -52,43 +52,16 @@ $('#add_user_submit').live('click', function() {
 		url: "app_dev.php/add_user",
 		cache: false,
 		data: formData,
-		success: onAddUser,
-		error: onAddUserError
+		success: popDBDialog,
 	});
 		
 	return false;
 });
 
-function onAddUser(response) {
-	    $.mobile.changePage('db_confirm_dialog', "", true, true);
-
-		var response_items = [];
-
-		try {
-			var data = $.parseJSON(response);
-		} catch(err) {
-			alert(err);	
-		}
-
-		$.each(data, function(key, val) {
-				response_items.push('<tr id="'+key+'"><td>'+key+':</td><td>'+val+'</td></tr>');
-		});
-
-		$('<table/>',{
-			'class': 'response_table',
-			html: response_items.join('')
-		}).appendTo("#response");
-}
-
-function onAddUserError(err) {
-		alert(err);
-}
-
 /**
  * Add school form handler
  */
 $('#add_school_submit').live('click', function() {
-	$.mobile.changePage('add_user_confirm_page', "slideup", true, true);
 
 	var  formData = $('#add_school_form').serialize();
 
@@ -96,8 +69,35 @@ $('#add_school_submit').live('click', function() {
 		type: "POST",
 		url: "app_dev.php/add_school",
 		cache: false,
-		data: formData
+		data: formData,
+        success: popDBDialog
 	});
 		
 	return false;
 });
+
+/**
+ * Dialog handler
+ */
+function popDBDialog(response) {
+    //$("#db_confirm_dialog div h1.dialog_title").html(title);
+    
+    var response_items = [];
+
+    try {
+        var data = $.parseJSON(response);
+    } catch(err) {
+        alert(err);	
+    }
+
+    $.each(data, function(key, val) {
+            response_items.push('<tr id="'+key+'"><td>'+key+':</td><td>'+val+'</td></tr>');
+    });
+
+    $('<table/>',{
+			'class': 'response_table',
+			html: response_items.join('')
+		}).appendTo("#response");
+    
+    $.mobile.changePage("#db_confirm_dialog");
+}
