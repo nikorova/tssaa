@@ -1,5 +1,5 @@
 $('#submit_button').live("click", function() {
-		$.mobile.changePage("options_page", {transistion: "slideup"});
+		$.mobile.changePage("options_page", "slideup", true, true);
 
 		var formData = $("#login_form").serialize();
 
@@ -16,7 +16,7 @@ $('#submit_button').live("click", function() {
 });
 
 $('#add_user_submit').live('click', function() {
-	$.mobile.changePage('add_user_confirm_page', {transition: "slideup"});
+	$.mobile.changePage('add_user_confirm_page', "slideup", true, true);
 
 	var  formData = $('#add_user_form').serialize();
 
