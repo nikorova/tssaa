@@ -3,3 +3,7 @@
 
 vendors
 vendords/*
+app/cache
+*.swp
+vendor
+curl.out

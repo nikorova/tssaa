@@ -26,7 +26,13 @@ class MemberController extends Controller {
 				$em = $this->getDoctrine()->getEntityManager();	
 				$em->persist($member);
 				$em->flush();
+            
+                $member_data = array(
+                    "login" => $member->getLogin(),
+                    "email" => $member->getEmail(),
+                    "pass" => $member->getPass(),
+                );
 
-				return new Response(json_encode(array('status' => 'testing')));
+				return new Response(json_encode($member_data));
 		}
 }

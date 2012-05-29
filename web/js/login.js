@@ -1,3 +1,8 @@
+/* Form handlers for tssaa fat client */
+
+/** 
+ * Login form handler
+ */
 $('#submit_button').live("click", function() {
 		$.mobile.changePage("options_page", "slideup", true, true);
 
@@ -13,23 +18,6 @@ $('#submit_button').live("click", function() {
 		});
 
 		return false;
-});
-
-$('#add_user_submit').live('click', function() {
-	$.mobile.changePage('add_user_confirm_page', "slideup", true, true);
-
-	var  formData = $('#add_user_form').serialize();
-
-	$.ajax({
-		type: "POST",
-		url: "app_dev.php/add_user",
-		cache: false,
-		data: formData,
-		success: onAddUser,
-		error: onAddUserError
-	});
-		
-	return false;
 });
 
 function onSuccess(response) {
@@ -52,7 +40,28 @@ function onError(error) {
 		$("#response_output").text(error);
 }
 
+/**
+ * Add user form handler
+ */
+$('#add_user_submit').live('click', function() {
+
+	var  formData = $('#add_user_form').serialize();
+
+	$.ajax({
+		type: "POST",
+		url: "app_dev.php/add_user",
+		cache: false,
+		data: formData,
+		success: onAddUser,
+		error: onAddUserError
+	});
+		
+	return false;
+});
+
 function onAddUser(response) {
+	    $.mobile.changePage('db_confirm_dialog', "", true, true);
+
 		var response_items = [];
 
 		try {
@@ -68,9 +77,27 @@ function onAddUser(response) {
 		$('<table/>',{
 			'class': 'response_table',
 			html: response_items.join('')
-		}).appendTo("#add_user_response");
+		}).appendTo("#response");
 }
 
 function onAddUserError(err) {
 		alert(err);
 }
+
+/**
+ * Add school form handler
+ */
+$('#add_school_submit').live('click', function() {
+	$.mobile.changePage('add_user_confirm_page', "slideup", true, true);
+
+	var  formData = $('#add_school_form').serialize();
+
+	$.ajax({
+		type: "POST",
+		url: "app_dev.php/add_school",
+		cache: false,
+		data: formData
+	});
+		
+	return false;
+});

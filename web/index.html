@@ -6,6 +6,11 @@
 				<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
 
 				<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />
+                <style>
+                    label{ 
+                        font-weight: bold; 
+                    }
+                </style>
 
 				<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
 				<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>
@@ -23,8 +28,10 @@
 						<div data-role="content">
 								<!-- FORM -->
 								<form id="login_form">
+                                      <fieldset>
                                         <label for="login">Login:</label>
 										<input type="text" name="login" id="login_input" value="" />
+                                        <br />
                                         <label for="pass">Password:</label>
 										<input type="text" name="pass" id="pass_input" value="" />
 										<br />
@@ -33,38 +40,51 @@
 											data-role="button"
 											data-theme="b"
 											data-inline="true">Submit</button>
+                                     </fieldset>
 								</form>							
 								<!-- /FORM -->
 						</div>
 						<div data-role="footer">
 								<h2> ajax dev page </h2>
 						</div>
-				</div>
-				<!-- /LOGIN_PAGE -->
+				</div><!-- /LOGIN_PAGE -->
+				
 
 				<div data-role="page" id="options_page" data-theme="b">
 						<div data-role="header"><h1> Options Menu </h2></div>
 						<div data-role="content">
 								<ul data-role="listview" 
-                                    data-inset="true"
-                                    data-autodividers="true">
-								  <li><a href="#add_user_page" >Add New User</a></li>
+                                    data-inset="true" data-autodividers="true"> <li><a href="#add_user_page" >Add New User</a></li>
 								  <li><a href="#add_school_page" >Add New School</a></li>
 								</ul>
-								<br />
-								<h2 id="response_output"></h2>
 						</div>
 						<div data-role="footer"> &copy; TSSAA </div>
-				</div>
-				<!-- /OPTIONS_PAGE -->
+				</div><!-- /OPTIONS_PAGE -->
+				
 
 				<div data-role="page" id="add_school_page" data-theme="b">
 						<div data-role="header"><h1> Add New School </h1></div>
 						<div data-role="content">
-                            
+                            <form id="add_school_form">
+								<label for="add_name">Name:</label>
+								<input type="text" name="name" id="add_name" />
+								<br />
+								<label for="add_address">Address:</label>
+								<input type="text" name="address" id="add_address" />
+								<br />
+								<label for="add_pass">Phone:</label>
+								<input type="text" name="phone" id="add_phone" />
+								<br />
+								<button type="submit"
+									id="add_school_submit"
+									data-role="button"
+									data-theme="b"
+									data-inline="true">Submit</button>
+							</form>
 		        		</div>
 						<div data-role="footer"> &copy; TSSAA </div>
-				</div>			
+				</div><!-- /ADD_SCHOOL_PAGE -->			
+                
                 
                 <div data-role="page" id="add_user_page" data-theme="b">
 						<div data-role="header"><h1> Add New User</h1></div>
@@ -83,21 +103,22 @@
 									id="add_user_submit"
 									data-role="button"
 									data-theme="b"
-									data-inline="true">Submit</button>
+									data-inline="true"
+                                    data-rel="dialog">Submit</button>
 							</form>
 						</div>
 						<div data-role="footer"> &copy; TSSAA </div>	
-				</div>
-				<!-- /ADD_USER_PAGE -->
+				</div><!-- /ADD_USER_PAGE -->
+				
 
-				<div data-role="page" id="add_user_confirm_page" data-theme="b">
+				<div data-role="page" id="db_confirm_dialog" data-theme="b">
 
-						<div data-role="header"><h1> New User Added </h2></div>
+						<div data-role="header"><h1></h2></div>
 						<div data-role="content">
-							<h2 id="add_user_response"></h2>
+							<h2 id="response"></h2>
 						</div>
 						<div data-role="footer"> &copy; TSSAA </div>	
-				</div>
-                <!-- /ADD_USER_CONFIRM_PAGE -->
+				</div><!-- /DB_CONFIRM_DIALOG-->
+                
 		</body>
 </html>
