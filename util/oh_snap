@@ -1,0 +1,11 @@
+# le ad-hoc deployment script
+APACHE_DROOT="/var/www"
+PROJECT_DIR="/home/nikorova/dev"
+PROJECT="tssaa"
+DEVELOPER="nikorova"
+
+SRC="$PROJECT_DIR/$PROJECT"
+
+TARGET="$APACHE_DROOT/$PROJECT.$DEVELOPER.korovasoft.com/$PROJECT"
+
+cp -vur --no-preserve=ownership $SRC $TARGET
