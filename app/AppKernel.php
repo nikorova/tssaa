@@ -19,7 +19,8 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Acme\HelloBundle\AcmeHelloBundle(),
             new Ksoft\Tssaa\LoginBundle\KsoftTssaaLoginBundle(),
-            new KsoftTssaa\StoreBundle\KsoftTssaaStoreBundle(),
+            new Vresh\TwilioBundle\VreshTwilioBundle(),
+            new Ksoft\Tssaa\TwilioBundle\KsoftTssaaTwilioBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

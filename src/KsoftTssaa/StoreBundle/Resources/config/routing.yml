@@ -1,3 +1,0 @@
-KsoftTssaaStoreBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: KsoftTssaaStoreBundle:Default:index }

@@ -1,3 +1,8 @@
+KsoftTssaaTwilioBundle:
+    resource: "@KsoftTssaaTwilioBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 KsoftTssaaStoreBundle:
     resource: "@KsoftTssaaStoreBundle/Resources/config/routing.yml"
     prefix:   /

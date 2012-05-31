@@ -61,3 +61,9 @@
     git=http://github.com/symfony/AsseticBundle.git
     target=/bundles/Symfony/Bundle/AsseticBundle
     version=v1.0.1
+
+[TwilioBundle]
+    git=http://github.com/Vreshware/VreshTwilioBundle.git
+    target=/bundles/Vresh/VreshTwilioBundle
+    version=origin/master
+

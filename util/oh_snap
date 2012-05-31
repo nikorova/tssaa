@@ -6,6 +6,6 @@ DEVELOPER="nikorova"
 
 SRC="$PROJECT_DIR/$PROJECT"
 
-TARGET="$APACHE_DROOT/$PROJECT.$DEVELOPER.korovasoft.com/$PROJECT"
+TARGET="$APACHE_DROOT/$PROJECT.$DEVELOPER.korovasoft.com/"
 
 cp -vur --no-preserve=ownership $SRC $TARGET

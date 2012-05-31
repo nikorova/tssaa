@@ -1,0 +1,23 @@
+#!/bin/zsh
+# simple as balls curl based tester for tssaa web app
+
+# Headers
+## Content-Type
+C_TYPE="application/x-www-form-urlencoded"
+## Accept-Type
+ACC_TYPE="application/json"
+
+# HTTP Verb
+VERB="POST"
+
+# Request Data
+DATA="name=Example+High&address=123+Over+There+Some+St&phone=123685"
+
+# Target URI
+TARGET="http://tssaa.nikorova.korovasoft.com/tssaa/web/app_dev.php/add_school"
+
+# File for curl output
+OUTPUT="out.curler"
+
+# and now we curl
+curl -i -H $C_TYPE -H $ACC_TYPE -X $VERB -d $DATA $TARGET | tee $OUTPUT
