@@ -79,11 +79,11 @@ it.
 My assessment and consumate recommendation is that we should pursue a deliberate shift in work and design 
 methodology toward unit and functional testing. For any given module, I've found the following workflow to 
 be effective: 
-	#### By order of implementation
-	1. Entity
-	2. Controller
-	3. Test
-	4. UI  
+#### By order of implementation
+1. Entity
+2. Controller
+3. Test
+4. UI  
 
 However, I feel that using test writing as the basis of modeling controller logic is quite powerful and 
 will seek to utilize that pattern in the future. 
