@@ -7,3 +7,5 @@ app/cache
 *.swp
 vendor
 curl.out
+out.curler
+apps/logs
