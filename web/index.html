@@ -1,0 +1,125 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+
+<style>
+.ui-dialog .ui-header .ui-btn-icon-notext {display:none;}
+</style>
+</head> 
+<body>
+<div data-role="page" id="login_page" data-theme="b">
+    <div data-role="header">
+        <h1> TSSAA - Login </h1>
+    </div>
+    <div data-role="content">
+        <!-- FORM -->
+        <form id="login_form">
+            <fieldset data-role="fieldcontain">
+                <label for="login_input"><strong>Login:</strong></label>
+                <input type="text" name="login" id="login_input" value="" />
+                <br />
+                <label for="pass_input"><strong>Password:</strong></label>
+                <input type="text" name="pass" id="pass_input" value="" />
+                <br />
+                <button type="submit"
+                    id="submit_button"
+                    data-role="button"
+                    data-theme="b"
+                    data-inline="true">Submit</a>
+            </fieldset>
+        </form>							
+        <!-- /FORM -->
+    </div>
+    <div data-role="footer"> &copy; TSSAA </div>
+</div><!-- /LOGIN_PAGE -->
+
+
+<div data-role="page" id="options_page" data-theme="b">
+    <div data-role="header" data-backbtn="false"><h1> Options Menu </h2></div>
+    <div data-role="content">
+        <ul data-role="listview" 
+            data-inset="true" data-autodividers="true"> <li><a href="#add_user_page" >Add New User</a></li>
+            <li><a href="#add_school_page" >Add New School</a></li>
+        </ul>
+        <a href="#login_page"
+            id="logout_button"
+            data-role="button"
+            data-rel="back"
+            data-theme="a">Logout</a>
+    </div>
+    <div data-role="footer"> &copy; TSSAA </div>
+</div><!-- /OPTIONS_PAGE -->
+
+
+<div data-role="page" id="add_school_page" data-theme="b">
+    <div data-role="header"><h1> Add New School </h1></div>
+    <div data-role="content">
+        <form id="add_school_form">
+            <label for="add_name"><strong>Name:</strong></label>
+            <input type="text" name="name" id="add_name" />
+            <br />
+            <label for="add_address"><strong>Address:</strong></label>
+            <input type="text" name="address" id="add_address" />
+            <br />
+            <label for="add_phone"><strong>Phone:</strong></label>
+            <input type="text" name="phone" id="add_phone" />
+            <br />
+            <button type="submit"
+                id="add_school_submit"
+                data-role="button"
+                data-theme="b"
+                data-inline="true">Submit</button>
+        </form>
+    </div>
+    <div data-role="footer"> &copy; TSSAA </div>
+</div><!-- /ADD_SCHOOL_PAGE -->			
+
+
+<div data-role="page" id="add_user_page" data-theme="b">
+    <div data-role="header"><h1> Add New User</h1></div>
+    <div data-role="content">
+        <form id="add_user_form">
+            <label for="add_login"><strong>Login:</strong></label>
+            <input type="text" name="login" id="add_login"/>
+            <br />
+            <label for="add_email"><strong>Email:</strong></label>
+            <input type="text" name="email" id="add_email"/>
+            <br />
+            <label for="add_pass"><strong>Password:</strong></label>
+            <input type="text" name="pass" id="add_pass" />
+            <br />
+            <button type="submit"
+                id="add_user_submit"
+                data-role="button"
+                data-theme="b"
+                data-inline="true"
+                data-rel="dialog">Submit</button>
+        </form>
+    </div>
+    <div data-role="footer"> &copy; TSSAA </div>	
+</div><!-- /ADD_USER_PAGE -->
+
+
+<div data-role="dialog" id="db_confirm_dialog" data-theme="b">
+    <div data-role="header" data-backbtn="false">
+        <h1 id="dialog_title"> Submission Received </h1>
+    </div>
+    <div data-role="content">
+        <h2><strong> You entered:</strong></h2>
+        <h2 id="response"></h2>
+        <a href=""
+            data-rel="back"
+            data-role="button"
+            data-theme="a"
+            data-inline="true"> Close </a>
+    </div>
+    <div data-role="footer"> &copy; TSSAA </div>	
+</div><!-- /DB_CONFIRM_DIALOG-->
+
+</body>
+</html>
