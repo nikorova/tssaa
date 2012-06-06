@@ -1,15 +1,14 @@
-WebAppBundle:
+add_member:
     resource: "@WebAppBundle/Controller/MemberController.php"
     type: annotation  
     prefix: /
 
-
-WebAppBundle:
+login:
     resource: "@WebAppBundle/Controller/LoginController.php"
     type: annotation  
     prefix: /
 
-WebAppBundle:
+add_school:
     resource: "@WebAppBundle/Controller/SchoolController.php"
     type: annotation  
     prefix: /

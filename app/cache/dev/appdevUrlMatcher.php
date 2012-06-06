@@ -143,6 +143,26 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // ksoft_tssaa_webapp_member_adduser
+        if ($pathinfo === '/add_user') {
+            return array (  '_controller' => 'Ksoft\\Tssaa\\WebAppBundle\\Controller\\MemberController::addUserAction',  '_route' => 'ksoft_tssaa_webapp_member_adduser',);
+        }
+
+        // ksoft_tssaa_webapp_login_login
+        if ($pathinfo === '/login') {
+            return array (  '_controller' => 'Ksoft\\Tssaa\\WebAppBundle\\Controller\\LoginController::loginAction',  '_route' => 'ksoft_tssaa_webapp_login_login',);
+        }
+
+        // ksoft_tssaa_webapp_login_index
+        if (0 === strpos($pathinfo, '/index') && preg_match('#^/index/(?P<name>[^/]+?)$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'HEAD'));
+                goto not_ksoft_tssaa_webapp_login_index;
+            }
+            return array_merge($this->mergeDefaults($matches, array (  '_format' => 'json',  '_controller' => 'Ksoft\\Tssaa\\WebAppBundle\\Controller\\LoginController::indexAction',)), array('_route' => 'ksoft_tssaa_webapp_login_index'));
+        }
+        not_ksoft_tssaa_webapp_login_index:
+
         // ksoft_tssaa_webapp_school_addschool
         if ($pathinfo === '/add_school') {
             return array (  '_controller' => 'Ksoft\\Tssaa\\WebAppBundle\\Controller\\SchoolController::addSchoolAction',  '_route' => 'ksoft_tssaa_webapp_school_addschool',);

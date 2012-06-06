@@ -23,7 +23,7 @@ class LoginController extends Controller {
 		
 	  	
 		// check against members table
-		$repo = $this->getDoctrine()->getRepository('KsoftTssaaWebAppBundle:Member');
+		$repo = $this->getDoctrine()->getRepository('WebAppBundle:Member');
 		if ($member = $repo->findOneBy(array('login' => $login, 'pass' => $pass))){
 			return new Response(json_encode(array('response' => 'success', 'login' => $login, 'pass' => $pass)));
 		} else { 
