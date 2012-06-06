@@ -1,19 +1,5 @@
-KsoftTssaaTwilioBundle:
-    resource: "@KsoftTssaaTwilioBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-KsoftTssaaStoreBundle:
-    resource: "@KsoftTssaaStoreBundle/Resources/config/routing.yml"
-    prefix:   /
-
-KsoftTssaaLoginBundle:
-    resource: "@KsoftTssaaLoginBundle/Resources/config/routing.yml"
-    prefix:    / 
-
-#AcmeHelloBundle:
-#    resource: "@AcmeHelloBundle/Resources/config/routing.yml"
-#    prefix:   /
+KsoftTssaaWebAppBundle:
+    resource: "@WebAppBundle/Resources/config/routing.yml"
 
 # Internal routing configuration to handle ESI
 #_internal:

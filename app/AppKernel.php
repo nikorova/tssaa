@@ -17,10 +17,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-            new Acme\HelloBundle\AcmeHelloBundle(),
-            new Ksoft\Tssaa\LoginBundle\KsoftTssaaLoginBundle(),
-            new Vresh\TwilioBundle\VreshTwilioBundle(),
-            new Ksoft\Tssaa\TwilioBundle\KsoftTssaaTwilioBundle(),
+            new Ksoft\Tssaa\WebAppBundle\WebAppBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

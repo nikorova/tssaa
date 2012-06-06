@@ -9,3 +9,6 @@ vendor
 curl.out
 out.curler
 apps/logs
+app/logs
+app/cache
+*.orig
