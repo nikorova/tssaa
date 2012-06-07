@@ -1,0 +1,39 @@
+#!/bin/sh
+# simple as balls curl based tester for tssaa web app
+if [ "-h" = $1  ]
+then
+    echo "curlur, like the curlur of mah hur\nusage: curlur [<DOMAIN> <URI>]"
+    echo " (in that order, or not at all if you please. :| "
+    exit
+fi
+
+# Headers
+## Content-Type
+C_TYPE="application/x-www-form-urlencoded"
+## Accept-Type
+ACC_TYPE="application/json"
+
+# HTTP Verb
+VERB="POST"
+
+# Request Data
+DATA="name=Example+High&address=123+Over+There+Some+St&phone=123685"
+
+# Target URI
+if [ 0 -eq $# ]
+then
+    TARGET="http://tssaa.nikorova.korovasoft.com/tssaa/web/app_dev.php/add_school"
+else
+    DOMAIN=$1
+    URI=$2
+    TARGET="$DOMAIN/$URI"
+fi
+
+# File for curl output
+OUTPUT="out.curlur"
+
+# testing uri construction
+echo "curling $TARGET"
+
+# and now we curl
+curl -i -H $C_TYPE -H $ACC_TYPE -X $VERB -d $DATA $TARGET | tee $OUTPUT

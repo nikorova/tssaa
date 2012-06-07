@@ -38,4 +38,14 @@ class SchoolController extends Controller {
 
         return new Response(json_encode($school_data));
     }
+
+    /**
+     * @Route("get_school_list"), requirements={"_method" = "GET"}
+     */
+    public function getSchoolList() {
+        $repo = $this->getDoctrine()->getRepository('KsoftTssaaWebAppBundle:School');
+        $schools = $repo->findAll();
+
+        return new Response(json_encode($schools));
+    }
 }
