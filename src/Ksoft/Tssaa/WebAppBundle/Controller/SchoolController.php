@@ -43,7 +43,7 @@ class SchoolController extends Controller {
      * @Route("get_school_list"), requirements={"_method" = "GET"}
      */
     public function getSchoolList() {
-        $repo = $this->getDoctrine()->getRepository('KsoftTssaaWebAppBundle:School');
+        $repo = $this->getDoctrine()->getRepository('WebAppBundle:School');
         $schools = $repo->findAll();
 
         return new Response(json_encode($schools));

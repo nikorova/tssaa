@@ -12,3 +12,8 @@ add_school:
     resource: "@WebAppBundle/Controller/SchoolController.php"
     type: annotation  
     prefix: /
+
+get_school_list:
+    resource: "@WebAppBundle/Controller/SchoolController.php"
+    type: annotation
+    prefix: /
