@@ -97,7 +97,7 @@ function popDBDialog(response) {
     $('<table/>',{
 			'class': 'response_table',
 			html: response_items.join('')
-		}).appendTo("#response");
+		}).replaceAll("#response");
     
     $.mobile.changePage("#db_confirm_dialog");
 }
