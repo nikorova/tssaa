@@ -8,4 +8,5 @@
 #
 #TARGET="$APACHE_DROOT/$PROJECT.$DEVELOPER.korovasoft.com/"
 
+echo "pushing"
 git push apache master
