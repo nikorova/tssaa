@@ -6,7 +6,8 @@
 #
 #SRC="$PROJECT_DIR/$PROJECT"
 #
-#TARGET="$APACHE_DROOT/$PROJECT.$DEVELOPER.korovasoft.com/"
+TARGET=/var/www/tssaa.nikorova.korovasoft.com/tssaa
 
-echo "pushing"
-git push apache master
+cd $TARGET
+sudo git pull origin master
+
