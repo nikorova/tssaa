@@ -12,3 +12,5 @@ apps/logs
 app/logs
 app/cache
 *.orig
+out.curlur
+test.sh
