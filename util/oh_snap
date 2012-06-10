@@ -1,11 +1,11 @@
 # le ad-hoc deployment script
-APACHE_DROOT="/var/www"
-PROJECT_DIR="/home/nikorova/dev"
-PROJECT="tssaa"
-DEVELOPER="nikorova"
+#APACHE_DROOT="/var/www"
+#PROJECT_DIR="/home/nikorova/dev"
+#PROJECT="tssaa"
+#DEVELOPER="nikorova"
+#
+#SRC="$PROJECT_DIR/$PROJECT"
+#
+#TARGET="$APACHE_DROOT/$PROJECT.$DEVELOPER.korovasoft.com/"
 
-SRC="$PROJECT_DIR/$PROJECT"
-
-TARGET="$APACHE_DROOT/$PROJECT.$DEVELOPER.korovasoft.com/"
-
-cp -vur --no-preserve=ownership $SRC $TARGET
+git push apache master
