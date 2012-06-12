@@ -64,9 +64,9 @@ $('#add_school_submit').live('click', function() {
 });
 
 /**
- * Get school list form ajax handler
+ * Get school list ajax handler
  */
-$('a#school_list_page').live('click', function() {
+$.document.bind("pagebeforechange", function() {
     $.ajax({
         type: "GET",
         url:"app_dev.php/get_school_list",
