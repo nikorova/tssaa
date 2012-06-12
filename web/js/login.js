@@ -66,7 +66,7 @@ $('#add_school_submit').live('click', function() {
 /**
  * Get school list ajax handler
  */
-$(document).bind("pagechange", function(e, obj) {
+$("#school_list_page").bind("pagechange", function(e, obj) {
     if(obj.toPage == "#school_list_page") {
         $.ajax({
             type: "GET",
