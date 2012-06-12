@@ -6,8 +6,7 @@
 /** 
  * Login form handler
  */
-$('#submit_button').on("click", function() {
-		$.mobile.changePage("#options_page", "slideup", true, true);
+$('#login_form').on("submit", function(e) {
 
 		var formData = $("#login_form").serialize();
 
@@ -17,17 +16,13 @@ $('#submit_button').on("click", function() {
 			cache: false,
 			data: formData,
 			success: onSuccess,
-			error: onError
 		});
 
 		return false;
 });
 
 function onSuccess(response) {
-}
-
-function onError(error) {
-		$("#response_output").text(error);
+    $.mobile.changePage("#options_page", "slideup", true, true);
 }
 
 /**
