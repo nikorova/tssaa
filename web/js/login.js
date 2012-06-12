@@ -6,7 +6,7 @@
 /** 
  * Login form handler
  */
-$('#login_form').on("submit", function(e) {
+$('#login_form').on("submit", function() {
 
 //		var formData = $("#login_form").serialize();
 //
@@ -17,7 +17,7 @@ $('#login_form').on("submit", function(e) {
 //			data: formData,
 //			//success: onSuccess,
 //		});
-
+        alert("oh hai");
         $.mobile.changePage("#options_page", "slideup", true, true);
 
 		return false;
