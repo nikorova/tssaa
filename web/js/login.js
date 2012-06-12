@@ -69,7 +69,7 @@ $('#add_school_submit').live('click', function() {
 /**
  * Get school list ajax handler
  */
-$(document).bind("pagebeforechange", "#school_list_page", function(e, obj) {
+$(document).on("pagebeforechange", "#school_list_page", function(e, obj) {
         alert("we are post pagebeforechange");
         $.ajax({
             type: "GET",
