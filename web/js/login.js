@@ -73,7 +73,7 @@ $('a#school_list_page').live('click', function() {
         cache: "false",
         success: generateSchoolList
     });    
-}
+});
 
 /**
  * DB Dialog ajax success handler
