@@ -21,19 +21,6 @@ $('#submit_button').live("click", function() {
 });
 
 function onSuccess(response) {
-		var response_items = [];
-
-		try {var data = $.parseJSON(response);}
-		catch(err) {$("#response_output").text(err);};
-		
-		$.each(data, function(key, val) {
-				response_items.push('<tr id="'+key+'"><td>'+key+':</td><td>'+val+'</td></tr>');
-		});
-
-		$('<table/>',{
-			'class': 'response_table',
-			html: response_items.join('')
-		}).appendTo("#response_output");
 }
 
 function onError(error) {
@@ -41,7 +28,7 @@ function onError(error) {
 }
 
 /**
- * Add user form handler
+ * Add user form ajax handler
  */
 $('#add_user_submit').live('click', function() {
 
@@ -59,7 +46,7 @@ $('#add_user_submit').live('click', function() {
 });
 
 /**
- * Add school form handler
+ * Add school form ajax handler
  */
 $('#add_school_submit').live('click', function() {
 
@@ -77,18 +64,28 @@ $('#add_school_submit').live('click', function() {
 });
 
 /**
- * Dialog handler
+ * Get school list form ajax handler
+ */
+$('#schools_list_page').live('click', function() {
+    $.ajax({
+        type: "GET",
+        url:"app_dev.php/get_school_list",
+        cache: "false",
+        success: generateSchoolList
+    });    
+}
+
+/**
+ * DB Dialog ajax success handler
  */
 function popDBDialog(response) {
-    //$("#db_confirm_dialog div h1.dialog_title").html(title);
-    
-    var response_items = [];
-
     try {
         var data = $.parseJSON(response);
     } catch(err) {
         alert(err);	
     }
+
+    var response_items = [];
 
     $.each(data, function(key, val) {
             response_items.push('<tr id="'+key+'"><td>'+key+':</td><td>'+val+'</td></tr>');
@@ -101,3 +98,30 @@ function popDBDialog(response) {
     
     $.mobile.changePage("#db_confirm_dialog");
 }
+
+/**
+ * School List response handler
+ * generates ul of schools returned from DB
+ */
+function generateSchoolList(response) {
+    
+    try {
+        var school_data = $.parseJSON(response);
+    } catch(err) {
+        alert(err);
+    }
+    
+    var schools = [];
+
+    $.each(school_data, function(school) {
+                var name = school;
+                var phone = school.phone;
+                var address = school.address; 
+                
+                //TODO expanding li for each school with phone, address, etc
+                schools.push('<li><a href="'+name+'">'+name+'</a></li>');
+            }
+
+    $('#shool_list').replaceWith(schools.join(''));
+    }
+
