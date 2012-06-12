@@ -7,22 +7,39 @@
  * Login form handler
  */
 $(document).on("pageinit", function(e, obj) {
-        $("#login_page").on("submit", function(e, obj) {
-            var formData = $("#login_form").serialize();
-            $.ajax( "app_dev.php/login", {
-                type: "POST",
-                cache: true,
-                data: formData,
-                success: loginSuccess,
-                });
+    $("#login_page").on("submit", function(e, obj) {
+        var formData = $("#login_form").serialize();
+        $.ajax( "app_dev.php/login", {
+            type: "POST",
+            cache: true,
+            data: formData,
+            success: loginSuccess,
+            });
 
-            $.mobile.changePage("#options_page", "slideup", true, true); 
-            }); 
-        });
+        $.mobile.changePage("#options_page", "slideup", true, true); 
+        }); 
+        
+/**
+ * Get school list ajax handler
+ */
+    $("#school_list_page").on("pagebeforechange", function(e, obj) {
+            alert("we are post pagebeforechange");
+            $.ajax("app_dev.php/get_school_list", {
+                type: "GET",
+                cache: "true",
+                success: generateSchoolList
+            });    
+    });
+});
 
+/**
+ * Login form ajax callback
+ * TODO session management handled here?
+ */
 function loginSuccess(response) {
     alert(response);
 }
+
 /**
  * Add user form ajax handler
  */
@@ -59,18 +76,6 @@ $('#add_school_submit').live('click', function() {
 	return false;
 });
 
-/**
- * Get school list ajax handler
- */
-$("#school_list_page").on("pagebeforechange", function(e, obj) {
-        alert("we are post pagebeforechange");
-        $.ajax({
-            type: "GET",
-            url:"app_dev.php/get_school_list",
-            cache: "false",
-            success: generateSchoolList
-        });    
-});
 
 /**
  * DB Dialog ajax success callback
