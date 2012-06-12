@@ -6,22 +6,7 @@
 /** 
  * Login form handler
  */
-$('#login_form').on("submit", function(e) {
-       e.preventDefault(); 
-//		var formData = $("#login_form").serialize();
-//
-//		$.ajax({
-//			type: "POST",
-//			url: "app_dev.php/login",
-//			cache: true,
-//			data: formData,
-//			//success: onSuccess,
-//		});
-        alert("oh hai");
-        $.mobile.changePage("#options_page", "slideup", true, true);
 
-		return false;
-});
 
 function onSuccess() {
     $.mobile.changePage("#options_page", "slideup", true, true);
