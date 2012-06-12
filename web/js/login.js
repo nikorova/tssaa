@@ -6,8 +6,8 @@
 /** 
  * Login form handler
  */
-$('#submit_button').live("click", function() {
-		$.mobile.changePage("options_page", "slideup", true, true);
+$('#submit_button').on("click", function() {
+		$.mobile.changePage("#options_page", "slideup", true, true);
 
 		var formData = $("#login_form").serialize();
 
