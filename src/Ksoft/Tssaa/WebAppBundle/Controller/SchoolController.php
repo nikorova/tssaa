@@ -44,8 +44,18 @@ class SchoolController extends Controller {
      */
     public function getSchoolList() {
         $repo = $this->getDoctrine()->getRepository('WebAppBundle:School');
-        $schools = $repo->findAll();
+        $school_objects = $repo->findAll();
+        $schools = array();
+        
+        foreach ($school_objects as $school){
+            $name = $school->getSchoolName();
+            $address = $school->getAddress();
+            $phone = $school->getPhone();
 
+            $s = array($name => array("phone" => $phone, "address" => $address));
+
+            array_push($schools, $s); 
+        }
         return new Response(json_encode($schools));
     }
 }
