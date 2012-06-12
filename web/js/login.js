@@ -6,8 +6,8 @@
 /** 
  * Login form handler
  */
-$('#login_form').on("submit", function() {
-
+$('#login_form').on("submit", function(e) {
+       e.preventDefault(); 
 //		var formData = $("#login_form").serialize();
 //
 //		$.ajax({
