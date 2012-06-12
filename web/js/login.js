@@ -19,10 +19,10 @@ $(document).on("pageinit", function(e, obj) {
         $.mobile.changePage("#options_page", "slideup", true, true); 
         }); 
         
-/**
- * Get school list ajax handler
- */
-    $("#school_list_page").on("pagebeforechange", function(e, obj) {
+    /**
+     * Get school list ajax handler
+     */
+    $("#school_list_page").on("pageload", function(e, obj) {
             alert("we are post pagebeforechange");
             $.ajax("app_dev.php/get_school_list", {
                 type: "GET",
