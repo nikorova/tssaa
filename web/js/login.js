@@ -8,6 +8,17 @@
  */
 $(document).on("pageinit", function(e, obj) {
         $("#login_page").on("submit", function(e, obj) {
+            var formData = $("#login_form").serialize();
+            $.ajax({
+                type: "POST",
+                url: "app_dev.php/login"
+                cache: true,
+                data: formData,
+                success: function(response) {
+                alert(response);
+                }
+                });
+
             $.mobile.changePage("#options_page", "slideup", true, true); 
             }); 
         });
