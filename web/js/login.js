@@ -120,8 +120,7 @@ function generateSchoolList(response) {
                 
                 //TODO expanding li for each school with phone, address, etc
                 schools.push('<li><a href="'+name+'">'+name+'</a></li>');
-            }
+            });
 
     $('#shool_list').replaceWith(schools.join(''));
-    }
-
+};
