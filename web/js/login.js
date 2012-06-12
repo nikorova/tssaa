@@ -66,15 +66,13 @@ $('#add_school_submit').live('click', function() {
 /**
  * Get school list ajax handler
  */
-$(document).bind("pagebeforechange", function(e, obj) {
-    if (obj.toPage == "#school_list_page"){
+$(document).bind("pagechange", function(e, obj) {
         $.ajax({
             type: "GET",
             url:"app_dev.php/get_school_list",
             cache: "false",
             success: generateSchoolList
         });    
-    }
 });
 
 /**
@@ -124,5 +122,5 @@ function generateSchoolList(response) {
                 schools.push('<li><a href="'+name+'">'+name+'</a></li>');
             });
 
-    $('#shool_list').html(schools.join(''));
+    $('ul#shool_list').html(schools.join(''));
 };
