@@ -122,5 +122,5 @@ function generateSchoolList(response) {
                 schools.push('<li><a href="'+name+'">'+name+'</a></li>');
             });
 
-    $('#shool_list').replaceWith(schools.join(''));
+    $('#shool_list').html(schools.join(''));
 };
