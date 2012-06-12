@@ -15,13 +15,15 @@ $('#login_form').on("submit", function(e) {
 			url: "app_dev.php/login",
 			cache: false,
 			data: formData,
-			success: onSuccess,
+			//success: onSuccess,
 		});
+
+        $.mobile.changePage("#options_page", "slideup", true, true);
 
 		return false;
 });
 
-function onSuccess(response) {
+function onSuccess() {
     $.mobile.changePage("#options_page", "slideup", true, true);
 }
 
