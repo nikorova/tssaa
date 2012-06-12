@@ -43,8 +43,10 @@
     <div data-role="header" data-backbtn="false"><h1> Options Menu </h2></div>
     <div data-role="content">
         <ul data-role="listview" 
-            data-inset="true" data-autodividers="true"> <li><a href="#add_user_page" >Add New User</a></li>
+            data-inset="true" data-autodividers="true"> 
+            <li><a href="#add_user_page" >Add New User</a></li>
             <li><a href="#add_school_page" >Add New School</a></li>
+            <li><a href="#school_list_page" id="school_list_page">View Schools</a></li>
         </ul>
         <a href="#login_page"
             id="logout_button"
@@ -103,6 +105,15 @@
     </div>
     <div data-role="footer"> &copy; TSSAA </div>	
 </div><!-- /ADD_USER_PAGE -->
+
+<div data-role="page" id="school_list_page" data-theme="b">
+    <div data-role="header"><h1> TSSAA Schools Directory</h1></div>
+    <div data-role="content">
+        <ul data-role="listview" data-inset="true" id="school_list">
+        </ul>
+    </div>
+    <div data-role="footer"></div>
+</div><!-- /SCHOOL_LIST_PAGE -->
 
 
 <div data-role="dialog" id="db_confirm_dialog" data-theme="b">

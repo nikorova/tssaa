@@ -66,7 +66,7 @@ $('#add_school_submit').live('click', function() {
 /**
  * Get school list form ajax handler
  */
-$('#schools_list_page').live('click', function() {
+$('a#school_list_page').live('click', function() {
     $.ajax({
         type: "GET",
         url:"app_dev.php/get_school_list",
