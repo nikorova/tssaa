@@ -1,4 +1,7 @@
-/* Form handlers for tssaa fat client */
+/******************************************
+ * Form Handlers and page                 *
+ * generators for TSSAA WebApp Fat Client *
+ *****************************************/
 
 /** 
  * Login form handler
@@ -66,8 +69,8 @@ $('#add_school_submit').live('click', function() {
 /**
  * Get school list ajax handler
  */
-$("#school_list_page").bind("pagechange", function(e, obj) {
-        alert("we are post pagechange");
+$("#school_list_page").bind("pagebeforechange", function(e, obj) {
+        alert("we are post pagebeforechange");
         $.ajax({
             type: "GET",
             url:"app_dev.php/get_school_list",
@@ -77,7 +80,7 @@ $("#school_list_page").bind("pagechange", function(e, obj) {
 });
 
 /**
- * DB Dialog ajax success handler
+ * DB Dialog ajax success callback
  */
 function popDBDialog(response) {
     try {
