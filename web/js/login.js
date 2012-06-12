@@ -22,8 +22,9 @@ $(document).on("pageinit", function(e, obj) {
     /**
      * Get school list ajax handler
      */
-    $("#school_list_page").on("pageload", function(e, obj) {
-            alert("we are post pagebeforechange");
+    $("#school_list_page").on("pagebeforechange", function(e, obj) {
+            alert("we are at pagebeforechange");
+            e.preventDefault();
             $.ajax("app_dev.php/get_school_list", {
                 type: "GET",
                 cache: "true",
