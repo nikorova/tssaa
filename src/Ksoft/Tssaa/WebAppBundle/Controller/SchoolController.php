@@ -48,7 +48,7 @@ class SchoolController extends Controller {
         $schools = array();
         
         foreach ($school_objects as $school){
-            $name = $school->getSchoolName();
+            $name = $school->getName();
             $address = $school->getAddress();
             $phone = $school->getPhone();
 
