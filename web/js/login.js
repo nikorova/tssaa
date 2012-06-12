@@ -14,15 +14,16 @@ $(document).on("pageinit", function(e, obj) {
                 url: "app_dev.php/login"
                 cache: true,
                 data: formData,
-                success: function(response) {
-                alert(response);
-                }
+                success: loginSuccess,
                 });
 
             $.mobile.changePage("#options_page", "slideup", true, true); 
             }); 
         });
 
+function loginSuccess(response) {
+    alert(response);
+}
 /**
  * Add user form ajax handler
  */
