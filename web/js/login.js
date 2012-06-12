@@ -67,14 +67,13 @@ $('#add_school_submit').live('click', function() {
  * Get school list ajax handler
  */
 $("#school_list_page").bind("pagechange", function(e, obj) {
-    if(obj.toPage == "#school_list_page") {
+        alert("we are post pagechange");
         $.ajax({
             type: "GET",
             url:"app_dev.php/get_school_list",
             cache: "false",
             success: generateSchoolList
         });    
-    }
 });
 
 /**
