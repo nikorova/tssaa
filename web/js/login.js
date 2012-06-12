@@ -13,7 +13,7 @@ $('#login_form').on("submit", function(e) {
 		$.ajax({
 			type: "POST",
 			url: "app_dev.php/login",
-			cache: false,
+			cache: true,
 			data: formData,
 			//success: onSuccess,
 		});
