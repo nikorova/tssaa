@@ -8,15 +8,15 @@
  */
 $('#login_form').on("submit", function(e) {
 
-		var formData = $("#login_form").serialize();
-
-		$.ajax({
-			type: "POST",
-			url: "app_dev.php/login",
-			cache: true,
-			data: formData,
-			//success: onSuccess,
-		});
+//		var formData = $("#login_form").serialize();
+//
+//		$.ajax({
+//			type: "POST",
+//			url: "app_dev.php/login",
+//			cache: true,
+//			data: formData,
+//			//success: onSuccess,
+//		});
 
         $.mobile.changePage("#options_page", "slideup", true, true);
 
