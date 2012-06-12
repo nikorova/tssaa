@@ -6,11 +6,11 @@
 /** 
  * Login form handler
  */
-
-
-function onSuccess() {
-    $.mobile.changePage("#options_page", "slideup", true, true);
-}
+$(document).on("pageinit", function(e, obj) {
+        $("#login_page").on("submit", function(e, obj) {
+            $.mobile.changePage("#options_page", "slideup", true, true); 
+            }); 
+        });
 
 /**
  * Add user form ajax handler
