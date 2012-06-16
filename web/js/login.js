@@ -14,20 +14,18 @@ $(document).on("pageinit", function(e, obj) {
             cache: true,
             data: formData,
             success: loginSuccess,
-            });
-
-        $.mobile.changePage("#options_page", "slideup", true, true); 
-        }); 
+        });
+    }); 
         
     /**
      * Get school list ajax handler
      */
     $("#school_list_page_a").on("click", function(e, obj) {
-            $.ajax("app_dev.php/get_school_list", {
-                type: "GET",
-                cache: "true",
-                success: generateSchoolList
-            });    
+        $.ajax("app_dev.php/get_school_list", {
+            type: "GET",
+            cache: "true",
+            success: generateSchoolList
+        });    
     });
 });
 
@@ -37,6 +35,7 @@ $(document).on("pageinit", function(e, obj) {
  */
 function loginSuccess(response) {
     alert(response);
+    $.mobile.changePage("#options_page", "slideup", true, true); 
 }
 
 /**
@@ -111,6 +110,7 @@ function generateSchoolList(response) {
     } catch(err) {
         alert(err);
     }
+    console.log(school_data);
     
     var schools = [];
 
