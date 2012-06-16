@@ -52,7 +52,7 @@ class SchoolController extends Controller {
             $address = $school->getAddress();
             $phone = $school->getPhone();
 
-            $s = array($name => array("phone" => $phone, "address" => $address));
+            $s = array("name" => $name, "phone" => $phone, "address" => $address);
 
             array_push($schools, $s); 
         }

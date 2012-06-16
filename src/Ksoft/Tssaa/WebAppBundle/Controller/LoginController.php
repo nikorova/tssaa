@@ -32,11 +32,4 @@ class LoginController extends Controller {
 	
 	}
 
-
-	/**
-	 * @Route("index/{name}", requirements={"_method" = "GET"}, defaults={"_format" = "json"}) 
-	 */
-    public function indexAction(){
-        return new Response(json_encode( array('name' => $name)));
-    }
-} 
+ 
