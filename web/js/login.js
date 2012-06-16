@@ -110,7 +110,6 @@ function generateSchoolList(response) {
     } catch(err) {
         alert(err);
     }
-    console.log(school_data);
     
     var schools = [];
 
