@@ -8,13 +8,16 @@
  */
 $(document).on("pageinit", function(e, obj) {
     $("#login_page").on("submit", function(e, obj) {
+
         var formData = $("#login_form").serialize();
+
         $.ajax( "app_dev.php/login", {
             type: "POST",
             cache: true,
             data: formData,
             success: loginSuccess,
         });
+        return false;
     }); 
         
     /**
@@ -27,6 +30,24 @@ $(document).on("pageinit", function(e, obj) {
             success: generateSchoolList
         });    
     });
+
+    /**
+     * Add school form ajax handler
+     */
+    $('#add_school_submit').on('click', function(e, obj) {
+
+        var  formData = $('#add_school_form').serialize();
+
+        $.ajax("app_dev.php/add_school", {
+            type: "POST",
+            cache: false,
+            data: formData,
+            success: popDBDialog
+        });
+        return false;
+    });
+
+
 });
 
 /**
@@ -35,45 +56,11 @@ $(document).on("pageinit", function(e, obj) {
  */
 function loginSuccess(response) {
     alert(response);
-    $.mobile.changePage("#options_page", "slideup", true, true); 
+    $.mobile.changePage($("#options_page"), {
+            transition: "slideup", 
+            reverse: true, 
+        }); 
 }
-
-/**
- * Add user form ajax handler
- */
-$('#add_user_submit').live('click', function() {
-
-	var  formData = $('#add_user_form').serialize();
-
-	$.ajax({
-		type: "POST",
-		url: "app_dev.php/add_user",
-		cache: false,
-		data: formData,
-		success: popDBDialog,
-	});
-		
-	return false;
-});
-
-/**
- * Add school form ajax handler
- */
-$('#add_school_submit').live('click', function() {
-
-	var  formData = $('#add_school_form').serialize();
-
-	$.ajax({
-		type: "POST",
-		url: "app_dev.php/add_school",
-		cache: false,
-		data: formData,
-        success: popDBDialog
-	});
-		
-	return false;
-});
-
 
 /**
  * DB Dialog ajax success callback
@@ -85,11 +72,11 @@ function popDBDialog(response) {
         alert(err);	
     }
 
-    var response_items = [];
+//    var response_items = [];
 
-    $.each(data, function(key, val) {
-            response_items.push('<tr id="'+key+'"><td>'+key+':</td><td>'+val+'</td></tr>');
-    });
+//    $.each(data, function(key, val) {
+//            response_items.push('<tr id="'+key+'"><td>'+key+':</td><td>'+val+'</td></tr>');
+//    });
 
     $('<table/>',{
 			'class': 'response_table',
