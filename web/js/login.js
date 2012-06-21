@@ -74,11 +74,11 @@ function popDBDialog(response) {
         alert(err);	
     }
 
-//    var response_items = [];
+    var response_items = [];
 
-//    $.each(data, function(key, val) {
-//            response_items.push('<tr id="'+key+'"><td>'+key+':</td><td>'+val+'</td></tr>');
-//    });
+    $.each(data, function(response, obj) {
+            response_items.push('<tr id="'+response[obj]['name']+'"><td>'+response[obj]['name']+':</td><td>'+response[obj]['name']+'</td></tr>');
+    });
 
     $('<table/>',{
 			'class': 'response_table',
