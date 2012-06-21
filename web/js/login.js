@@ -76,8 +76,8 @@ function popDBDialog(response) {
 
     var response_items = [];
 
-    $.each(data, function(response, obj) {
-            response_items.push('<tr id="'+response[obj]['name']+'"><td>'+response[obj]['name']+':</td><td>'+response[obj]['name']+'</td></tr>');
+    $.each(data, function(key, val) {
+            response_items.push('<tr id="'+key+'"><td>'+key+':</td><td>'+val+'</td></tr>');
     });
 
     $('<table/>',{
@@ -96,6 +96,7 @@ function generateSchoolList(response) {
     
     try {
         var school_data = $.parseJSON(response);
+        alert(school_data);
     } catch(err) {
         alert(err);
     }
@@ -107,7 +108,6 @@ function generateSchoolList(response) {
                 var phone = school.phone;
                 var address = school.address; 
                 
-                //TODO expanding li for each school with phone, address, etc
                 schools.push('<li><a href="'+name+'">'+name+'</a></li>');
             });
 
