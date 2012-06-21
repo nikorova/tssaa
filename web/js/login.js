@@ -96,7 +96,7 @@ function generateSchoolList(response) {
     
     try {
         var school_data = $.parseJSON(response);
-        alert(school_data);
+        alert(typeof school_data);
     } catch(err) {
         alert(err);
     }
