@@ -3,19 +3,20 @@
  * generators for TSSAA WebApp Fat Client *
  *****************************************/
 
-/** 
- * Login form handler
- */
+
 $(document).on("pageinit", function(e, obj) {
+    /** 
+     * Login form handler
+     */
     $("#login_page").on("submit", function(e, obj) {
 
         var formData = $("#login_form").serialize();
 
         $.ajax( "app_dev.php/login", {
             type: "POST",
-            cache: true,
             data: formData,
-            success: loginSuccess,
+            contentType: 'application/x-www-form-urlencoded',
+            success: loginSuccess
         });
         return false;
     }); 
@@ -68,6 +69,7 @@ function loginSuccess(response) {
 function popDBDialog(response) {
     try {
         var data = $.parseJSON(response);
+        alert(data);
     } catch(err) {
         alert(err);	
     }
