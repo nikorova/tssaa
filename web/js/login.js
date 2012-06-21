@@ -96,7 +96,6 @@ function generateSchoolList(response) {
     
     try {
         var school_data = $.parseJSON(response);
-        alert(typeof school_data);
     } catch(err) {
         alert(err);
     }
@@ -104,7 +103,7 @@ function generateSchoolList(response) {
     var schools = [];
 
     $.each(school_data, function(school) {
-                var name = school;
+                var name = school.name;
                 var phone = school.phone;
                 var address = school.address; 
                 
