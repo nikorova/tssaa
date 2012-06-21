@@ -102,10 +102,10 @@ function generateSchoolList(response) {
     
     var schools = [];
 
-    $.each(school_data, function(school) {
-                var name = school.name;
-                var phone = school.phone;
-                var address = school.address; 
+    $.each(school_data, function() {
+                var name = this.name;
+                var phone = this.phone;
+                var address = this.address; 
                 
                 schools.push('<li><a href="'+name+'">'+name+'</a></li>');
             });
