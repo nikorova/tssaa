@@ -56,7 +56,7 @@ $(document).on("pageinit", function(e, obj) {
  * TODO session management handled here?
  */
 function loginSuccess(response) {
-    alert(response);
+    alert("loginSuccess:\n" + response);
     $.mobile.changePage($("#options_page"), {
             transition: "slideup", 
             reverse: true, 
