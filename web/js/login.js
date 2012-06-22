@@ -93,8 +93,8 @@ function popDBDialog(response) {
  */
 function generateSchoolList(response) {
     alert("mobile.pageContainer is: " + 
-            for (name in $.mobile.pageContainer) {
-                this[name]}); 
+            (for (name in $.mobile.pageContainer) {
+                this[name]})); 
     try {
         var school_data = $.parseJSON(response);
     } catch(err) {
