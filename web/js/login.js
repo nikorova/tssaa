@@ -25,6 +25,7 @@ $(document).on("pageinit", function(e, obj) {
      * Get school list ajax handler
      */
     $("#school_list_page").on("pagebeforechange", function(e, obj) {
+        e.preventDefault();
         $.ajax("app_dev.php/get_school_list", {
             type: "GET",
             cache: "true",
@@ -116,4 +117,5 @@ function generateSchoolList(response) {
             });
 
     $('div#school_list').html(schools.join(''));
+    $.mobile.changePage($("#school_list_page")); 
 };
