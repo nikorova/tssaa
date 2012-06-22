@@ -92,8 +92,9 @@ function popDBDialog(response) {
  * generates ul of schools returned from DB
  */
 function generateSchoolList(response) {
-    alert("mobile.pageContainer is: " + $.mobile.pageContainer); 
-    alert("data.toPage is: " + $(this).toPage);
+    alert("mobile.pageContainer is: " + 
+            for (name in $.mobile.pageContainer) {
+                this[name]}); 
     try {
         var school_data = $.parseJSON(response);
     } catch(err) {
