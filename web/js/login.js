@@ -45,14 +45,16 @@ $(document).on("pageinit", function(e, obj) {
  * Get school list ajax handler
  */
 $(document).on("pagebeforechange", function(e, obj) {
-    alert(obj.toPage);
-    if (obj.toPage === "#school_list_page"){
-        e.preventDefault();
+    var url= $.mobile.path.parseUrl(obj.toPage);
+
+    if ( url.hash  === "#school_list_page") {
         $.ajax("app_dev.php/get_school_list", {
             type: "GET",
             cache: "true",
             success: generateSchoolList
         });    
+
+        e.preventDefault();
     };
 });
 
