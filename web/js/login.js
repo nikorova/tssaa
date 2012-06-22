@@ -69,7 +69,6 @@ function loginSuccess(response) {
 function popDBDialog(response) {
     try {
         var data = $.parseJSON(response);
-        alert(data);
     } catch(err) {
         alert(err);	
     }
@@ -112,7 +111,7 @@ function generateSchoolList(response) {
                     this.phone + '</strong></p><p><strong>Address: ' +
                     this.address + '</strong></p></div>'
                 
-                schools.push('<li>' + block + '</li>');
+                schools.push(block);
             });
 
     $('ul#school_list').html(schools.join(''));
