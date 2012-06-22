@@ -63,7 +63,6 @@ $(document).on("pagebeforechange", function(e, obj) {
  * TODO session management handled here?
  */
 function loginSuccess(response) {
-    alert("loginSuccess:\n" + response);
     $.mobile.changePage($("#options_page"), {
             transition: "slideup", 
             reverse: true, 
@@ -99,8 +98,6 @@ function popDBDialog(response) {
  * generates ul of schools returned from DB
  */
 function generateSchoolList(response, textStatus) {
-    alert(textStatus); 
-
     try {
         var school_data = $.parseJSON(response);
     } catch(err) {
