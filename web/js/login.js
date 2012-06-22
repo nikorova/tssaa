@@ -107,9 +107,9 @@ function generateSchoolList(response) {
                 var phone = this.phone;
                 var address = this.address; 
 
-                var block = '<div data-role="collapsible><h1>' +
+                var block = '<div data-role="collapsible"><h2>' +
                     this.name + '</h2><p><strong>Phone: ' +
-                    this.phone + '</strong></p><p>Address: ' +
+                    this.phone + '</strong></p><p><strong>Address: ' +
                     this.address + '</strong></p></div>'
                 
                 schools.push('<li>' + block + '</li>');
