@@ -115,5 +115,5 @@ function generateSchoolList(response) {
             });
 
     $('div#school_list').html(schools.join(''));
-    //$('div#school_list').listview("refresh");
+    $('div#school_list').listview("refresh");
 };
