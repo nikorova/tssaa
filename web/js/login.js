@@ -21,17 +21,6 @@ $(document).on("pageinit", function(e, obj) {
         return false;
     }); 
         
-    /**
-     * Get school list ajax handler
-     */
-    $("#school_list_page").on("pagebeforechange", function(e, obj) {
-        e.preventDefault();
-        $.ajax("app_dev.php/get_school_list", {
-            type: "GET",
-            cache: "true",
-            success: generateSchoolList
-        });    
-    });
 
     /**
      * Add school form ajax handler
@@ -50,6 +39,18 @@ $(document).on("pageinit", function(e, obj) {
     });
 
 
+});
+
+/**
+ * Get school list ajax handler
+ */
+$("#school_list_page").on("pagebeforechange", function(e, obj) {
+    e.preventDefault();
+    $.ajax("app_dev.php/get_school_list", {
+        type: "GET",
+        cache: "true",
+        success: generateSchoolList
+    });    
 });
 
 /**
