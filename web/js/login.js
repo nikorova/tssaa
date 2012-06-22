@@ -92,8 +92,8 @@ function popDBDialog(response) {
  * School List response handler
  * generates ul of schools returned from DB
  */
-function generateSchoolList(response) {
-    
+function generateSchoolList(response, textStatus) {
+    alert(textStatus); 
 
     try {
         var school_data = $.parseJSON(response);
