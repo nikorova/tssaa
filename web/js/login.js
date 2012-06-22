@@ -24,7 +24,7 @@ $(document).on("pageinit", function(e, obj) {
     /**
      * Get school list ajax handler
      */
-    $("#school_list_page_a").on("click", function(e, obj) {
+    $("#school_list_page").on("pagebeforechange", function(e, obj) {
         $.ajax("app_dev.php/get_school_list", {
             type: "GET",
             cache: "true",
