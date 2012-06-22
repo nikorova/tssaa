@@ -44,13 +44,16 @@ $(document).on("pageinit", function(e, obj) {
 /**
  * Get school list ajax handler
  */
-$("#school_list_page").on("pagebeforechange", function(e, obj) {
-    e.preventDefault();
-    $.ajax("app_dev.php/get_school_list", {
-        type: "GET",
-        cache: "true",
-        success: generateSchoolList
-    });    
+$(document).on("pagebeforechange", function(e, obj) {
+    alert(obj.toPage);
+    if (obj.toPage === "#school_list_page"){
+        e.preventDefault();
+        $.ajax("app_dev.php/get_school_list", {
+            type: "GET",
+            cache: "true",
+            success: generateSchoolList
+        });    
+    };
 });
 
 /**
