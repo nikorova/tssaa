@@ -6,9 +6,11 @@
 <script type="application/javascript" src="js/jquery.mobile-1.1.0.js"></script>
 <script type="application/javascript" src="js/login.js"></script>
 
+<!-- TODO this -->
 <style>
 .ui-dialog .ui-header .ui-btn-icon-notext {display:none;}
 </style>
+
 </head> 
 <body>
 <div data-role="page" id="login_page" data-theme="b">
@@ -108,9 +110,24 @@
 <div data-role="page" id="school_list_page" data-theme="b">
     <div data-role="header"><h1> TSSAA Schools Directory</h1></div>
     <div data-role="content">
-        <ul data-role="listview" data-inset="true" id="school_list">
-            <li>Test item</li>
-        </ul>
+        <div data-role="collapsible-set" id="school_list">
+            <div data-role="collapsible">
+                <h3> le title </h3>
+                <p> le content </p>
+            </div>
+            <div data-role="collapsible">
+                <h3> le title </h3>
+                <p> le content </p>
+            </div>
+            <div data-role="collapsible">
+                <h3> le title </h3>
+                <p> le content </p>
+            </div>
+            <div data-role="collapsible">
+                <h3> le title </h3>
+                <p> le content </p>
+            </div>
+        </div>
     </div>
     <div data-role="footer"></div>
 </div><!-- /SCHOOL_LIST_PAGE -->

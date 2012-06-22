@@ -21,16 +21,6 @@ $(document).on("pageinit", function(e, obj) {
         return false;
     }); 
         
-    /**
-     * Get school list ajax handler
-     */
-    $("#school_list_page_a").on("click", function(e, obj) {
-        $.ajax("app_dev.php/get_school_list", {
-            type: "GET",
-            cache: "true",
-            success: generateSchoolList
-        });    
-    });
 
     /**
      * Add school form ajax handler
@@ -52,6 +42,23 @@ $(document).on("pageinit", function(e, obj) {
 });
 
 /**
+ * Get school list ajax handler
+ */
+$(document).on("pagebeforechange", function(e, obj) {
+    var url= $.mobile.path.parseUrl(obj.toPage);
+
+    if ( url.hash  === "#school_list_page") {
+        $.ajax("app_dev.php/get_school_list", {
+            type: "GET",
+            cache: "true",
+            success: generateSchoolList
+        });    
+
+        e.preventDefault();
+    };
+});
+
+/**
  * Login form ajax callback
  * TODO session management handled here?
  */
@@ -69,7 +76,6 @@ function loginSuccess(response) {
 function popDBDialog(response) {
     try {
         var data = $.parseJSON(response);
-        alert(data);
     } catch(err) {
         alert(err);	
     }
@@ -92,8 +98,9 @@ function popDBDialog(response) {
  * School List response handler
  * generates ul of schools returned from DB
  */
-function generateSchoolList(response) {
-    
+function generateSchoolList(response, textStatus) {
+    alert(textStatus); 
+
     try {
         var school_data = $.parseJSON(response);
     } catch(err) {
@@ -106,10 +113,15 @@ function generateSchoolList(response) {
                 var name = this.name;
                 var phone = this.phone;
                 var address = this.address; 
+
+                var block = '<div data-role="collapsible"><h2>' +
+                    this.name + '</h2><p><strong>Phone: ' +
+                    this.phone + '</strong></p><p><strong>Address: ' +
+                    this.address + '</strong></p></div>'
                 
-                schools.push('<li><a href="'+name+'">'+name+'</a></li>');
+                schools.push(block);
             });
 
-    $('ul#school_list').html(schools.join(''));
-    $('ul#school_list').listview("refresh");
+    $('div#school_list').html(schools.join(''));
+    $.mobile.changePage($("#school_list_page")); 
 };
