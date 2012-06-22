@@ -106,8 +106,13 @@ function generateSchoolList(response) {
                 var name = this.name;
                 var phone = this.phone;
                 var address = this.address; 
+
+                var block = '<div data-role="collapsible><h1>' +
+                    this.name + '</h2><p><strong>Phone: ' +
+                    this.phone + '</strong></p><p>Address: ' +
+                    this.address + '</strong></p></div>'
                 
-                schools.push('<li><a href="'+name+'">'+name+'</a></li>');
+                schools.push('<li>' + block + '</li>');
             });
 
     $('ul#school_list').html(schools.join(''));
