@@ -1,0 +1,19 @@
+add_member:
+    resource: "@WebAppBundle/Controller/MemberController.php"
+    type: annotation  
+    prefix: /
+
+login:
+    resource: "@WebAppBundle/Controller/LoginController.php"
+    type: annotation  
+    prefix: /
+
+add_school:
+    resource: "@WebAppBundle/Controller/SchoolController.php"
+    type: annotation  
+    prefix: /
+
+get_school_list:
+    resource: "@WebAppBundle/Controller/SchoolController.php"
+    type: annotation
+    prefix: /

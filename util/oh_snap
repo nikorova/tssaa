@@ -1,0 +1,13 @@
+# le ad-hoc deployment script
+#APACHE_DROOT="/var/www"
+#PROJECT_DIR="/home/nikorova/dev"
+#PROJECT="tssaa"
+#DEVELOPER="nikorova"
+#
+#SRC="$PROJECT_DIR/$PROJECT"
+#
+TARGET=/var/www/tssaa.nikorova.korovasoft.com/tssaa
+
+cd $TARGET
+sudo git pull origin master
+

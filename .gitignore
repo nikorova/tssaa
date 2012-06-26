@@ -1,0 +1,17 @@
+*.sublime-project
+*.sublime-workspace
+
+vendor
+vendor/*
+
+*.orig
+*.swp
+curl.out
+out.curler
+
+app/logs
+app/logs/*
+app/cache
+app/cache/*
+
+test.sh
