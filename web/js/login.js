@@ -41,10 +41,10 @@ $(document).on("pageinit", function(e, obj) {
 
 });
 
-/**
- * Get school list ajax handler
- */
 $(document).on("pagebeforechange", function(e, obj) {
+    /**
+     * Get school list ajax handler
+     */
     var url= $.mobile.path.parseUrl(obj.toPage);
 
     if ( url.hash  === "#school_list_page") {
@@ -97,28 +97,46 @@ function popDBDialog(response) {
  * School List response handler
  * generates ul of schools returned from DB
  */
-function generateSchoolList(response, textStatus) {
+function generateSchoolList(response) {
+    var school_data;
     try {
-        var school_data = $.parseJSON(response);
+        school_data = $.parseJSON(response);
     } catch(err) {
         alert(err);
     }
     
-    var schools = [];
+    var schools_html = [];
 
     $.each(school_data, function() {
-                var name = this.name;
-                var phone = this.phone;
-                var address = this.address; 
-
+                var button = '<a ks_school_id=' + this.id + ' href="#edit_school' +
+                    '" class="edit_school">Edit This School</a>';
+                
                 var block = '<div data-role="collapsible"><h2>' +
                     this.name + '</h2><p><strong>Phone: ' +
                     this.phone + '</strong></p><p><strong>Address: ' +
-                    this.address + '</strong></p></div>'
-                
-                schools.push(block);
+                    this.address + '</strong></p>' + button + '</div>';
+                schools_html.push(block);
             });
 
-    $('div#school_list').html(schools.join(''));
+    $('div#school_list').html(schools_html.join(''));
+
+    $('div#school_list').on('click', 'a.edit_school', function (e) {
+                var index= $(this).attr("ks_school_id");
+
+                var school = school_data[parseInt(index, 10)]; 
+                editSchoolEntity(school);
+            });
+
     $.mobile.changePage($("#school_list_page")); 
 };
+
+function editSchoolEntity(school) {
+    console.dir(school);
+    console.log(school.name);
+    
+    $.mobile.changePage("#edit_school_dialog", {
+            transistion: "pop"
+            });
+
+    $("h2#school_object").html(school.name);
+}
