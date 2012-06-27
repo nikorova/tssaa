@@ -77,7 +77,7 @@ class SchoolController extends Controller {
 
         if (!$school) {
             throw $this->createNotFoundException('No school for' . 
-                $request->get('id');
+                $request->get('id'));
         }
 
         $school->setSchoolName($request->get('name'));
