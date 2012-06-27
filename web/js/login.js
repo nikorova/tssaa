@@ -124,6 +124,7 @@ function generateSchoolList(response) {
                 var index = $(this).attr("ks_school_id");
                 var school = school_data[index]; 
 
+                console.log(index);
                 console.dir(school);
 
                 editSchoolEntity(school);
