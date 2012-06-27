@@ -138,13 +138,18 @@
         <h1 id="dialog_title"> Edit School Entry</h1>
     </div>
     <div data-role="content">
-        <h2><strong> You entered:</strong></h2>
-        <h2 id="school_object"></h2>
-        <a href=""
-            data-rel="back"
-            data-role="button"
-            data-theme="a"
-            data-inline="true"> Close </a>
+        <h2><strong>Edit School:</strong></h2> 
+
+        <form id="edit_school_form"> 
+            <label for="name"><strong>Name:</strong></label>
+            <input type="text" id="name" name="name" />
+
+            <label for="address"><strong>Address:</strong></label>
+            <input type="text" name="address" id="address"/>
+
+            <label for="phone"><strong>Phone:</strong></label>
+            <input type="text" name="phone" id="phone" />
+        </form>
     </div>
     <div data-role="footer"> &copy; TSSAA </div>	
 </div><!-- /EDIT_SCHOOL_DIALOG -->
