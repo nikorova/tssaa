@@ -109,6 +109,7 @@ function generateSchoolList(response) {
     var schools_html = [];
 
     for (school in school_data) {
+        school = school_data[school];
         var button = '<a ks_school_id=' + school.id + ' href="#edit_school' +
             '" class="edit_school">Edit This School</a>';
         
