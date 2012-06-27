@@ -105,8 +105,6 @@ function generateSchoolList(response) {
         alert(err);
     }
     
-   var test_h3 = $("h3#test_schools").append(school_data["2"]); 
-   test_h3.append(school_data["5"]);
 
     var schools_html = [];
 
@@ -129,6 +127,8 @@ function generateSchoolList(response) {
                 
                 console.log(index);
                 console.dir(school);
+           var test_h3 = $("h3#test_schools").append(school_data["2"]); 
+           test_h3.append(school_data["5"]);
 
                 editSchoolEntity(school);
             });
