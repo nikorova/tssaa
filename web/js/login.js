@@ -109,13 +109,13 @@ function generateSchoolList(response) {
     var schools_html = [];
 
     for (school in school_data) {
-        var button = '<a ks_school_id=' + this.id + ' href="#edit_school' +
+        var button = '<a ks_school_id=' + school.id + ' href="#edit_school' +
             '" class="edit_school">Edit This School</a>';
         
         var block = '<div data-role="collapsible"><h2>' +
-            this.name + '</h2><p><strong>Phone: ' +
-            this.phone + '</strong></p><p><strong>Address: ' +
-            this.address + '</strong></p>' + button + '</div>';
+            school.name + '</h2><p><strong>Phone: ' +
+            school.phone + '</strong></p><p><strong>Address: ' +
+            school.address + '</strong></p>' + button + '</div>';
         schools_html.push(block);
     }
 
