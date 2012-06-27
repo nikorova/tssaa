@@ -79,10 +79,7 @@ class SchoolController extends Controller {
         $school->setAddress($request->get('address'));
         $school->setPhone($request->get('phone'));
 
-        if ($em->flush()) {
-            return new Response(json_encode('status' => 'success'));
-        } else {
-            return new Response(json_encode('status' => 'failed'));
-        }
+        $em->flush();
+        return new Response(json_encode('status' => 'success'));
     }
 }
