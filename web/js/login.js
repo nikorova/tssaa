@@ -133,10 +133,11 @@ function generateSchoolList(response) {
 function editSchoolEntity(school) {
     console.dir(school);
     console.log(school.name);
+    console.log("oh hai");
     
+    $("h2#school_object").html(school.name);
+
     $.mobile.changePage("#edit_school_dialog", {
             transistion: "pop"
             });
-
-    $("h2#school_object").html(school.name);
 }
