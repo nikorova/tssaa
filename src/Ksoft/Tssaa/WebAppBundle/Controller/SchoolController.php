@@ -75,6 +75,11 @@ class SchoolController extends Controller {
         $school = $em->getRepository('WebAppBundle:School')
             ->find($request->get('id'));
 
+        if (!$school) {
+            throw $this->createNotFoundException('No school for' . 
+                $request->get('id');
+        }
+
         $school->setSchoolName($request->get('name'));
         $school->setAddress($request->get('address'));
         $school->setPhone($request->get('phone'));
