@@ -73,7 +73,7 @@ class SchoolController extends Controller {
         try {
             $em = $this->getDoctrine()->getEntityManager();
         } catch (err) {
-            return new Response(json_encode('status' => 'failed', 'error' => err));
+            return new Response(json_encode('status' => 'failed', 'error' => err->getMessage()));
         };
 
         $school = $em->getRepository('WebAppBundle:School')
