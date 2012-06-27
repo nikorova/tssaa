@@ -137,8 +137,7 @@ function generateSchoolList(response) {
 };
 
 function editSchoolEntity(school) {
-    
-    $("h2#school_object").html(school.name);
+    console.dir(school);    
 
     $.mobile.changePage("#edit_school_dialog", {
             transistion: "pop"
