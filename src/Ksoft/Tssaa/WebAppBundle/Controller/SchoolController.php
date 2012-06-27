@@ -72,9 +72,9 @@ class SchoolController extends Controller {
         // id, name, address, phone
         try {
             $em = $this->getDoctrine()->getEntityManager();
-        } catch(err) {
+        } catch (err) {
             return new Response(json_encode('status' => 'failed', 'error' => err->getMessage()));
-        };
+        }
 
         $school = $em->getRepository('WebAppBundle:School')
             ->find($request->get('id'));
