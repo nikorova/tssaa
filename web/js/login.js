@@ -122,7 +122,7 @@ function generateSchoolList(response) {
 
     $('div#school_list').on('click', 'a.edit_school', function (e) {
                 var index= $(this).attr("ks_school_id");
-
+                console.log("index is " + index);
                 var school = school_data[parseInt(index, 10)]; 
                 editSchoolEntity(school);
             });
