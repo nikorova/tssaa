@@ -70,11 +70,7 @@ class SchoolController extends Controller {
         $request = Request::createFromGlobals();
         
         // id, name, address, phone
-        try {
-            $em = $this->getDoctrine()->getEntityManager();
-        } catch (err) {
-            return new Response(json_encode('status' => 'failed', 'error' => err->getMessage()));
-        };
+        $em = $this->getDoctrine()->getEntityManager();
 
         $school = $em->getRepository('WebAppBundle:School')
             ->find($request->get('id');
