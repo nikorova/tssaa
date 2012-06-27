@@ -48,13 +48,17 @@ class SchoolController extends Controller {
         $schools = array();
         
         foreach ($school_objects as $school){
+            $id = $school->getId();
             $name = $school->getName();
             $address = $school->getAddress();
             $phone = $school->getPhone();
 
-            $s = array("name" => $name, "phone" => $phone, "address" => $address);
+            $s = array("id" => $id, 
+                "name" => $name, 
+                "phone" => $phone, 
+                "address" => $address);
 
-            array_push($schools, $s); 
+            $schools[$id] = $s;
         }
         return new Response(json_encode($schools));
     }

@@ -105,10 +105,11 @@ function generateSchoolList(response) {
         alert(err);
     }
 
+    console.dir(school_data);
     var schools_html = [];
 
     $.each(school_data, function() {
-                var button = '<a ks_school_id=' + console.log(this.id) + ' href="#edit_school' +
+                var button = '<a ks_school_id=' + this.id + ' href="#edit_school' +
                     '" class="edit_school">Edit This School</a>';
                 
                 var block = '<div data-role="collapsible"><h2>' +
@@ -122,7 +123,7 @@ function generateSchoolList(response) {
 
     $('div#school_list').on('click', 'a.edit_school', function (e) {
                 var index = $(this).attr("ks_school_id");
-                var school = school_data[index]; 
+                var school = school_data[this.id]; 
 
                 console.log(index);
                 console.dir(school);
