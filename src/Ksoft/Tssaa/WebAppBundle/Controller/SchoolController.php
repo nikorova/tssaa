@@ -87,6 +87,6 @@ class SchoolController extends Controller {
             return new Response(json_encode('status' => 'success');
         } else {
             return new Response(json_encode('status' => 'failed');
-        };
+        }
     }
 }
