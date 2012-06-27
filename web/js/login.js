@@ -125,7 +125,7 @@ function generateSchoolList(response) {
     $('div#school_list').on('click', 'a.edit_school', function (e) {
                 var index = $(this).attr("ks_school_id");
                 var school = school_data[index]; 
-                $.each($("form#edit_school_form label"), function() {
+                $.each($("form#edit_school_form input"), function() {
                         var key = $(this).attr("name");
                         $(this).attr("value", school[key]);
                     });                
