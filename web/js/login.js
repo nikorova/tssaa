@@ -15,7 +15,6 @@ $(document).on("pageinit", function(e, obj) {
         $.ajax( "app_dev.php/login", {
             type: "POST",
             data: formData,
-            contentType: 'application/x-www-form-urlencoded',
             success: loginSuccess
         });
         return false;
@@ -136,9 +135,17 @@ function generateSchoolList(response) {
 };
 
 function editSchoolEntity(school) {
-    console.dir(school);    
+    $("#edit_school_form").on("submit", function (e) {
+            var form_data = $("#edit_school_form").serialize();
+
+            ajax("app_dev.php/update_school", {
+                    type: "POST", 
+                    data: form_data
+                });
+            });
 
     $.mobile.changePage("#edit_school_dialog", {
             transistion: "pop"
             });
 }
+

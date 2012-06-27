@@ -62,4 +62,31 @@ class SchoolController extends Controller {
         }
         return new Response(json_encode($schools));
     }
+
+    /**
+     * @Route("update_school"), requirements={"_method" = "POST"}
+     */
+    public function updateSchool() {
+        $request = Request::createFromGlobals();
+        
+        // id, name, address, phone
+        try {
+            $em = $this->getDoctrine()->getEntityManager();
+        } catch (err) {
+            return new Response(json_encode('status' => 'failed', 'error' => err));
+        };
+
+        $school = $em->getRepository('WebAppBundle:School')
+            ->find($request->get('id');
+
+        $school->setSchoolName($request->get('name'));
+        $school->setAddress($request->get('address'));
+        $school->setPhone($request->get('phone'));
+
+        if ($em->flush()) {
+            return new Response(json_encode('status' => 'success');
+        } else {
+            return new Response(json_encode('status' => 'failed');
+        };
+    }
 }
