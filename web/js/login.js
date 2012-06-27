@@ -139,7 +139,8 @@ function editSchoolEntity(school) {
             var form_data = $("#edit_school_form").serialize();
             form_data.id = school["id"];
             console.dir(school);
-            console.dir(form_data);
+            console.log("school.id is: " + school.id);
+            console.log(form_data);
 
             $.ajax("app_dev.php/update_school", {
                     type: "POST", 
