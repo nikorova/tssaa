@@ -105,8 +105,6 @@ function generateSchoolList(response) {
         alert(err);
     }
 
-    console.dir(school_data);
-    
     var schools_html = [];
 
     $.each(school_data, function() {
@@ -124,7 +122,7 @@ function generateSchoolList(response) {
 
     $('div#school_list').on('click', 'a.edit_school', function (e) {
                 var index = $(this).attr("ks_school_id");
-                var school = school_data[parseInt(index, 10)]; 
+                var school = school_data[index]; 
 
                 console.dir(school);
 
