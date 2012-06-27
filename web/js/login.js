@@ -136,21 +136,21 @@ function generateSchoolList(response) {
 
 function editSchoolEntity(school) {
     $("#edit_school_form").on("submit", function (e) {
-
-            var form_data = $("#edit_school_form").serialize();
-            form_data += "&id="+ school.id;
-            
-            $.ajax("app_dev.php/update_school", {
-                    type: "POST", 
-                    data: form_data,
-                    cache: "false",
-                    complete: $.mobile.changePage("#school_list_page")
-                });
+                var form_data = $("#edit_school_form").serialize();
+                form_data += "&id="+ school.id;
+                
+                $.ajax("app_dev.php/update_school", {
+                            type: "POST", 
+                            data: form_data,
+                            cache: "false",
+                            complete: $.mobile.changePage("#school_list_page")
+                        });
+                return false;
             });
 
     $.mobile.changePage("#edit_school_dialog", {
             transistion: "pop"
             });
-    return false;
+
 }
 
