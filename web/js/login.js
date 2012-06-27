@@ -143,7 +143,8 @@ function editSchoolEntity(school) {
 
             $.ajax("app_dev.php/update_school", {
                     type: "POST", 
-                    data: form_data
+                    data: form_data,
+                    complete: $.mobile.changePage("#school_list_page")
                 });
             });
 
