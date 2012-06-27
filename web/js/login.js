@@ -3,60 +3,6 @@
  * generators for TSSAA WebApp Fat Client *
  *****************************************/
 
-
-$(document).on("pageinit", function(e, obj) {
-    /** 
-     * Login form handler
-     */
-    $("#login_page").on("submit", function(e, obj) {
-
-        var formData = $("#login_form").serialize();
-
-        $.ajax( "app_dev.php/login", {
-            type: "POST",
-            data: formData,
-            success: loginSuccess
-        });
-        return false;
-    }); 
-        
-
-    /**
-     * Add school form ajax handler
-     */
-    $('#add_school_submit').on('click', function(e, obj) {
-
-        var  formData = $('#add_school_form').serialize();
-
-        $.ajax("app_dev.php/add_school", {
-            type: "POST",
-            cache: false,
-            data: formData,
-            success: popDBDialog
-        });
-        return false;
-    });
-
-
-});
-
-$(document).on("pagebeforechange", function(e, obj) {
-    /**
-     * Get school list ajax handler
-     */
-    var url= $.mobile.path.parseUrl(obj.toPage);
-
-    if ( url.hash  === "#school_list_page") {
-        $.ajax("app_dev.php/get_school_list", {
-            type: "GET",
-            cache: "true",
-            success: generateSchoolList
-        });    
-
-        e.preventDefault();
-    };
-});
-
 /**
  * Login form ajax callback
  * TODO session management handled here?
@@ -153,4 +99,57 @@ function editSchoolEntity(school) {
             });
 
 }
+
+$(document).on("pageinit", function(e, obj) {
+    /** 
+     * Login form handler
+     */
+    $("#login_page").on("submit", function(e, obj) {
+
+        var formData = $("#login_form").serialize();
+
+        $.ajax( "app_dev.php/login", {
+            type: "POST",
+            data: formData,
+            success: loginSuccess
+        });
+        return false;
+    }); 
+        
+
+    /**
+     * Add school form ajax handler
+     */
+    $('#add_school_submit').on('click', function(e, obj) {
+
+        var  formData = $('#add_school_form').serialize();
+
+        $.ajax("app_dev.php/add_school", {
+            type: "POST",
+            cache: false,
+            data: formData,
+            success: popDBDialog
+        });
+        return false;
+    });
+
+
+});
+
+$(document).on("pagebeforechange", function(e, obj) {
+    /**
+     * Get school list ajax handler
+     */
+    var url= $.mobile.path.parseUrl(obj.toPage);
+
+    if ( url.hash  === "#school_list_page") {
+        $.ajax("app_dev.php/get_school_list", {
+            type: "GET",
+            cache: "true",
+            success: generateSchoolList
+        });    
+
+        e.preventDefault();
+    };
+});
 
