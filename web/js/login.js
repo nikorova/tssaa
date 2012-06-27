@@ -104,6 +104,7 @@ function generateSchoolList(response) {
     } catch(err) {
         alert(err);
     }
+    console.dir(school_data);
 
     var schools_html = [];
 
