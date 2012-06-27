@@ -136,11 +136,10 @@ function generateSchoolList(response) {
 
 function editSchoolEntity(school) {
     $("#edit_school_form").on("submit", function (e) {
+
             var form_data = $("#edit_school_form").serialize();
             form_data += "&id="+ school.id;
-            console.log("school.id is: " + school.id);
-            console.log(form_data);
-
+            
             $.ajax("app_dev.php/update_school", {
                     type: "POST", 
                     data: form_data,
