@@ -15,7 +15,6 @@ $(document).on("pageinit", function(e, obj) {
         $.ajax( "app_dev.php/login", {
             type: "POST",
             data: formData,
-            contentType: 'application/x-www-form-urlencoded',
             success: loginSuccess
         });
         return false;
@@ -41,10 +40,10 @@ $(document).on("pageinit", function(e, obj) {
 
 });
 
-/**
- * Get school list ajax handler
- */
 $(document).on("pagebeforechange", function(e, obj) {
+    /**
+     * Get school list ajax handler
+     */
     var url= $.mobile.path.parseUrl(obj.toPage);
 
     if ( url.hash  === "#school_list_page") {
@@ -97,28 +96,61 @@ function popDBDialog(response) {
  * School List response handler
  * generates ul of schools returned from DB
  */
-function generateSchoolList(response, textStatus) {
+function generateSchoolList(response) {
+    var school_data;
     try {
-        var school_data = $.parseJSON(response);
+        school_data = $.parseJSON(response);
     } catch(err) {
         alert(err);
     }
     
-    var schools = [];
 
-    $.each(school_data, function() {
-                var name = this.name;
-                var phone = this.phone;
-                var address = this.address; 
+    var schools_html = [];
 
-                var block = '<div data-role="collapsible"><h2>' +
-                    this.name + '</h2><p><strong>Phone: ' +
-                    this.phone + '</strong></p><p><strong>Address: ' +
-                    this.address + '</strong></p></div>'
-                
-                schools.push(block);
+    for (school in school_data) {
+        school = school_data[school];
+        var button = '<a ks_school_id=' + school.id + ' href="#edit_school' +
+            '" class="edit_school">Edit This School</a>';
+        
+        var block = '<div data-role="collapsible"><h2>' +
+            school.name + '</h2><p><strong>Phone: ' +
+            school.phone + '</strong></p><p><strong>Address: ' +
+            school.address + '</strong></p>' + button + '</div>';
+        schools_html.push(block);
+    }
+
+    $('div#school_list').html(schools_html.join(''));
+
+    $('div#school_list').on('click', 'a.edit_school', function (e) {
+                var index = $(this).attr("ks_school_id");
+                var school = school_data[index]; 
+                $.each($("form#edit_school_form input"), function() {
+                        var key = $(this).attr("name");
+                        $(this).attr("value", school[key]);
+                    });                
+                editSchoolEntity(school);
             });
 
-    $('div#school_list').html(schools.join(''));
     $.mobile.changePage($("#school_list_page")); 
 };
+
+function editSchoolEntity(school) {
+    $("#edit_school_form").on("submit", function (e) {
+                var form_data = $("#edit_school_form").serialize();
+                form_data += "&id="+ school.id;
+                
+                $.ajax("app_dev.php/update_school", {
+                            type: "POST", 
+                            data: form_data,
+                            cache: "false",
+                            complete: $.mobile.changePage("#school_list_page")
+                        });
+                return false;
+            });
+
+    $.mobile.changePage("#edit_school_dialog", {
+            transistion: "pop"
+            });
+
+}
+

@@ -48,14 +48,43 @@ class SchoolController extends Controller {
         $schools = array();
         
         foreach ($school_objects as $school){
+            $id = $school->getId();
             $name = $school->getName();
             $address = $school->getAddress();
             $phone = $school->getPhone();
 
-            $s = array("name" => $name, "phone" => $phone, "address" => $address);
+            $s = array("id" => $id, 
+                "name" => $name, 
+                "phone" => $phone, 
+                "address" => $address);
 
-            array_push($schools, $s); 
+            $schools[$id] = $s;
         }
         return new Response(json_encode($schools));
+    }
+
+    /**
+     * @Route("update_school"), requirements={"_method" = "POST"}
+     */
+    public function updateSchool() {
+        $request = Request::createFromGlobals();
+        
+        // id, name, address, phone
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $school = $em->getRepository('WebAppBundle:School')
+            ->find($request->get('id'));
+
+        if (!$school) {
+            throw $this->createNotFoundException('No school for' . 
+                $request->get('id'));
+        }
+
+        $school->setSchoolName($request->get('name'));
+        $school->setAddress($request->get('address'));
+        $school->setPhone($request->get('phone'));
+
+        $em->flush();
+        return new Response(json_encode(array('status' => 'success')));
     }
 }

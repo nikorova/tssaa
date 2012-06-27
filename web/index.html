@@ -47,7 +47,7 @@
             data-inset="true" data-autodividers="true"> 
             <li><a href="#add_user_page" >Add New User</a></li>
             <li><a href="#add_school_page" >Add New School</a></li>
-            <li><a href="#school_list_page" id="school_list_page_a">View Schools</a></li>
+            <li><a href="#school_list_page" id="school_list_page_a">View/Edit Schools</a></li>
         </ul>
         <a href="#login_page"
             id="logout_button"
@@ -111,22 +111,6 @@
     <div data-role="header"><h1> TSSAA Schools Directory</h1></div>
     <div data-role="content">
         <div data-role="collapsible-set" id="school_list">
-            <div data-role="collapsible">
-                <h3> le title </h3>
-                <p> le content </p>
-            </div>
-            <div data-role="collapsible">
-                <h3> le title </h3>
-                <p> le content </p>
-            </div>
-            <div data-role="collapsible">
-                <h3> le title </h3>
-                <p> le content </p>
-            </div>
-            <div data-role="collapsible">
-                <h3> le title </h3>
-                <p> le content </p>
-            </div>
         </div>
     </div>
     <div data-role="footer"></div>
@@ -147,7 +131,35 @@
             data-inline="true"> Close </a>
     </div>
     <div data-role="footer"> &copy; TSSAA </div>	
-</div><!-- /DB_CONFIRM_DIALOG-->
+</div><!-- /DB_CONFIRM_DIALOG -->
+
+<div data-role="dialog" id="edit_school_dialog" data-theme="b">
+    <div data-role="header" data-backbtn="false">
+        <h1 id="dialog_title"> Edit School Entry</h1>
+    </div>
+    <div data-role="content">
+        <h2><strong>Edit School:</strong></h2> 
+        <h3 id="test_schools"></h3>
+        <form id="edit_school_form"> 
+            <label for="name"><strong>Name:</strong></label>
+            <input type="text" id="name" name="name" />
+
+            <label for="address"><strong>Address:</strong></label>
+            <input type="text" name="address" id="address"/>
+
+            <label for="phone"><strong>Phone:</strong></label>
+            <input type="text" name="phone" id="phone" />
+
+            <button data-role="button" 
+                data-inline="true"
+                type="submit">Submit</button>
+            <button data-role="button"
+                data-inline="true"
+                dat-rel="back">Cancel</button>
+        </form>
+    </div>
+    <div data-role="footer"> &copy; TSSAA </div>	
+</div><!-- /EDIT_SCHOOL_DIALOG -->
 
 </body>
 </html>
