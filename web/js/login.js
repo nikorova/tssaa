@@ -151,5 +151,6 @@ function editSchoolEntity(school) {
     $.mobile.changePage("#edit_school_dialog", {
             transistion: "pop"
             });
+    return false;
 }
 
