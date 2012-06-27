@@ -80,6 +80,6 @@ class SchoolController extends Controller {
         $school->setPhone($request->get('phone'));
 
         $em->flush();
-        return new Response(json_encode('status' => 'success'));
+        return new Response(json_encode(array('status' => 'success')));
     }
 }
