@@ -108,7 +108,7 @@ function generateSchoolList(response) {
     var schools_html = [];
 
     $.each(school_data, function() {
-                var button = '<a ks_school_id=' + this.id + ' href="#edit_school' +
+                var button = '<a ks_school_id=' + console.log(this.id) + ' href="#edit_school' +
                     '" class="edit_school">Edit This School</a>';
                 
                 var block = '<div data-role="collapsible"><h2>' +
