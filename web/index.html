@@ -41,11 +41,12 @@
 
 
 <div data-role="page" id="options_page" data-theme="b">
-    <div data-role="header" data-backbtn="false"><h1> Options Menu </h2></div>
+    <div data-role="header" data-backbtn="false"><h1> Manage School Menu </h2></div>
     <div data-role="content">
         <ul data-role="listview" 
             data-inset="true" data-autodividers="true"> 
-            <li><a href="#add_user_page" >Add New User</a></li>
+            <li><a href="#add_user_page" >Add New Personnel</a></li>
+            <li><a href="#edit_personnel_page" >Edit Personnel</a></li>
             <li><a href="#add_school_page" >Add New School</a></li>
             <li><a href="#school_list_page" id="school_list_page_a">View/Edit Schools</a></li>
         </ul>
@@ -106,6 +107,23 @@
     </div>
     <div data-role="footer"> &copy; TSSAA </div>	
 </div><!-- /ADD_USER_PAGE -->
+
+<div data-role="page" id="add_user_page" data-theme="b">
+    <div data-role="header"><h1>Edit Personnel</h1></div>
+    <div data-role="content">
+        <form id="edit_personnel_form">
+           <label for="name">Name</label>
+           <input type="text" id="name" name="name"/> 
+
+           <label for="position">Position</label>
+           <input type="text" id="position" name="position"/> 
+
+           <label for="email">Name</label>
+           <input type="email" id="email" name="email"/> 
+        </form>
+    </div>
+    <div data-role="footer"> &copy; TSSAA </div>
+</div>
 
 <div data-role="page" id="school_list_page" data-theme="b">
     <div data-role="header"><h1> TSSAA Schools Directory</h1></div>
