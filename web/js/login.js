@@ -15,6 +15,10 @@ $(document).on("pageinit", function(e, obj) {
         $.ajax( "app_dev.php/login", {
             type: "POST",
             data: formData,
+<<<<<<< HEAD
+=======
+            contentType: 'application/x-www-form-urlencoded',
+>>>>>>> aea78ad27c3b3fc403efb15bac61f77874b795c2
             success: loginSuccess
         });
         return false;
@@ -40,10 +44,17 @@ $(document).on("pageinit", function(e, obj) {
 
 });
 
+<<<<<<< HEAD
 $(document).on("pagebeforechange", function(e, obj) {
     /**
      * Get school list ajax handler
      */
+=======
+/**
+ * Get school list ajax handler
+ */
+$(document).on("pagebeforechange", function(e, obj) {
+>>>>>>> aea78ad27c3b3fc403efb15bac61f77874b795c2
     var url= $.mobile.path.parseUrl(obj.toPage);
 
     if ( url.hash  === "#school_list_page") {
@@ -96,14 +107,21 @@ function popDBDialog(response) {
  * School List response handler
  * generates ul of schools returned from DB
  */
+<<<<<<< HEAD
 function generateSchoolList(response) {
     var school_data;
     try {
         school_data = $.parseJSON(response);
+=======
+function generateSchoolList(response, textStatus) {
+    try {
+        var school_data = $.parseJSON(response);
+>>>>>>> aea78ad27c3b3fc403efb15bac61f77874b795c2
     } catch(err) {
         alert(err);
     }
     
+<<<<<<< HEAD
 
     var schools_html = [];
 
@@ -154,3 +172,23 @@ function editSchoolEntity(school) {
 
 }
 
+=======
+    var schools = [];
+
+    $.each(school_data, function() {
+                var name = this.name;
+                var phone = this.phone;
+                var address = this.address; 
+
+                var block = '<div data-role="collapsible"><h2>' +
+                    this.name + '</h2><p><strong>Phone: ' +
+                    this.phone + '</strong></p><p><strong>Address: ' +
+                    this.address + '</strong></p></div>'
+                
+                schools.push(block);
+            });
+
+    $('div#school_list').html(schools.join(''));
+    $.mobile.changePage($("#school_list_page")); 
+};
+>>>>>>> aea78ad27c3b3fc403efb15bac61f77874b795c2
