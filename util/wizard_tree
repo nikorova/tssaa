@@ -1,0 +1,12 @@
+
+Login (Admin): 
+    Manage School:
+        Manage Personnel:
+            Edit Personnel
+            Add New Personnel
+       :: Edit School Info
+
+
+Login: (Super Admin): 
+    List Schools:
+        Edit School Info ::
