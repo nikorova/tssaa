@@ -3,74 +3,8 @@
  * generators for TSSAA WebApp Fat Client *
  *****************************************/
 
-<<<<<<< HEAD
-
-$(document).on("pageinit", function(e, obj) {
-    /** 
-     * Login form handler
-     */
-    $("#login_page").on("submit", function(e, obj) {
-
-        var formData = $("#login_form").serialize();
-
-        $.ajax( "app_dev.php/login", {
-            type: "POST",
-            data: formData,
-<<<<<<< HEAD
-=======
-            contentType: 'application/x-www-form-urlencoded',
->>>>>>> aea78ad27c3b3fc403efb15bac61f77874b795c2
-            success: loginSuccess
-        });
-        return false;
-    }); 
-        
-
-    /**
-     * Add school form ajax handler
-     */
-    $('#add_school_submit').on('click', function(e, obj) {
-
-        var  formData = $('#add_school_form').serialize();
-
-        $.ajax("app_dev.php/add_school", {
-            type: "POST",
-            cache: false,
-            data: formData,
-            success: popDBDialog
-        });
-        return false;
-    });
 
 
-});
-
-<<<<<<< HEAD
-$(document).on("pagebeforechange", function(e, obj) {
-    /**
-     * Get school list ajax handler
-     */
-=======
-/**
- * Get school list ajax handler
- */
-$(document).on("pagebeforechange", function(e, obj) {
->>>>>>> aea78ad27c3b3fc403efb15bac61f77874b795c2
-    var url= $.mobile.path.parseUrl(obj.toPage);
-
-    if ( url.hash  === "#school_list_page") {
-        $.ajax("app_dev.php/get_school_list", {
-            type: "GET",
-            cache: "true",
-            success: generateSchoolList
-        });    
-
-        e.preventDefault();
-    };
-});
-
-=======
->>>>>>> release/v0.1.0
 /**
  * Login form ajax callback
  * TODO session management handled here?
@@ -110,21 +44,14 @@ function popDBDialog(response) {
  * School List response handler
  * generates ul of schools returned from DB
  */
-<<<<<<< HEAD
 function generateSchoolList(response) {
     var school_data;
     try {
         school_data = $.parseJSON(response);
-=======
-function generateSchoolList(response, textStatus) {
-    try {
-        var school_data = $.parseJSON(response);
->>>>>>> aea78ad27c3b3fc403efb15bac61f77874b795c2
     } catch(err) {
         alert(err);
     }
     
-<<<<<<< HEAD
 
     var schools_html = [];
 
@@ -175,28 +102,6 @@ function editSchoolEntity(school) {
 
 }
 
-<<<<<<< HEAD
-=======
-    var schools = [];
-
-    $.each(school_data, function() {
-                var name = this.name;
-                var phone = this.phone;
-                var address = this.address; 
-
-                var block = '<div data-role="collapsible"><h2>' +
-                    this.name + '</h2><p><strong>Phone: ' +
-                    this.phone + '</strong></p><p><strong>Address: ' +
-                    this.address + '</strong></p></div>'
-                
-                schools.push(block);
-            });
-
-    $('div#school_list').html(schools.join(''));
-    $.mobile.changePage($("#school_list_page")); 
-};
->>>>>>> aea78ad27c3b3fc403efb15bac61f77874b795c2
-=======
 $(document).on("pageinit", function(e, obj) {
     /** 
      * Login form handler
@@ -250,4 +155,3 @@ $(document).on("pagebeforechange", function(e, obj) {
     };
 });
 
->>>>>>> release/v0.1.0
