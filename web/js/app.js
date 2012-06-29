@@ -90,7 +90,6 @@ function editSchoolEntity(school) {
                 $.ajax("app_dev.php/update_school", {
                             type: "POST", 
                             data: form_data,
-                            cache: "false",
                             complete: $.mobile.changePage("#school_list_page")
                         });
                 return false;
@@ -128,7 +127,6 @@ $(document).on("pageinit", function(e, obj) {
 
         $.ajax("app_dev.php/add_school", {
             type: "POST",
-            cache: false,
             data: formData,
             success: popDBDialog
         });
@@ -147,7 +145,6 @@ $(document).on("pagebeforechange", function(e, obj) {
     if ( url.hash  === "#school_list_page") {
         $.ajax("app_dev.php/get_school_list", {
             type: "GET",
-            cache: "true",
             success: generateSchoolList
         });    
 
