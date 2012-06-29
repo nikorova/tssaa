@@ -53,7 +53,6 @@ class SchoolController extends Controller {
             $address = $school->getAddress();
             $phone = $school->getPhone();
 
-<<<<<<< HEAD
             $s = array("id" => $id, 
                 "name" => $name, 
                 "phone" => $phone, 
@@ -88,12 +87,4 @@ class SchoolController extends Controller {
         $em->flush();
         return new Response(json_encode(array('status' => 'success')));
     }
-=======
-            $s = array("name" => $name, "phone" => $phone, "address" => $address);
-
-            array_push($schools, $s); 
-        }
-        return new Response(json_encode($schools));
-    }
->>>>>>> aea78ad27c3b3fc403efb15bac61f77874b795c2
 }
