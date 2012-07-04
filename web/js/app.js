@@ -15,7 +15,7 @@ function service_call(uri, args) {
 	};
 
 	$.ajax(uri, { 
-		type: args.hasOwnProperty(request_params) ? "POST" : "GET",
+		type: args.hasOwnProperty("request_params") ? "POST" : "GET",
 		data: request,
 		success: args.on_success,
 		error: args.on_fail
