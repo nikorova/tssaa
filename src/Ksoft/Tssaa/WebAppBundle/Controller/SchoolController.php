@@ -18,7 +18,10 @@ class SchoolController extends Controller {
     public function addSchoolAction() {
         $logger = $this->get('logger');
         
-        $req = Request::createFromGlobals()->request;
+        $req = $this->getRequest();
+		$school_json = json_decode($req->getContent(), true);
+
+		return new Response($school_json);
         
         $school = new school();
         $school->setSchoolName($req->get('name'));
