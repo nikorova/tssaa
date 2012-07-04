@@ -10,16 +10,21 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+require_once('FirePHPCore/FirePHP.class.php');
+
+ob_start();
+
 class SchoolController extends Controller {
     
     /**
      * @Route("add_school"), requirements={"_method" = "POST"}
      */
     public function addSchoolAction() {
-        $logger = $this->get('logger');
-        
-        $req = $this->getRequest();
-		$school_json = json_decode($req->getContent(), true);
+       	$firephp = FirePHP::getInstance(true);
+
+        $firephp->log($req = $this->getRequest(), 'request');
+
+		$firephp->log($school_json = json_decode($req->getContent(), true), 'json');
 
 		return new Response($school_json);
         
