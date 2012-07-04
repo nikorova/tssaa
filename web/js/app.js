@@ -3,7 +3,24 @@
  * generators for TSSAA WebApp Fat Client *
  *****************************************/
 
+/**
+ * AJAX convenience wrapper
+ */
+function service_call(uri, args) {
+	// TODO get session id and access_id
+	request = { 
+		payload: args.request_params,
+		session: "TEST ID",
+		access_id: "TEST ADMIN"
+	};
 
+	$.ajax(uri, { 
+		type: args.hasOwnProperty(request_params) ? "POST" : "GET,
+		data: request,
+		success: args.on_success,
+		error: args.on_fail
+	});
+}
 
 /**
  * Login form ajax callback
@@ -46,13 +63,13 @@ function popDBDialog(response) {
  */
 function generateSchoolList(response) {
     var school_data;
+
     try {
         school_data = $.parseJSON(response);
     } catch(err) {
         alert(err);
     }
     
-
     var schools_html = [];
 
     for (school in school_data) {
@@ -84,16 +101,17 @@ function generateSchoolList(response) {
 
 function editSchoolEntity(school) {
     $("#edit_school_form").on("submit", function (e) {
-                var form_data = $("#edit_school_form").serialize();
-                form_data += "&id="+ school.id;
-                
-                $.ajax("app_dev.php/update_school", {
-                            type: "POST", 
-                            data: form_data,
-                            complete: $.mobile.changePage("#school_list_page")
-                        });
-                return false;
-            });
+		var form_data = $("#edit_school_form").serializeArray();
+		
+		form_data.append({name: "id", value: school.id});
+		
+		service_call("app_dev.php/update_school", {
+			request_params: form_data, 
+			success: function () {$.mobile.changePage("#school_list_page")}
+		}); 
+
+		return false;
+	});
 
     $.mobile.changePage("#edit_school_dialog", {
             transistion: "pop"
@@ -107,13 +125,13 @@ $(document).on("pageinit", function(e, obj) {
      */
     $("#login_page").on("submit", function(e, obj) {
 
-        var formData = $("#login_form").serialize();
+        var formData = $("#login_form").serializeArray();
 
-        $.ajax( "app_dev.php/login", {
-            type: "POST",
-            data: formData,
-            success: loginSuccess
-        });
+		service_call("app_dev.php/login", {
+			request_params: formData,
+			on_success: loginSuccess
+		});
+
         return false;
     }); 
         
@@ -123,13 +141,13 @@ $(document).on("pageinit", function(e, obj) {
      */
     $('#add_school_submit').on('click', function(e, obj) {
 
-        var  formData = $('#add_school_form').serialize();
-
-        $.ajax("app_dev.php/add_school", {
-            type: "POST",
-            data: formData,
-            success: popDBDialog
-        });
+        var  formData = $('#add_school_form').serializeArray();
+	
+		service_call("app_dev.php/add_school", {
+			request_params: formData,
+			on_success: popDBDialog
+		});
+        
         return false;
     });
 
@@ -143,10 +161,9 @@ $(document).on("pagebeforechange", function(e, obj) {
     var url= $.mobile.path.parseUrl(obj.toPage);
 
     if ( url.hash  === "#school_list_page") {
-        $.ajax("app_dev.php/get_school_list", {
-            type: "GET",
-            success: generateSchoolList
-        });    
+		service_call("app_dev.php/get_school_list", {
+			on_success: generateSchoolList
+		});
 
         e.preventDefault();
     };

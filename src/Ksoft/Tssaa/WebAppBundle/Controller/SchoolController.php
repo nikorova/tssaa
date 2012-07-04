@@ -48,11 +48,22 @@ class SchoolController extends Controller {
         $schools = array();
         
         foreach ($school_objects as $school){
+<<<<<<< HEAD
             $id = $school->getId();
+=======
+<<<<<<< HEAD
+            $id = $school->getId();
+=======
+>>>>>>> origin/master
+>>>>>>> b054bd34c0c9fb6d055e959dd584e05d048219ef
             $name = $school->getName();
             $address = $school->getAddress();
             $phone = $school->getPhone();
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b054bd34c0c9fb6d055e959dd584e05d048219ef
             $s = array("id" => $id, 
                 "name" => $name, 
                 "phone" => $phone, 
@@ -87,4 +98,15 @@ class SchoolController extends Controller {
         $em->flush();
         return new Response(json_encode(array('status' => 'success')));
     }
+<<<<<<< HEAD
+=======
+=======
+            $s = array("name" => $name, "phone" => $phone, "address" => $address);
+
+            array_push($schools, $s); 
+        }
+        return new Response(json_encode($schools));
+    }
+>>>>>>> origin/master
+>>>>>>> b054bd34c0c9fb6d055e959dd584e05d048219ef
 }
