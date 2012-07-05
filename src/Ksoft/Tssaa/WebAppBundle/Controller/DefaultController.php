@@ -22,6 +22,6 @@ class DefaultController extends Controller
 			return new Response($err);
 		}
 		
-        return new Response($req->getContent());
+        return new Response($content);
     }
 }
