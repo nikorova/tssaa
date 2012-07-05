@@ -17,7 +17,7 @@ class DefaultController extends Controller
 		
 		$content = array();
 		try {
-			$content = json_decode($req->getContent());	
+			$content = json_decode($req->getContent(), true);	
 		} catch (Exception $err) {
 			return new Response($err);
 		}
