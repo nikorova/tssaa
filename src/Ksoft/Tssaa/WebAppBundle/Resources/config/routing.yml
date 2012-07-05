@@ -3,6 +3,11 @@ add_member:
     type: annotation  
     prefix: /
 
+rest_test:
+    resource: "@WebAppBundle/Controller/DefaultController.php"
+    type: annotation  
+    prefix: /
+
 login:
     resource: "@WebAppBundle/Controller/LoginController.php"
     type: annotation  
