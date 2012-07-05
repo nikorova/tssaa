@@ -17,6 +17,6 @@ class DefaultController extends Controller
 
 		$content = json_decode($req->getContent());	
 
-        return new Response($content);
+        return new Response("yo mai name is: ".$content["name"]." and my job is: ".$content["occupation"]);
     }
 }
