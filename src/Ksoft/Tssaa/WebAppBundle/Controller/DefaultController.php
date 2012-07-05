@@ -14,7 +14,8 @@ class DefaultController extends Controller
 	 */
     public function restTestAction(){
 		$req = $this->getRequest();
-
+		
+		$content = array();
 		try {
 			$content = json_decode($req->getContent());	
 		} catch (Exception $err) {
