@@ -22,6 +22,6 @@ class DefaultController extends Controller
 			return new Response($err);
 		}
 		
-        return new Response(var_dump($content));
+        return new Response("hello my name is ".$content["name"]." and my title is ".$content["occupation"]);
     }
 }
