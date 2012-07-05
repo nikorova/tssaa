@@ -23,7 +23,7 @@ DATA="{name:'boob',occupation:'doctor'}"
 # Target URI
 if [ 0 -eq $# ]
 then
-    TARGET="http://tssaa.nikorova.korovasoft.com/tssaa/web/app_dev.php/add_school"
+    TARGET="http://tssaa.nikorova.korovasoft.com/app_dev.php/rest_test"
 else
     DOMAIN=$1
     URI=$2
@@ -31,7 +31,7 @@ else
 fi
 
 # File for curl output
-OUTPUT="out.curlur"
+OUTPUT="out.curlur.html"
 
 # testing uri construction
 echo "curling $TARGET"

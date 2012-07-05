@@ -17,8 +17,8 @@ class DefaultController extends Controller
 
 		try {
 			$content = json_decode($req->getContent());	
-		} catch (err) {
-			return new Response(err);
+		} catch (Exception $err) {
+			return new Response($err);
 		}
 
         return new Response("yo mai name is: ".$content["name"]." and my title is: ".$content["occupation"]);
