@@ -15,7 +15,8 @@ class DefaultController extends Controller
     public function restTestAction(){
 		$req = $this->getRequest();
 
-		$content = $req->getContent();	
+		$content = json_decode($req->getContent());	
+
         return new Response($content);
     }
 }
