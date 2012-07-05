@@ -21,7 +21,7 @@ class DefaultController extends Controller
 		} catch (Exception $err) {
 			return new Response($err);
 		}
-
-        return new Response("yo mai name is: ".$content["name"]." and my title is: ".$content["occupation"]);
+		
+        return new Response(var_dump(content));
     }
 }
