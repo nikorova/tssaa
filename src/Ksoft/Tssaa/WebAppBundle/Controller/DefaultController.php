@@ -10,10 +10,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
    	/**
-	 * @Route("index")
+	 * @Route("rest_test")
 	 */
-    public function indexAction($name)
-    {
+    public function restTestAction(){
 		$req = $this->getRequest();
 
 		$content = $req->getContent();	
