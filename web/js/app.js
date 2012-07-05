@@ -24,6 +24,7 @@ $.fn.serializeObject = function () {
  * @param args object comprised of args for ajax call 
  */
 function service_call(uri, args) {
+	uri = "app_dev.php/rest_test";
 	$.ajax(uri, { 
 		type: args.hasOwnProperty("request_params") ? "POST" : "GET",
 		// JSON.stringify will return undefined if args.request_params is undef 
