@@ -14,8 +14,8 @@ C_TYPE="application/x-www-form-urlencoded"
 ACC_TYPE="application/json"
 
 # HTTP Verb
-#VERB="POST"
-VERB="GET"
+VERB="POST"
+#VERB="GET"
 
 # Request Data
 DATA="name=Example+High&address=123+Over+There+Some+St&phone=123685"

@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
    	/**
-	 * @Route("index/", requirements={"_method" = "POST"}, defaults={"_format" = "json"}) 
+	 * @Route("index"), requirements={"_method" = "POST"}, defaults={"_format" = "json"}
 	 */
     public function indexAction($name)
     {

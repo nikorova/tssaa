@@ -2,24 +2,68 @@
  * Form Handlers and page                 *
  * generators for TSSAA WebApp Fat Client *
  *****************************************/
+$.fn.serializeObject = function () {
+	var o = {};
+	var a = this.serializeArray();
 
+	$.each(a, function() {
+		if (o[this.name] !== undefined) {
+			if (!o[this.name].push) {
+				o[this.name] = [o[this.name]];
+			}
+			o[this.name].push(this.value || '');
+		} else {
+			o[this.name] = this.value || '';
+		}
+	});
+	return o;
+};
 /**
  * AJAX convenience wrapper
+ * @param uri target uri for request
+ * @param args object comprised of args for ajax call 
  */
 function service_call(uri, args) {
-	// TODO get session id and access_id
-	request = { 
-		payload: args.request_params,
-		session: "TEST ID",
-		access_id: "TEST ADMIN"
-	};
-
 	$.ajax(uri, { 
 		type: args.hasOwnProperty("request_params") ? "POST" : "GET",
-		data: request,
-		success: args.on_success,
-		error: args.on_fail
+		// JSON.stringify will return undefined if args.request_params is undef 
+		data: JSON.stringify(args.request_params),
+		success: on_success,
+		error: on_failure,
+		complete: on_complete,
 	});
+	
+	function on_success (response, textStatus, jqXHR) {
+		console.log("on_success: " + textStatus);
+		data = JSON.parse(response);
+		if (data.status === "success") {
+			// TODO check if payload prop
+			args.on_success(data.payload);	
+		} else {
+			// TODO exception definitions
+			args.on_failure(textStatus, data.exception);
+		}
+	}
+
+	function on_failure (jqXHR, textStatus, errorThrown) {
+		console.log("on_failure: " + textStatus);
+		if (args.on_failure) {		
+			args.on_failure(textStatus, errorThrown);
+		} else {
+			// Do nothing
+		}
+	}
+
+	function on_complete (jqXHR, textStatus) {
+		console.log("on_complete: " + textStatus);
+		if (args.on_complete) {
+			args.on_complete(jqXHR, textStatus);
+		} else {
+			// Do nothing
+		}
+	}
+
+	return false;
 }
 
 /**
@@ -101,13 +145,14 @@ function generateSchoolList(response) {
 
 function editSchoolEntity(school) {
     $("#edit_school_form").on("submit", function (e) {
-		var form_data = $("#edit_school_form").serializeArray();
-		
-		form_data.append({name: "id", value: school.id});
+		var form_data = $("#edit_school_form").serializeObject();		
+		if( !form_data.id){
+			form_data.id = school.id;
+		}
 		
 		service_call("app_dev.php/update_school", {
 			request_params: form_data, 
-			success: function () {$.mobile.changePage("#school_list_page")}
+			on_success: function () {$.mobile.changePage("#school_list_page")}
 		}); 
 
 		return false;
