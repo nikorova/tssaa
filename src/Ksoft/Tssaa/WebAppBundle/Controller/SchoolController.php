@@ -97,7 +97,7 @@ class SchoolController extends Controller {
         $em = $this->getDoctrine()->getEntityManager();
 
         $school = $em->getRepository('WebAppBundle:School')
-            ->find($cotent["id"]);
+            ->find($content["id"]);
 
         if (!$school) {
 			$update_school_response["status"] = "failure";
