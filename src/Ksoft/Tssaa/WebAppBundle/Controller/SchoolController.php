@@ -80,7 +80,7 @@ class SchoolController extends Controller {
         $req = $this->getRequest();        
 		$content = array();
 		
-		$update_shool_response = array(
+		$update_school_response = array(
 			"status" => NULL,
 			"exception" => NULL,
 			"payload" => NULL,
