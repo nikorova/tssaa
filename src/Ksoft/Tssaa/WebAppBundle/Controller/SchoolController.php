@@ -67,7 +67,13 @@ class SchoolController extends Controller {
 
             $schools[$id] = $s;
         }
-        return new Response(json_encode($schools));
+
+		$get_schools_response = array(
+			"status" => "success",
+			"exception" => NULL,
+			"payload" => $schools,
+		);
+        return new Response(json_encode($get_schools_response));
     }
 
     /**
