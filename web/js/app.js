@@ -93,7 +93,7 @@ function popDBDialog(response) {
  * School List response handler
  * generates ul of schools returned from DB
  */
-function generateSchoolList(var school_data) {
+function generateSchoolList(school_data) {
     var schools_html = [];
 
     for (school in school_data) {
