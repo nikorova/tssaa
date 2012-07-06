@@ -34,7 +34,7 @@ function service_call(uri, args) {
 	});
 	
 	function on_success (response, textStatus, jqXHR) {
-		console.log("on_success: " + textStatus);
+		console.log("log: on_success: " + textStatus);
 
 		data = JSON.parse(response);
 
@@ -48,7 +48,7 @@ function service_call(uri, args) {
 	}
 
 	function on_failure (jqXHR, textStatus, errorThrown) {
-		console.log("on_failure: " + textStatus);
+		console.log("log: on_failure: " + textStatus);
 
 		if (args.on_failure) {		
 			args.on_failure(textStatus, errorThrown);
@@ -58,7 +58,7 @@ function service_call(uri, args) {
 	}
 
 	function on_complete (jqXHR, textStatus) {
-		console.log("on_complete: " + textStatus);
+		console.log("log: on_complete: " + textStatus);
 
 		if (args.on_complete) {
 			args.on_complete(jqXHR, textStatus);

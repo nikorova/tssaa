@@ -16,24 +16,34 @@ class MemberController extends Controller {
 		public function addUserAction() {
 	    		$logger = $this->get('logger');
 		
-				$req = Request::createFromGlobals()->request;
+				$req = $this->getRequest();
+				$content = array();
+				try {
+					$content = json_decode($reg->getContent(), true);
+				} catch (Exception $err) {
+					$err_response = array(
+						"status" => "failure",
+						"exception" => $err,
+						"payload" => NULL,
+					);
+					return new Response(json_encode($err_response));
+				}
 
 				$member = new member();
-				$member->setLogin($req->get('login'));
-				$member->setEmail($req->get('email'));
-			    $member->setPass($req->get('pass'));	
+				$member->setLogin($content["login"]);
+				$member->setEmail($content["email"]);
+			    $member->setPass($content["pass"]);	
 				$member->setCreated(new \DateTime());
 				
 				$em = $this->getDoctrine()->getEntityManager();	
 				$em->persist($member);
 				$em->flush();
             
-                $member_data = array(
-                    "login" => $member->getLogin(),
-                    "email" => $member->getEmail(),
-                    "pass" => $member->getPass(),
-                );
-
-				return new Response(json_encode($member_data));
+				$member_response = array(
+					"status" => "success", 
+					"payload" => $content["login"],
+					"exception" => NULL,
+				);
+				return new Response(json_encode($member_response));
 		}
 }
