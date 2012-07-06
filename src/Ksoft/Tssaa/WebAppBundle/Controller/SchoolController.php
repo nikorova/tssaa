@@ -101,7 +101,7 @@ class SchoolController extends Controller {
 			$update_school_response["exception"] = $this->
 				createNotFoundException('No school for' . 
                 $content["id"]);
-			return new Response(json_encode($update_school_response);
+			return new Response(json_encode($update_school_response));
         }
 
         $school->setSchoolName($content["name"]);
