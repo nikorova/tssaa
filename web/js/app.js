@@ -150,7 +150,7 @@ $(document).on("pageinit", function(e, obj) {
      */
     $("#login_page").on("submit", function(e, obj) {
 
-        var formData = $("#login_form").serializeArray();
+        var formData = $("#login_form").serializeObject();
 
 		service_call("app_dev.php/login", {
 			request_params: formData,
