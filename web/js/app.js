@@ -74,7 +74,8 @@ function service_call(uri, args) {
  * Login form ajax callback
  * TODO session management handled here?
  */
-function loginSuccess(response) {
+function loginSuccess(login_payload) {
+	$("h2#options_welcome_banner strong").text(login_payload);
     $.mobile.changePage($("#options_page"), {
             transition: "slideup", 
             reverse: true, 
