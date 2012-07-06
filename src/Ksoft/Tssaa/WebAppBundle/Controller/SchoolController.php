@@ -74,24 +74,44 @@ class SchoolController extends Controller {
      * @Route("update_school"), requirements={"_method" = "POST"}
      */
     public function updateSchool() {
-        $request = Request::createFromGlobals();
-        
-        // id, name, address, phone
+        $req = $this->getRequest();        
+		$content = array();
+		
+		$update_shool_response = array(
+			"status" => NULL,
+			"exception" => NULL,
+			"payload" => NULL,
+		);
+
+		try {
+			$content = json_decode($req->getContent());
+		} catch (Exception $err) {
+			$update_school_response["status"] = "failure";
+			$update_school_response["exception"] = $err;
+			return new Response(json_encode($update_school_response));
+		}
+
         $em = $this->getDoctrine()->getEntityManager();
 
         $school = $em->getRepository('WebAppBundle:School')
-            ->find($request->get('id'));
+            ->find($cotent["id"]);
 
         if (!$school) {
-            throw $this->createNotFoundException('No school for' . 
-                $request->get('id'));
+			$update_school_response["status"] = "failure";
+			$update_school_response["exception"] = $this->
+				createNotFoundException('No school for' . 
+                $content["id"]);
+			return new Response(json_encode($update_school_response);
         }
 
-        $school->setSchoolName($request->get('name'));
-        $school->setAddress($request->get('address'));
-        $school->setPhone($request->get('phone'));
+        $school->setSchoolName($content["name"]);
+        $school->setAddress($content["address"]);
+        $school->setPhone($content["phone"]);
 
-        $em->flush();
-        return new Response(json_encode(array('status' => 'success')));
+		if ($em->flush()) {
+			$update_school_response["status"] = "success";
+		}
+
+        return new Response(json_encode($update_school_response));
     }
 }
