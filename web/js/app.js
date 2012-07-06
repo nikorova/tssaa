@@ -84,7 +84,7 @@ function loginSuccess(response) {
 /**
  * DB Dialog ajax success callback
  */
-function popDBDialog(var response) {
+function popDBDialog(response) {
 	$("#response").text("Success! New school added!");
     $.mobile.changePage("#db_confirm_dialog");
 }
