@@ -111,10 +111,9 @@ class SchoolController extends Controller {
         $school->setAddress($content["address"]);
         $school->setPhone($content["phone"]);
 
-		if ($em->flush()) {
-			$update_school_response["status"] = "success";
-		}
+		$em->flush();
 
+		$update_school_response["status"] = "success";
         return new Response(json_encode($update_school_response));
     }
 }
