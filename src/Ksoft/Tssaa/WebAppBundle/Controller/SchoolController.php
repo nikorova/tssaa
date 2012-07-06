@@ -87,7 +87,7 @@ class SchoolController extends Controller {
 		);
 
 		try {
-			$content = json_decode($req->getContent());
+			$content = json_decode($req->getContent(), true);
 		} catch (Exception $err) {
 			$update_school_response["status"] = "failure";
 			$update_school_response["exception"] = $err;
