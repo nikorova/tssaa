@@ -43,7 +43,7 @@ class LoginController extends Controller {
 		
 		if ($result = $repo->findOneBy(array('login' => $login, 'pass' => $pass))){
 			$status = "success";
-			$payload = $result;
+			$payload = $login;
 		} else { 
 			$status = "failure";
 			$exception = $result;

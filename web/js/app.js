@@ -66,7 +66,6 @@ function service_call(uri, args) {
 			// Do nothing
 		}
 	}
-
 	return false;
 }
 
@@ -175,8 +174,6 @@ $(document).on("pageinit", function(e, obj) {
         
         return false;
     });
-
-
 });
 
 /**
