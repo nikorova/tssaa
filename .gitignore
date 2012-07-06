@@ -6,20 +6,12 @@ vendor/*
 
 *.orig
 *.swp
-curl.out
-out.curler
+out.curler.html
 
 app/logs
 app/logs/*
 app/cache
 app/cache/*
-<<<<<<< HEAD
 app/bootstrap.php.cache
-=======
-<<<<<<< HEAD
-app/bootstrap.php.cache
-=======
->>>>>>> origin/master
->>>>>>> b054bd34c0c9fb6d055e959dd584e05d048219ef
 
 test.sh

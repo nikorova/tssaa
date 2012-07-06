@@ -20,18 +20,20 @@ class SchoolController extends Controller {
      * @Route("add_school"), requirements={"_method" = "POST"}
      */
     public function addSchoolAction() {
-       	$firephp = FirePHP::getInstance(true);
+		$req = $this->getRequest();
 
-        $firephp->log($req = $this->getRequest(), 'request');
+		$content = array();
 
-		$firephp->log($school_json = json_decode($req->getContent(), true), 'json');
+		try {
+			$content = json_decode($req->getContent(), true);
+		} catch (Exception $err) {
+			return new Respose($err);
+		}
 
-		return new Response($school_json);
-        
         $school = new school();
-        $school->setSchoolName($req->get('name'));
-        $school->setAddress($req->get('address'));
-        $school->setPhone($req->get('phone'));
+        $school->setSchoolName($content["name"]);
+        $school->setAddress($content["address"]);
+        $school->setPhone($content["phone"]);
         $school->setCreated(new \DateTime());
 
         $em = $this->getDoctrine()->getEntityManager();
@@ -39,9 +41,9 @@ class SchoolController extends Controller {
         $em->flush();
 
         $school_data = array(
-            "name" => $school->getName(),
-            "address" => $school->getAddress(),
-            "phone" => $school->getPhone(),
+			"status" => "success", 
+		   	"exception" => NULL, 
+			"payload" => NULL	
         );
 
         return new Response(json_encode($school_data));

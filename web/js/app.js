@@ -24,7 +24,6 @@ $.fn.serializeObject = function () {
  * @param args object comprised of args for ajax call 
  */
 function service_call(uri, args) {
-	uri = "app_dev.php/rest_test";
 	$.ajax(uri, { 
 		type: args.hasOwnProperty("request_params") ? "POST" : "GET",
 		// JSON.stringify will return undefined if args.request_params is undef 
@@ -36,7 +35,9 @@ function service_call(uri, args) {
 	
 	function on_success (response, textStatus, jqXHR) {
 		console.log("on_success: " + textStatus);
+
 		data = JSON.parse(response);
+
 		if (data.status === "success") {
 			// TODO check if payload prop
 			args.on_success(data.payload);	
@@ -48,6 +49,7 @@ function service_call(uri, args) {
 
 	function on_failure (jqXHR, textStatus, errorThrown) {
 		console.log("on_failure: " + textStatus);
+
 		if (args.on_failure) {		
 			args.on_failure(textStatus, errorThrown);
 		} else {
@@ -57,6 +59,7 @@ function service_call(uri, args) {
 
 	function on_complete (jqXHR, textStatus) {
 		console.log("on_complete: " + textStatus);
+
 		if (args.on_complete) {
 			args.on_complete(jqXHR, textStatus);
 		} else {
@@ -81,24 +84,8 @@ function loginSuccess(response) {
 /**
  * DB Dialog ajax success callback
  */
-function popDBDialog(response) {
-    try {
-        var data = $.parseJSON(response);
-    } catch(err) {
-        alert(err);	
-    }
-
-    var response_items = [];
-
-    $.each(data, function(key, val) {
-            response_items.push('<tr id="'+key+'"><td>'+key+':</td><td>'+val+'</td></tr>');
-    });
-
-    $('<table/>',{
-			'class': 'response_table',
-			html: response_items.join('')
-		}).replaceAll("#response");
-    
+function popDBDialog(var response) {
+	$("#response").text("Success! New school added!");
     $.mobile.changePage("#db_confirm_dialog");
 }
 
@@ -106,15 +93,7 @@ function popDBDialog(response) {
  * School List response handler
  * generates ul of schools returned from DB
  */
-function generateSchoolList(response) {
-    var school_data;
-
-    try {
-        school_data = $.parseJSON(response);
-    } catch(err) {
-        alert(err);
-    }
-    
+function generateSchoolList(var school_data) {
     var schools_html = [];
 
     for (school in school_data) {
@@ -186,8 +165,7 @@ $(document).on("pageinit", function(e, obj) {
      * Add school form ajax handler
      */
     $('#add_school_submit').on('click', function(e, obj) {
-
-        var  formData = $('#add_school_form').serializeArray();
+        var  formData = $('#add_school_form').serializeObject();
 	
 		service_call("app_dev.php/add_school", {
 			request_params: formData,
