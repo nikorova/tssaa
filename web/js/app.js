@@ -179,10 +179,10 @@ $(document).on("pageinit", function(e, obj) {
 
 });
 
+/**
+ * Get school list ajax handler
+ */
 $(document).on("pagebeforechange", function(e, obj) {
-    /**
-     * Get school list ajax handler
-     */
     var url= $.mobile.path.parseUrl(obj.toPage);
 
     if ( url.hash  === "#school_list_page") {
