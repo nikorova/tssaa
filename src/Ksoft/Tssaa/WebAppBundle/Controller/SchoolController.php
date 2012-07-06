@@ -10,10 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-require_once('FirePHPCore/FirePHP.class.php');
-
-ob_start();
-
 class SchoolController extends Controller {
     
     /**
