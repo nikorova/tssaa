@@ -19,7 +19,6 @@ class TssaaRequestListener {
 		$p_bag = $req->request;
 		$p_bag->set("parameter_bag_test_key", "parameter_bag_test_value");
 		$p_bag->set("client_data", $decoded);	
-		}
 	}
-}	
+}
 ?>
