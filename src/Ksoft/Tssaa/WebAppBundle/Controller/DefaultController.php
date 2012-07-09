@@ -13,14 +13,9 @@ class DefaultController extends Controller
 	 * @Route("rest_test")
 	 */
     public function restTestAction(){
-		$req = $this->getRequest();
+		$req_bag = $this->getRequest()->request();
 		
-		$content = array();
-		try {
-			$content = json_decode($req->getContent(), true);	
-		} catch (Exception $err) {
-			return new Response($err);
-		}
+		$content = $req_bag->get("client_data");
 		
         return new Response(var_dump($content));
     }
