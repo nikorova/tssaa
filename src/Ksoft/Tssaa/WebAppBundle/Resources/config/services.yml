@@ -3,3 +3,7 @@ services:
         class: Ksoft\Tssaa\WebAppBundle\Listener\TssaaRequestListener
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+    ksoft.tssaa.webappbundle.listener.view:
+        class: Ksoft\Tssaa\WebAppBundle\Listener\TssaaResponseListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.view, method: onKernelResponse }
