@@ -17,6 +17,6 @@ class DefaultController extends Controller
 
 		$content = $req_bag->get("client_data");
 		
-        return new Response(var_dump($content));
+        return new $content;
     }
 }
