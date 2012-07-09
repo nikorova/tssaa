@@ -2,7 +2,7 @@
 namespace Ksoft\Tssaa\WebAppBundle\Listener;
 
 use Symfony\Component\HttpKernel\Event\GetResponseforControllerResultEvent;
-use Symfony\Component\HttpKernel\Response;
+use Symfony\Component\HttpFoundation\Response;
 
 class TssaaResponseListener {
 	public function onKernelResponse (GetResponseForControllerResultEvent $event) {
