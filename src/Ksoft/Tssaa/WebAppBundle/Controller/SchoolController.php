@@ -23,7 +23,12 @@ class SchoolController extends Controller {
 		try {
 			$content = json_decode($req->getContent(), true);
 		} catch (Exception $err) {
-			return new Respose($err);
+			$err_response = array(
+				"status" => "failure",
+				"exception" => $err,
+				"payload" => NULL,
+			);
+			return new Respose(json_encode($err_response));
 		}
 
         $school = new school();
