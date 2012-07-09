@@ -18,7 +18,7 @@ VERB="POST"
 #VERB="GET"
 
 # Request Data
-DATA='{name":"boob","occupation":"doctor"}'
+DATA='{"name":"boob","occupation":"doctor"}'
 
 # Target URI
 if [ 0 -eq $# ]
