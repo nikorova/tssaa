@@ -15,8 +15,8 @@ class DefaultController extends Controller
     public function restTestAction(){
 		$req_bag = $this->getRequest()->request;
 
-		$content = $req_bag->get("parameter_bag_test_key");
+		$content = $req_bag->get("client_data");
 		
-        return new Response($content);
+        return new Response(var_dump($content));
     }
 }
