@@ -13,7 +13,7 @@ class DefaultController extends Controller
 	 * @Route("rest_test")
 	 */
     public function restTestAction(){
-		$req_bag = $this->getRequest()->request();
+		$req_bag = $this->getRequest()->request;
 		
 		$content = $req_bag->get("client_data");
 		
