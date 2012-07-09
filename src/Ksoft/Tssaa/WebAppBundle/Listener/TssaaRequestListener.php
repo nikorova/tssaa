@@ -9,7 +9,7 @@ class TssaaRequestListener {
 	public function onKernelRequest(GetResponseEvent $event) {
 		// get client json string from incoming Request
 		$req = $event->getRequest();
-		$req_data = $request->getContent();
+		$req_data = $req->getContent();
 
 		// Letting this exception bubble up
 		$decoded = json_decode($req_data, true);
