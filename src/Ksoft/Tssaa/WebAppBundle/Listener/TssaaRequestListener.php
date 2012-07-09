@@ -17,6 +17,7 @@ class TssaaRequestListener {
 		// stick decoded and arrayified client data in Request's
 		// parameter bag
 		$p_bag = $req->request;
+		$p_bag->set("parameter_bag_test_key", "parameter_bag_test_value");
 		$p_bag->set("client_data", $decoded);	
 		}
 	}
