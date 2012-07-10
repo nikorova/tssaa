@@ -6,7 +6,7 @@ vendor/*
 
 *.orig
 *.swp
-out.curler.html
+out.curlur.html
 
 app/logs
 app/logs/*

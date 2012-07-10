@@ -1,0 +1,119 @@
+USE TSSAA;
+create table personnel(
+	coachid int(11) NOT NULL auto_increment primary key,
+	schoolid int(11),
+	firstname char(30),
+	lastname char(30),
+	mi char(5),
+	coachtype smallint(6),
+	firstyear smallint(6),
+	dateentered timestamp(14) NOT NULL,
+	modifieddate timestamp(14) NOT NULL,
+	nfctraining datetime,
+	aseptraining date,
+	yeartooktraining date,
+	yearsregistered char(50),
+	email char(50),
+	workphone int(11),
+	extension int(6),
+	cellphone int(11),
+	posistion ENUM('principal', 'AD', 'AsstPrincipal', 'Coach') NOT NULL,
+	schooltype ENUM('TSSAA', 'TMSAA') NOT NULL,
+	registeredforalerts ENUM('no', 'yes') NOT NULL,
+	recordnumberofalertdatabase int(16),
+	userdeleted tinyint(3) unsigned zerofill,
+	internal_comment char(255),
+	KEY 'schoolid'('schoolid')
+) 
+create table coaches (
+	coachid int(11) NOT NULL auto_increment primary key,
+	schoolid int(11),
+	coachsport smallint(6),
+	sport smallint(6),
+	dateentered timestamp(14) NOT NULL,
+	schoolyear int(4) NOT NULL;
+	modifieddate timestamp(14) NOT NULL,
+	userdeleted tinyint(3) unsigned zerofill 
+) 
+
+create table tbltssaa (
+	Schoolid int(10) unsigned NOT NULL primary key default '0',
+	SchoolName varchar(50),
+	id2 ENUM('TSSAA', 'TMSAA'),
+	StreetAddress varchar(50),
+	POBox varchar(15),
+	Shipping ENUM('pobox', 'address'),
+	City varchar(40),
+	State char(2),
+	`Zip` varchar(10),					
+    `PhoneNumber` varchar(50),					
+    `FaxNum` varchar(50),					
+    `PrincipalsNum` varchar(50),					
+    `AthleticDept` varchar(50),					
+    `AthleticExt` varchar(50),					
+    `PRINCIPALEXT` varchar(50),					
+    `Mascot` varchar(50),					
+    `Colors` varchar(50),					
+    `County` varchar(20),					
+    `AthleticDistrict` int(11),					
+    `GrandDivision` varchar(30),					
+    `Private` tinyint(2),					
+    `ShortName` varchar(35),					
+    `Abbr` varchar(10),
+	SchoolSystem varchar(50),
+	SchoolSystemDirector varchar(50),
+	StateSchoolRefID int(32),
+	Latitiude int(16),
+	Longitude int(16),
+	ActiveSchool ENUM('not_active', 'active', 'new'),
+	Enrollment int(16),
+	AdjustedEnrollment int(16),
+	SchoolYear int(4),
+	EnrollmentComment char(255),
+	PRIMARY KEY ('SchoolID'),
+	KEY 'id2' ('id2'),
+	KEY 'SchoolID' ('ShortName'),
+	KEY 'SchoolNameidx' ('SchoolName')
+) 
+
+create table classification (
+	`schoolid` int(11),					
+	`class` char(10),					
+	`d2class` char(15),					
+	`district` smallint(6),					
+	`A2ADistrict` int(6),					
+	`TrackSectionAAA` smallint(6),					
+	`TrackA2A` char(6),					
+	`A2ARegion` smallint(6),					
+	`WrDualA2A` smallint(6),					
+	`wrestling` smallint(6),					
+	`WrestlingAAAregion` smallint(6),					
+	`wrestlingdistrict` smallint(6),					
+	`wrestlingAAAdistrict` smallint(6),					
+	`bowlingdistrict` smallint(6),					
+	`bowlingregion` smallint(6),					
+	`d2fb` char(6),					
+	`fbclass` char(6),					
+	`a1a2computerdistrict` smallint(6),					
+	`a1a2display` char(6),					
+	`FB` char(2),					
+	msclass varchar(50),					
+	schoolyear int(4),					
+	msarea varchar(50),				
+	`recordid` int(11) NOT NULL default '0',					
+	PRIMARY KEY (`recordid`)					
+) 
+
+create table `schoolsport (					
+	`schoolid` int(11),					
+	sportid	ENUM('football', 'basketball','etc'), 
+	# need more sports				
+	active ENUM('not_active', 'active') default '0',					
+	schoolyear int(4) deafult NULL,				
+	coop ENUM('no', 'yes') default '0',					
+	# wat ? 
+	# schoolid of school coop with					
+	# datecreated					
+	# # # #
+	PRIMARY KEY (`recordid`)					
+) 
