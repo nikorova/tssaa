@@ -51,9 +51,9 @@ class Coach {
      *
      * @param Ksoft\Tssaa\WebAppBundle\Entity\Sport $sports
      */
-    public function addSport(\Ksoft\Tssaa\WebAppBundle\Entity\Sport $sports)
+    public function addSport(\Ksoft\Tssaa\WebAppBundle\Entity\Sport $sport)
     {
-        $this->sports[] = $sports;
+        $this->sports[] = $sport;
     }
 
     /**
