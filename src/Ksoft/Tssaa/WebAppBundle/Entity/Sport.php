@@ -28,7 +28,7 @@ class Sport {
 	 */
 	public $coaches;
 
-	public __contstruct() {
+	public __construct() {
 		$this->coaches = new ArrayCollection();
 	}
 
