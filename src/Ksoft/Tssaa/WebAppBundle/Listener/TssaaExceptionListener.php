@@ -15,7 +15,7 @@ class TssaaExceptionListener {
 				"message" 		=> $exception->getMessage(),
 				"code" 			=> $exception->getCode(),
 				"stack_trace" 	=> $exception->getTraceAsString(),
-				"type" 			=> $exception->get_class($exception),
+				"type" 			=> get_class($exception),
 			),
 		   	"payload" => NULL,	
 		);	
