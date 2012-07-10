@@ -24,7 +24,7 @@ class Sport {
 	protected $name;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="Coach" mappedBy="sports")
+	 * @ORM\ManyToMany(targetEntity="Coach", mappedBy="sports")
 	 */
 	public $coaches;
 
