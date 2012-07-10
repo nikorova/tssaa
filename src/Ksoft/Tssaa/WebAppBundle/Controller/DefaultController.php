@@ -18,9 +18,10 @@ class DefaultController extends Controller
 
 		$content = $req_bag->get("client_data");
 
+		// if command prop is present and == barf, then barf
 		if ($i = $content["command"]) {
 			if ($i == "barf") {
-			throw new Exception("AH MAI GAWD", $code = 9001);	
+				throw new \Exception("AH MAI GAWD", $code = 9001);	
 			}
 		}
 		
