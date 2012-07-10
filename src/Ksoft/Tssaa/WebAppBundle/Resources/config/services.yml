@@ -7,3 +7,7 @@ services:
         class: Ksoft\Tssaa\WebAppBundle\Listener\TssaaResponseListener
         tags:
             - { name: kernel.event_listener, event: kernel.view, method: onKernelResponse }
+    ksoft.tssaa.webappbundle.listener.exception:
+        class: Ksoft\Tssaa\WebAppBundle\Listener\TssaaExceptionListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
