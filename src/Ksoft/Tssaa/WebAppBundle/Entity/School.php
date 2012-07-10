@@ -3,6 +3,7 @@
 namespace Ksoft\Tssaa\WebAppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -36,6 +37,15 @@ class School {
      * @ORM\Column(type="datetime")
      */
     protected $created;
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="Personnel", inversedBy="school")
+	 */
+	protected $personnel;
+
+	public function __construct() {
+		$this->personnel = new ArrayCollection();
+	}
 
     /**
      * Get id

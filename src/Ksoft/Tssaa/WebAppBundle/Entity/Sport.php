@@ -3,7 +3,12 @@
 namespace Ksoft\Tssaa\WebAppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="sport")
+ */
 class Sport {
 	
 	/**
@@ -17,6 +22,15 @@ class Sport {
 	 * @ORM\Column(type="string", length=32)
 	 */
 	protected $name;
+
+	/**
+	 * @ORM\ManyToMany(targetEntity="Coach" mappedBy="sports")
+	 */
+	public $coaches;
+
+	public __contstruct() {
+		$this->coaches = new ArrayCollection();
+	}
 
 	public function getId() {
 		return $this->id;
