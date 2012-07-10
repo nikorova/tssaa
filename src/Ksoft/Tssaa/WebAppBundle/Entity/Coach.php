@@ -36,23 +36,73 @@ class Coach {
 		$this->sports = new ArrayCollection();
 	}
 
-	public function getId() {
-		return $this->id;
-	}
+    /**
+     * Get personnel
+     *
+     * @return Ksoft\Tssaa\WebAppBundle\Entity\Personnel 
+     */
+    public function getPersonnel()
+    {
+        return $this->personnel;
+    }
 
-	public function getPeronnel() {
-		return $this->personnel;
-	}
+    /**
+     * Add sports
+     *
+     * @param Ksoft\Tssaa\WebAppBundle\Entity\Sport $sports
+     */
+    public function addSport(\Ksoft\Tssaa\WebAppBundle\Entity\Sport $sports)
+    {
+        $this->sports[] = $sports;
+    }
 
-	public function setPersonnel($personnel) {
-		$this->personnel = $personnel;
-	}
+    /**
+     * Get sports
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getSports()
+    {
+        return $this->sports;
+    }
 
-	public function getTimeCoached() {
-		return $this->time_coached;
-	}
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-	public function setTimeCoached($time_coached) {
-		$this->time_coached = $time_coached;
-	}
+    /**
+     * Set time_coached
+     *
+     * @param datetime $timeCoached
+     */
+    public function setTimeCoached($timeCoached)
+    {
+        $this->time_coached = $timeCoached;
+    }
+
+    /**
+     * Get time_coached
+     *
+     * @return datetime 
+     */
+    public function getTimeCoached()
+    {
+        return $this->time_coached;
+    }
+
+    /**
+     * Set personnel
+     *
+     * @param Ksoft\Tssaa\WebAppBundle\Entity\Personnel $personnel
+     */
+    public function setPersonnel(\Ksoft\Tssaa\WebAppBundle\Entity\Personnel $personnel)
+    {
+        $this->personnel = $personnel;
+    }
 }

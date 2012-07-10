@@ -136,4 +136,34 @@ class School {
     {
         return $this->created;
     }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Set personnel
+     *
+     * @param Ksoft\Tssaa\WebAppBundle\Entity\Personnel $personnel
+     */
+    public function setPersonnel(\Ksoft\Tssaa\WebAppBundle\Entity\Personnel $personnel)
+    {
+        $this->personnel = $personnel;
+    }
+
+    /**
+     * Get personnel
+     *
+     * @return Ksoft\Tssaa\WebAppBundle\Entity\Personnel 
+     */
+    public function getPersonnel()
+    {
+        return $this->personnel;
+    }
 }

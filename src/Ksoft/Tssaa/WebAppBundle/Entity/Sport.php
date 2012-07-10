@@ -32,15 +32,53 @@ class Sport {
 		$this->coaches = new ArrayCollection();
 	}
 
-	public function getId() {
-		return $this->id;
-	}
+    /**
+     * Add coaches
+     *
+     * @param Ksoft\Tssaa\WebAppBundle\Entity\Coach $coaches
+     */
+    public function addCoach(\Ksoft\Tssaa\WebAppBundle\Entity\Coach $coaches)
+    {
+        $this->coaches[] = $coaches;
+    }
 
-	public function getName() {
-		return $this->name;
-	}
+    /**
+     * Get coaches
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getCoaches()
+    {
+        return $this->coaches;
+    }
 
-	public function setName($name) {
-		$this->name = $name; 
-	}
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 }
