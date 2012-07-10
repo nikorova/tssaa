@@ -13,9 +13,16 @@ class DefaultController extends Controller
 	 * @Route("rest_test")
 	 */
     public function restTestAction(){
+		// get the request parameter bag from the Request object
 		$req_bag = $this->getRequest()->request;
 
 		$content = $req_bag->get("client_data");
+
+		if ($i = $content["command"]) {
+			if ($i == "barf") {
+			throw new Exception("AH MAI GAWD", $code = 9001);	
+			}
+		}
 		
         return $content;
     }
