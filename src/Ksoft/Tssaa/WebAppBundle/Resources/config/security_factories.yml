@@ -1,0 +1,5 @@
+services:
+    security.authentication.factory.wsse:
+        class: Ksoft\Tssaa\WebAppBundle\DependencyInjection\Security\Factory\WsseFactory
+        tags:
+            - { name: security.listener.factory }
