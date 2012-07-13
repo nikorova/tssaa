@@ -3,11 +3,23 @@ services:
         class: Ksoft\Tssaa\WebAppBundle\Listener\TssaaRequestListener
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
     ksoft.tssaa.webappbundle.listener.view:
         class: Ksoft\Tssaa\WebAppBundle\Listener\TssaaResponseListener
         tags:
             - { name: kernel.event_listener, event: kernel.view, method: onKernelResponse }
+
     ksoft.tssaa.webappbundle.listener.exception:
         class: Ksoft\Tssaa\WebAppBundle\Listener\TssaaExceptionListener
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+
+    wsse.security.authentication.provider:
+        class: Ksoft\Tssaa\WebAppBundle\Security\Authentication\Provider\WsseProvider
+        arguments: ['', %kernel.cache_dir%/security/nonces]
+
+    wsse.security.authentication.listener:
+        class: Ksoft\Tssaa\WebAppBundle\Security\Authentication\Listener\WsseListener
+        arguments: [@security.context, @security.authentication.manager]
+
+
