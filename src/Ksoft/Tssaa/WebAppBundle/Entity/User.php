@@ -50,13 +50,6 @@ class User implements UserInterface {
 	/**
 	 * @inheritDoc
 	 */
-	public function getUserName() {
-		return $this->username;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	public function getSalt() {
 		return $this->salt;
 	}
