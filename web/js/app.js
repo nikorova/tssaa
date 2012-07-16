@@ -37,6 +37,7 @@ function login_call(user_name, password) {
 		type: "GET",
 		data: null,
 		headers:{"X-WSSE": x_wsse_headers},
+		success: loginSuccess,
 	});
 	
 	return false;
@@ -173,7 +174,6 @@ $(document).on("pageinit", function(e, obj) {
      * Login form handler
      */
     $("#login_page").on("submit", function(e, obj) {
-
 		var user_name = $("#login_input").value();
 		var password = $("#pass_input").value();
 
