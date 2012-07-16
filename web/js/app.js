@@ -173,8 +173,8 @@ $(document).on("pageinit", function(e, obj) {
      * Login form handler
      */
     $("#login_page").on("submit", function(e, obj) {
-		var user_name = $("#login_input").value();
-		var password = $("#pass_input").value();
+		var user_name = $("#login_input").val();
+		var password = $("#pass_input").val();
 
 		login_call(user_name, password);
 
