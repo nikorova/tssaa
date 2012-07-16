@@ -26,7 +26,7 @@ class WsseListener implements ListenerInterface {
 		if ($request->headers->has('x-wsse')) {
 			$wsseRegex = '/Username Token Username="([^"]+)", PasswordDigest="([^"]+)", Nonce="([^"]+)", Created="([^"]+)"/';
 
-			if (preg_match($wsseRegex, $request->headers->get('x-wsse'), $matches) {
+			if (preg_match($wsseRegex, $request->headers->get('x-wsse'), $matches)) {
 				$token = new WsseUserToken();
 				$token->setUser($matches[1]);
 
