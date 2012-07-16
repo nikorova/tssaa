@@ -32,7 +32,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 	}
 
 	protected function validateDigest() {
-		if (time() - strtotime($created) > 300 {
+		if (time() - strtotime($created) > 300) {
 			return false;
 		}
 
