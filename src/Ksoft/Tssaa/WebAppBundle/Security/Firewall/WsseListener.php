@@ -23,10 +23,10 @@ class WsseListener implements ListenerInterface {
 	public function handle(GetResponseEvent $event) {
 		$request = $event->getRequest();
 
-		if ($request->headers->has('x-wsse')) {
+		if ($request->headers->has('X-WSSE')) {
 			$wsseRegex = '/UsernameToken Username="([^"]+)", PasswordDigest="([^"]+)", Nonce="([^"]+)", Created="([^"]+)"/';
 
-			if (preg_match($wsseRegex, $request->headers->get('x-wsse'), $matches)) {
+			if (preg_match($wsseRegex, $request->headers->get('X-WSSE'), $matches)) {
 				$token = new WsseUserToken();
 				$token->setUser($matches[1]);
 
