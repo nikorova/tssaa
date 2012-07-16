@@ -31,7 +31,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 		throw new AuthenticationExcpetion('WSSE failed');
 	}
 
-	protected function validateDigest() {
+	protected function validateDigest($digest, $nonce, $created, $secret) {
 		if (time() - strtotime($created) > 300) {
 			return false;
 		}
