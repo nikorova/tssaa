@@ -35,8 +35,7 @@ function login_call(user_name, password) {
 
 	$.ajax("app_dev.php/login_check", {
 		type: "GET",
-		data: null,
-		headers:{"X-WSSE": x_wsse_headers},
+		headers: {X-WSSE: x_wsse_headers},
 		success: loginSuccess,
 	});
 	
