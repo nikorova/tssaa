@@ -28,7 +28,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 			return $authenticatedToken;
 		}
 
-		throw new AuthenticationExcpetion('WSSE failed');
+		throw new AuthenticationException('WSSE failed');
 	}
 
 	protected function validateDigest($digest, $nonce, $created, $secret) {
