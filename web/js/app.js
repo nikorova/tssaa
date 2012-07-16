@@ -26,8 +26,7 @@ function login_call(user_name, password) {
 
 	var nonce64 = base64encode(nonce);
 
-	var x_wsse_header = 
-		"UsernameToken Username=\""
+	var x_wsse_header = "UsernameToken Username=\""
 			+ user_name + "\", PasswordDigest=\""
 			+ digest + "\", Nonce=\""
 			+ nonce64 + "\", Created=\""
