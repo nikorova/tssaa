@@ -1,8 +1,8 @@
 security:
     firewalls:
         wsse_secured:
-            anonymous: ~
             pattern: ^/
+            wsse: true
 
     providers:
         main:

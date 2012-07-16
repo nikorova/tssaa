@@ -19,7 +19,7 @@ $.fn.serializeObject = function () {
 	return o;
 };
 
-function login_call(username, password) {
+function login_call(user_name, password) {
 	var nonce = generateNonce(16);
 	var created = getW3CDate(new Date());
 	var digest = b64_sha1(created + password + nonce);
@@ -29,11 +29,11 @@ function login_call(username, password) {
 	var x-wsse_headers = 
 		"UsernameToken Username=\""
 			+ user_name + "\", PasswordDigest=\""
-			+ digest + "\", Nonce=\"'
+			+ digest + "\", Nonce=\""
 			+ nonce64 + "\", Created=\""
 			+ created + "\"\n";
 
-	$.ajax("/login_check", {
+	$.ajax("app_dev.php/login_check", {
 		type: "GET",
 		data: null,
 		headers:{"X-WSSE": x-wsse_headers},
