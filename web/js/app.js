@@ -174,12 +174,10 @@ $(document).on("pageinit", function(e, obj) {
      */
     $("#login_page").on("submit", function(e, obj) {
 
-        var formData = $("#login_form").serializeObject();
+		var user_name = $("#login_input").value();
+		var password = $("#pass_input").value();
 
-		service_call("app_dev.php/login", {
-			request_params: formData,
-			on_success: loginSuccess
-		});
+		login_call(user_name, password);
 
         return false;
     }); 
