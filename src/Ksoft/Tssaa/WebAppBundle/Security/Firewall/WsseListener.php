@@ -39,7 +39,7 @@ class WsseListener implements ListenerInterface {
 
 					if ($returnValue instanceof TokenInterface) {
 						return $this->securityContext->setToken($returnValue);
-					} else ($returnValue instanceof Response) {
+					} elseif ($returnValue instanceof Response) {
 						return $event->setResponse($returnValue);
 					}
 				} catch (AuthenticationException $err) {
