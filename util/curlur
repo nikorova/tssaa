@@ -15,8 +15,8 @@ C_TYPE="application/x-www-form-urlencoded"
 ACC_TYPE="application/json"
 
 ## WSSE
-X_WSSE='X-WSSE: UsernameToken Username="bob", PasswordDigest="tzc+qfcU5aGCcIlNMEJosab/yJE=",
-	Nonce="OTkxOTc4YWExYWM5YjM1Zg==", Created="2012-07-16T16:50:35Z"'
+X_WSSE="\"X-WSSE: UsernameToken Username=\"bob\", PasswordDigest=\"tzc+qfcU5aGCcIlNMEJosab/yJE=\",
+	Nonce=\"OTkxOTc4YWExYWM5YjM1Zg==\", Created='2012-07-16T16:50:35Z\""
 
 
 # HTTP Verb
@@ -43,4 +43,4 @@ OUTPUT="out.curlur.html"
 echo "curling $TARGET"
 
 # and now we curl
-curl -i -H $C_TYPE -H $ACC_TYPE -H $X_WSSE -X $VERB -d $DATA $TARGET | tee $OUTPUT
+curl -i -H $C_TYPE -H $ACC_TYPE -H "$X_WSSE" -X $VERB -d $DATA $TARGET | tee $OUTPUT
