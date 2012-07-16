@@ -1,4 +1,7 @@
 security:
+    factories: 
+        - "%kernel.root_dir%/../src/Ksoft/Tssaa/WebAppBundle/Resources/config/security_factories.yml"
+
     firewalls:
         wsse_secured:
             pattern: ^/
