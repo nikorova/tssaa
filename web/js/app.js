@@ -35,7 +35,7 @@ function login_call(user_name, password) {
 
 	$.ajax("app_dev.php/login_check", {
 		type: "POST",
-		beforeSend: function (xhr) {xhr.setRequestHeader("X-WSSE", "AH MAI GAWD ID'S HEDURS");},
+		beforeSend: function (xhr) {xhr.setRequestHeader("X-WSSE", "why does god hate me?");},
 		success: loginSuccess,
 	});
 	
