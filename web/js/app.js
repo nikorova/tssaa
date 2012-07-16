@@ -30,7 +30,7 @@ function login_call(user_name, password) {
 			+ user_name + "\", PasswordDigest=\""
 			+ digest + "\", Nonce=\""
 			+ nonce64 + "\", Created=\""
-			+ created + "\"\n";
+			+ created + "\"";
 
 	$.ajax("app_dev.php/login_check", {
 		type: "POST",
