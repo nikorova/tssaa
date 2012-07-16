@@ -21,7 +21,7 @@ class WsseListener implements ListenerInterface {
 	}
 
 	public function handle(GetResponseEvent $event) {
-		$request = $this->getRequest();
+		$request = $event->getRequest();
 
 		if ($request->headers->has('x-wsse')) {
 			$wsseRegex = '/Username Token Username="([^"]+)", PasswordDigest="([^"]+)", Nonce="([^"]+)", Created="([^"]+)"/';
