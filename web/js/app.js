@@ -26,7 +26,7 @@ function login_call(user_name, password) {
 
 	var nonce64 = base64encode(nonce);
 
-	var x-wsse_headers = 
+	var x_wsse_headers = 
 		"UsernameToken Username=\""
 			+ user_name + "\", PasswordDigest=\""
 			+ digest + "\", Nonce=\""
@@ -36,7 +36,7 @@ function login_call(user_name, password) {
 	$.ajax("app_dev.php/login_check", {
 		type: "GET",
 		data: null,
-		headers:{"X-WSSE": x-wsse_headers},
+		headers:{"X-WSSE": x_wsse_headers},
 	});
 	
 	return false;

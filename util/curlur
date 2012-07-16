@@ -15,7 +15,7 @@ C_TYPE="application/x-www-form-urlencoded"
 ACC_TYPE="application/json"
 
 ## WSSE
-X_WSSE="\"X-WSSE: UsernameToken Username=\"bob\", PasswordDigest=\"tzc+qfcU5aGCcIlNMEJosab/yJE=\",
+X_WSSE="\"X-WSSE: UsernameToken Username=\"ed\", PasswordDigest=\"tzc+qfcU5aGCcIlNMEJosab/yJE=\",
 	Nonce=\"OTkxOTc4YWExYWM5YjM1Zg==\", Created='2012-07-16T16:50:35Z\""
 
 
