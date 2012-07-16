@@ -18,6 +18,30 @@ $.fn.serializeObject = function () {
 	});
 	return o;
 };
+
+function login_call(username, password) {
+	var nonce = generateNonce(16);
+	var created = getW3CDate(new Date());
+	var digest = b64_sha1(created + password + nonce);
+
+	var nonce64 = base64encode(nonce);
+
+	var x-wsse_headers = 
+		"UsernameToken Username=\""
+			+ user_name + "\", PasswordDigest=\""
+			+ digest + "\", Nonce=\"'
+			+ nonce64 + "\", Created=\""
+			+ created + "\"\n";
+
+	$.ajax("/login_check", {
+		type: "GET",
+		data: null,
+		headers:{"X-WSSE": x-wsse_headers},
+	});
+	
+	return false;
+}
+
 /**
  * AJAX convenience wrapper
  * @param uri target uri for request
