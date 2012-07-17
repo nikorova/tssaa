@@ -30,7 +30,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 			$authenticatedToken = new WsseUserToken($user->getRoles());
 			$authenticatedToken->setUser($user);
 
-			$firephp->($authenticatedToken, "auth'd token");
+			$firephp->info($authenticatedToken, "auth'd token");
 			
 			return $authenticatedToken;
 		}
