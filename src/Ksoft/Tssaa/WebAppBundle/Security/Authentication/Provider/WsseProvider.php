@@ -53,6 +53,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 			throw new AuthenticationException('WSSE failed');
 
 		} catch(AuthenticationException $err) {
+			$fp->info("hay man it's the catch block");
 			$fp->error($err, "auth exception");
 		}	
 
