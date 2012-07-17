@@ -10,6 +10,10 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Ksoft\Tssaa\WebAppBundle\Security\Authentication\Token\WsseUserToken;
 
 class WsseProvider implements AuthenticationProviderInterface {
+	require_once('FirePHPCore/FirePHP.class.php');
+	ob_start();
+	$firephp = FirePHP::getInstance(true);
+
 	private $userProvider;
 	private $cacheDir;
 
@@ -20,6 +24,8 @@ class WsseProvider implements AuthenticationProviderInterface {
 
 	public function authenticate(TokenInterface $token) {
 		$user = $this->userProvider->loadUserByUsername($token->getUsername());
+
+
 
 		if ($user && $this->validateDigest($token->digest, $token->nonce, $token->created, $user->getPassword())) {
 			$authenticatedToken = new WsseUserToken($user->getRoles());
