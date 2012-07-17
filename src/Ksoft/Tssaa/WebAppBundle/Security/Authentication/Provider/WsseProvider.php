@@ -10,9 +10,9 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Ksoft\Tssaa\WebAppBundle\Security\Authentication\Token\WsseUserToken;
 
 require_once('FirePHPCore/FirePHP.class.php');
+ob_start();
 
 class WsseProvider implements AuthenticationProviderInterface {
-	\ob_start();
 	$firephp = FirePHP::getInstance(true);
 
 	private $userProvider;
