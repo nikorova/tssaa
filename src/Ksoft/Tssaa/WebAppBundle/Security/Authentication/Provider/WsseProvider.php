@@ -13,11 +13,10 @@ require_once('FirePHPCore/FirePHP.class.php');
 ob_start();
 
 class WsseProvider implements AuthenticationProviderInterface {
-
 	private $userProvider;
 	private $cacheDir;
 
-	protected $firephp = FirePHP::getInstance(true);
+	protected $firephp = \FirePHP::getInstance(true);
 
 	public function __construct(UserProviderInterface $userProvider, $cacheDir) {
 		$this->userProvider = $userProvider;
