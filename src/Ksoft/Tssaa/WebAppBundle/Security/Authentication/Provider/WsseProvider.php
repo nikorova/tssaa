@@ -13,21 +13,27 @@ require_once('FirePHPCore/FirePHP.class.php');
 class WsseProvider implements AuthenticationProviderInterface {
 	private $userProvider;
 	private $cacheDir;
+	private $firephp;
 
 	public function __construct(UserProviderInterface $userProvider, $cacheDir) {
 		$this->userProvider = $userProvider;
 		$this->cacheDir = $cacheDir;
+
+		// for great logs	
+		$this->firePHPLogger = \FirePHP::getInstance(true);
 	}
 
 	public function authenticate(TokenInterface $token) {
-		// for great logs	
-		$firephp = \FirePHP::getInstance(true);
-		$firephp->group('Provider');
+		$fp = $this->firePHPLogger;
+		
+		// firephp log group
+		$fp->group('Provider');
 		ob_start();
 
 		$user = $this->userProvider->loadUserByUsername($token->getUsername());
-		$firephp->info($user, "user object");
+		$fp->info($user, "user object");
 
+		$is_valid = NULL;
 		if ($user && $is_valid = $this->validateDigest(
 				$token->digest, 
 				$token->nonce, 
@@ -37,14 +43,14 @@ class WsseProvider implements AuthenticationProviderInterface {
 			$authenticatedToken = new WsseUserToken($user->getRoles());
 			$authenticatedToken->setUser($user);
 
-			$firephp->info($is_valid, "validateDigest()");
-			$firephp->info($authenticatedToken, "auth'd token");
+			$fp->info($authenticatedToken, "auth'd token");
 			
 			return $authenticatedToken;
 		}
-
+		$fp->info($is_valid, "validateDigest()");
+		
 		throw new AuthenticationException('WSSE failed');
-		$firephp->groundend(); 
+		$fp->groupEnd(); 
 		// /provider log group
 	}
 
