@@ -55,6 +55,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 		} catch(AuthenticationException $err) {
 			$fp->info("hay man it's the catch block");
 			$fp->error($err, "auth exception");
+			throw $err;
 		}	
 
 		// end authenticate() log group
