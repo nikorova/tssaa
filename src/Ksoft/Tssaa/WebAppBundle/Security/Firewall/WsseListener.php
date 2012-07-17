@@ -43,7 +43,9 @@ class WsseListener implements ListenerInterface {
 						return $event->setResponse($returnValue);
 					}
 				} catch (AuthenticationException $err) {
-					//TODO logsging	
+					$logger = $this->get('logger');
+					$logger->err($err);
+					throw($err);
 				}
 			}
 		}
