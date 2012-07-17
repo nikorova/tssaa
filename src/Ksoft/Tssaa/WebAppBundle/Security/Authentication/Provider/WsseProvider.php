@@ -26,7 +26,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 		ob_start();
 
 		$user = $this->userProvider->loadUserByUsername($token->getUsername());
-		$firephp->info($user, "here's the fecthed user object");
+		$firephp->info($user, "user object");
 
 		if ($user && $firephp->info(
 				$this->validateDigest(
@@ -35,7 +35,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 					$token->created, 
 					$user->getPassword()
 				), 
-				"validateDigest"
+				"validateDigest()"
 			)) {
 			$authenticatedToken = new WsseUserToken($user->getRoles());
 			$authenticatedToken->setUser($user);
@@ -58,7 +58,9 @@ class WsseProvider implements AuthenticationProviderInterface {
 		}
 		file_put_contents($this->cacheDir.'/'.$nonce, time());
 			
-		$expected = base64_encode(sha1(base64_decode($nonce).$created.$secret, true));
+		$expected = base64_encode(sha1(base64_decode($nonce).
+			$created.
+			$secret, true));
 
 		return $digest === $expected;
 	}
