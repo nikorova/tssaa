@@ -1,5 +1,7 @@
 <?php
 
+require_once('FirePHPCore/FirePHP.class.php');
+
 namespace Ksoft\Tssaa\WebAppBundle\Security\Authentication\Provider;
 
 use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
@@ -9,14 +11,13 @@ use Symfony\Component\Security\Core\Exception\NonceExpiredException;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Ksoft\Tssaa\WebAppBundle\Security\Authentication\Token\WsseUserToken;
 
-require_once('FirePHPCore/FirePHP.class.php');
-ob_start();
-$firephp = FirePHP::getInstance(true);
-
 class WsseProvider implements AuthenticationProviderInterface {
 	private $userProvider;
 	private $cacheDir;
 
+	ob_start();
+
+	$firephp = FirePHP::getInstance(true);
 
 	public function __construct(UserProviderInterface $userProvider, $cacheDir) {
 		$this->userProvider = $userProvider;
