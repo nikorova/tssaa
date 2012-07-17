@@ -14,10 +14,6 @@ class WsseProvider implements AuthenticationProviderInterface {
 	private $userProvider;
 	private $cacheDir;
 
-	\ob_start();
-
-	$firephp = FirePHP::getInstance(true);
-
 	public function __construct(UserProviderInterface $userProvider, $cacheDir) {
 		$this->userProvider = $userProvider;
 		$this->cacheDir = $cacheDir;
@@ -25,7 +21,9 @@ class WsseProvider implements AuthenticationProviderInterface {
 
 	public function authenticate(TokenInterface $token) {
 		$user = $this->userProvider->loadUserByUsername($token->getUsername());
-	
+			
+		ob_start();
+		$firephp = FirePHP::getInstance(true);
 		$firephp->info($user, "here's the fecthed user object");
 
 		if ($user && $this->validateDigest($token->digest, $token->nonce, $token->created, $user->getPassword())) {
