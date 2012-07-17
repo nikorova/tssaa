@@ -26,32 +26,38 @@ class WsseProvider implements AuthenticationProviderInterface {
 	public function authenticate(TokenInterface $token) {
 		$fp = $this->firePHPLogger;
 		
-		// firephp log group
-		$fp->group('Provider');
+		// authenticate() log group
+		$fp->group('authenticate()');
 		ob_start();
 
 		$user = $this->userProvider->loadUserByUsername($token->getUsername());
 		$fp->info($user, "user object");
 
-		$is_valid = NULL;
-		if ($user && $is_valid = $this->validateDigest(
+		try {
+			$is_valid = NULL;
+			if ($user && $is_valid = $this->validateDigest(
 				$token->digest, 
 				$token->nonce, 
 				$token->created, 
 				$user->getPassword()
 			)) {
-			$authenticatedToken = new WsseUserToken($user->getRoles());
-			$authenticatedToken->setUser($user);
+				$authenticatedToken = new WsseUserToken($user->getRoles());
+				$authenticatedToken->setUser($user);
 
-			$fp->info($authenticatedToken, "auth'd token");
-			
-			return $authenticatedToken;
-		}
-		$fp->info($is_valid, "validateDigest()");
-		
-		throw new AuthenticationException('WSSE failed');
+				$fp->info($authenticatedToken, "auth'd token");
+
+				return $authenticatedToken;
+			}
+			$fp->info($is_valid, "validateDigest()");
+
+			throw new AuthenticationException('WSSE failed');
+
+		} catch(Exception $err) {
+			$fp->error($err);
+		}	
+
+		// end authenticate() log group
 		$fp->groupEnd(); 
-		// /provider log group
 	}
 
 	protected function validateDigest($digest, $nonce, $created, $secret) {
