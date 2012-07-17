@@ -12,7 +12,7 @@ use Ksoft\Tssaa\WebAppBundle\Security\Authentication\Token\WsseUserToken;
 require_once('FirePHPCore/FirePHP.class.php');
 
 class WsseProvider implements AuthenticationProviderInterface {
-	ob_start();
+	\ob_start();
 	$firephp = FirePHP::getInstance(true);
 
 	private $userProvider;
