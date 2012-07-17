@@ -14,7 +14,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 	private $userProvider;
 	private $cacheDir;
 
-	ob_start();
+	\ob_start();
 
 	$firephp = FirePHP::getInstance(true);
 
