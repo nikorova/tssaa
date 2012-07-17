@@ -28,7 +28,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 		$user = $this->userProvider->loadUserByUsername($token->getUsername());
 		$firephp->info($user, "here's the fecthed user object");
 
-		if ($user && $firephp->log(
+		if ($user && $firephp->info(
 				$this->validateDigest(
 					$token->digest, 
 					$token->nonce, 
