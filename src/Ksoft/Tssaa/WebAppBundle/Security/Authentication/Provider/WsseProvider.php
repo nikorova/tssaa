@@ -28,24 +28,24 @@ class WsseProvider implements AuthenticationProviderInterface {
 		$user = $this->userProvider->loadUserByUsername($token->getUsername());
 		$firephp->info($user, "user object");
 
-		if ($user && $firephp->info(
-				$this->validateDigest(
-					$token->digest, 
-					$token->nonce, 
-					$token->created, 
-					$user->getPassword()
-				), 
-				"validateDigest()"
+		if ($user && $is_valid = $this->validateDigest(
+				$token->digest, 
+				$token->nonce, 
+				$token->created, 
+				$user->getPassword()
 			)) {
 			$authenticatedToken = new WsseUserToken($user->getRoles());
 			$authenticatedToken->setUser($user);
 
+			$firephp->info($is_valid, "validateDigest()");
 			$firephp->info($authenticatedToken, "auth'd token");
 			
 			return $authenticatedToken;
 		}
 
 		throw new AuthenticationException('WSSE failed');
+		$firephp->groundend(); 
+		// /provider log group
 	}
 
 	protected function validateDigest($digest, $nonce, $created, $secret) {
