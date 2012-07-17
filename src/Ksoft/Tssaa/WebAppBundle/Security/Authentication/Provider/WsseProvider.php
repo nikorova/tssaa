@@ -21,7 +21,8 @@ class WsseProvider implements AuthenticationProviderInterface {
 
 	public function authenticate(TokenInterface $token) {
 		$user = $this->userProvider->loadUserByUsername($token->getUsername());
-			
+
+		// for great logs	
 		ob_start();
 		$firephp = \FirePHP::getInstance(true);
 		$firephp->info($user, "here's the fecthed user object");
