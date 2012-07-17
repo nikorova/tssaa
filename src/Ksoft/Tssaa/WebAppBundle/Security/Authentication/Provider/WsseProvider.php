@@ -24,12 +24,14 @@ class WsseProvider implements AuthenticationProviderInterface {
 
 	public function authenticate(TokenInterface $token) {
 		$user = $this->userProvider->loadUserByUsername($token->getUsername());
-
-
+	
+		$firephp->info($user, "here's the fecthed user object");
 
 		if ($user && $this->validateDigest($token->digest, $token->nonce, $token->created, $user->getPassword())) {
 			$authenticatedToken = new WsseUserToken($user->getRoles());
 			$authenticatedToken->setUser($user);
+
+			$firephp->($authenticatedToken, "auth'd token");
 			
 			return $authenticatedToken;
 		}
