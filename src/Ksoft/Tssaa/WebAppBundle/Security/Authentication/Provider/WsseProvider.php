@@ -79,9 +79,8 @@ class WsseProvider implements AuthenticationProviderInterface {
 			
 		$expected = base64_encode(sha1(base64_decode($nonce).$created.$secret, true));
 
-		$fp->info($expected, 'expected');
-
 		$fp->groupEnd();
+		ob_end_flush();
 		return $digest === $expected;
 	}
 
