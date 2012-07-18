@@ -52,7 +52,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 	}
 
 	protected function validateDigest($digest, $nonce, $created, $secret) {
-		$fl = $this->firePHPLogger;
+		$fl = $this->fireLogger;
 
 		$fl->log($nonce, 'nonce');
 		$fl->log($created, 'created');
