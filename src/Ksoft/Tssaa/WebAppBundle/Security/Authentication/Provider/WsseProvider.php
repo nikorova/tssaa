@@ -60,6 +60,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 
 		// end authenticate() log group
 		$fp->groupEnd(); 
+		ob_end_flush();
 	}
 
 	protected function validateDigest($digest, $nonce, $created, $secret) {
