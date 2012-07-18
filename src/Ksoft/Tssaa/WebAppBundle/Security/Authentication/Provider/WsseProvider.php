@@ -45,7 +45,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 		if ($user && $isDigestValid) {
 			$authenticatedToken = new WsseUserToken($user->getRoles());
 			$authenticatedToken->setUser($user);
-			$fp->info($authentocatedToken, "auth'd token");
+			$fp->info($authenticatedToken, "auth'd token");
 
 			$fp->groupEnd(); 
 			ob_end_flush();
