@@ -377,8 +377,8 @@ function login_call(user_name, password) {
 		type: "GET",
 		beforeSend: function (xhr) {xhr.setRequestHeader("X-WSSE", x_wsse_header);},
 		success: function (xhr) {
-			alert(xhr.hasOwnProperty('payload') ? xhr.payload : xhr.exception.message),
-		}
+			alert(xhr.hasOwnProperty('payload') ? xhr.payload : xhr.exception.message)
+		},
 	});
 
 return false;
