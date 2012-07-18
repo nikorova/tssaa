@@ -48,7 +48,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 
 				return $authenticatedToken;
 			}
-			$fp->info($is_valid, "validateDigest()");
+			$fp->info($is_valid, "digest is valid?");
 
 			throw new AuthenticationException('WSSE failed');
 
@@ -63,6 +63,13 @@ class WsseProvider implements AuthenticationProviderInterface {
 	}
 
 	protected function validateDigest($digest, $nonce, $created, $secret) {
+		$fp = $this->firePHPLogger;
+		$fp->group('validateDigest()');
+		$fp->info($digest, 'digest');
+		$fp->info($nonce, 'nonce');
+		$fp->info($created, 'created');
+		$fp->info($secret, 'secret');
+
 		if (time() - strtotime($created) > 300) {
 			return false;
 		}
@@ -76,6 +83,9 @@ class WsseProvider implements AuthenticationProviderInterface {
 			$created.
 			$secret, true));
 
+		$fp->info($expected, 'expected');
+
+		$fp->groupEnd();
 		return $digest === $expected;
 	}
 
