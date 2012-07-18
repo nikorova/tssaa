@@ -41,21 +41,15 @@ class WsseProvider implements AuthenticationProviderInterface {
 			$user->getPassword()
 		);
 
-		try {
-			if ($user && $isDigestValid) {
-				$authenticatedToken = new WsseUserToken($user->getRoles());
-				$authenticatedToken->setUser($user);
+		if ($user && $isDigestValid) {
+			$authenticatedToken = new WsseUserToken($user->getRoles());
+			$authenticatedToken->setUser($user);
 
-				return $authenticatedToken;
-			}
-			$fp->info($isDigestValid, "digest is valid?");
+			return $authenticatedToken;
+		}
+		$fp->info($isDigestValid, "digest is valid?");
 
-			throw new AuthenticationException('WSSE failed');
-
-		} catch(AuthenticationException $err) {
-			$fp->info("hay man it's the catch block");
-			$fp->error($err, "auth exception");
-		}	
+		throw new AuthenticationException('WSSE failed');
 
 		// end authenticate() log group
 		$fp->groupEnd(); 
