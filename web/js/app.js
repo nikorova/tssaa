@@ -21,7 +21,7 @@ $.fn.serializeObject = function () {
 
 function login_call(user_name, password) {
 	var nonce = generateNonce(16);
-	var created = new Date();
+	var created = ISODateString(new Date());
 	var digest = b64_sha1(created + password + nonce);
 
 	var nonce64 = base64encode(nonce);
