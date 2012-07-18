@@ -61,7 +61,6 @@ class WsseProvider implements AuthenticationProviderInterface {
 		$fp->group('validateDigest()');
 		ob_start();
 
-		$fp->info($digest, 'digest');
 		$fp->info($nonce, 'nonce');
 		$fp->info($created, 'created');
 		$fp->info($secret, 'secret');
@@ -76,9 +75,14 @@ class WsseProvider implements AuthenticationProviderInterface {
 		file_put_contents($this->cacheDir.'/'.$nonce, time());
 			
 		$expected = base64_encode(sha1(base64_decode($nonce).$created.$secret, true));
+		$fp->info($expected, 'expected');
+		$fp->info($digest, 'digest');
+
+		$result = ($digest === $expected);
+		$fp->info($result, 'result');
 
 		ob_end_flush();
-		return $digest === $expected;
+		return $result;
 	}
 
 	public function supports(TokenInterface $token) {
