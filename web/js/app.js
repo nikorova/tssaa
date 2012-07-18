@@ -22,9 +22,9 @@ $.fn.serializeObject = function () {
 function login_call(user_name, password) {
 	var nonce = generateNonce(16);
 	var created = ISODateString(new Date());
-	var digest = b64_sha1(created + password + nonce);
-
 	var nonce64 = base64encode(nonce);
+
+	var digest = b64_sha1(created + password + nonce64);
 
 	var x_wsse_header = "UsernameToken Username=\""
 			+ user_name + "\", PasswordDigest=\""
