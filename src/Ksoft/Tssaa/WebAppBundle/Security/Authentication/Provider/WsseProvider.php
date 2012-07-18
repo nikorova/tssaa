@@ -78,8 +78,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 		$fl->log($expected, 'expected');
 		$fl->log($digest, 'digest');
 
-		//TODO digest === expected 
-		$result = (1 == 1);
+		$result = ($expected === $digest);
 		$fl->log($result, 'result');
 
 		return $result;
