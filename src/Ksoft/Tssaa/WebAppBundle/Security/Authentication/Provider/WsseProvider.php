@@ -25,7 +25,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 
 	public function authenticate(TokenInterface $token) {
 		$fp = $this->firePHPLogger;
-		$fp->setOption('maxDepth', 10);
+		$fp->setOption('maxDepth', 5);
 		
 		// authenticate() log group
 		$fp->group('authenticate()');
@@ -33,13 +33,18 @@ class WsseProvider implements AuthenticationProviderInterface {
 
 		$user = $this->userProvider->loadUserByUsername($token->getUsername());
 		$fp->info($user, "user object");
+	
+		$isDigestValid = $this->validateDigest(
+			$token->digest, 
+			$token->nonce, 
+			$token->created, 
+			$user->getPassword()
+		);
 
 		try {
-			$is_valid = NULL;
-			if ($user && $is_valid = $this->validateDigest($token->digest, $token->nonce, $token->created, $user->getPassword())) {
+			if ($user && $isDigestValid) {
 				$authenticatedToken = new WsseUserToken($user->getRoles());
 				$authenticatedToken->setUser($user);
-
 
 				return $authenticatedToken;
 			}
