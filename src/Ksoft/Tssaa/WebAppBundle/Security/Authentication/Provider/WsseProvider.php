@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\Exception\NonceExpiredException;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Ksoft\Tssaa\WebAppBundle\Security\Authentication\Token\WsseUserToken;
 
-require_once('FirePHPCore/FirePHP.class.php');
+require_once('firelogger.php');
 
 class WsseProvider implements AuthenticationProviderInterface {
 	private $userProvider;
@@ -20,18 +20,16 @@ class WsseProvider implements AuthenticationProviderInterface {
 		$this->cacheDir = $cacheDir;
 
 		// for great logs	
-		$this->firePHPLogger = \FirePHP::getInstance(true);
+		$this->fireLogger = new FireLogger('WsseProvider');
 	}
 
 	public function authenticate(TokenInterface $token) {
-		$fp = $this->firePHPLogger;
-		$fp->setOption('maxDepth', 5);
-		$fp->group('authenticate()');
+		$fl = $this->fireLogger;
 		
 		// authenticate() log group
 
 		$user = $this->userProvider->loadUserByUsername($token->getUsername());
-		$fp->info($user, "user object");
+		$fl->log($user, "user object");
 	
 		$isDigestValid = $this->validateDigest(
 			$token->digest, 
@@ -39,31 +37,26 @@ class WsseProvider implements AuthenticationProviderInterface {
 			$token->created, 
 			$user->getPassword()
 		);
-		$fp->info($isDigestValid, "digest is valid?");
+		$fl->log($isDigestValid, "digest is valid?");
 
 		if ($user && $isDigestValid) {
 			$authenticatedToken = new WsseUserToken($user->getRoles());
 			$authenticatedToken->setUser($user);
 
-			$fp->info($authenticatedToken, "auth'd token");
-			$fp->groupEnd();
+			$fl->log($authenticatedToken, "auth'd token");
 
 			return $authenticatedToken;
 		}
 
 		throw new AuthenticationException('WSSE failed');
-
-		// end authenticate() log group
-		$fp->groupEnd();
 	}
 
 	protected function validateDigest($digest, $nonce, $created, $secret) {
-		$fp = $this->firePHPLogger;
-		$fp->group('validateDigest()');
+		$fl = $this->firePHPLogger;
 
-		$fp->info($nonce, 'nonce');
-		$fp->info($created, 'created');
-		$fp->info($secret, 'secret');
+		$fl->log($nonce, 'nonce');
+		$fl->log($created, 'created');
+		$fl->log($secret, 'secret');
 
 		// check timestamp on token
 		if (time() - strtotime($created) > 300) {
@@ -79,14 +72,13 @@ class WsseProvider implements AuthenticationProviderInterface {
 		file_put_contents($this->cacheDir.'/'.$nonce, time());
 			
 		$expected = base64_encode(sha1(base64_decode($nonce).$created.$secret, true));
-		$fp->info($expected, 'expected');
-		$fp->info($digest, 'digest');
+		$fl->log($expected, 'expected');
+		$fl->log($digest, 'digest');
 
 		//TODO digest === expected 
 		$result = (1 == 1);
-		$fp->info($result, 'result');
+		$fl->log($result, 'result');
 
-		$fp->groupEnd();
 		return $result;
 	}
 
