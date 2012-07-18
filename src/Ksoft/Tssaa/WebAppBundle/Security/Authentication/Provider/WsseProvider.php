@@ -64,6 +64,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 
 	protected function validateDigest($digest, $nonce, $created, $secret) {
 		$fp = $this->firePHPLogger;
+		ob_start();
 		$fp->group('validateDigest()');
 		$fp->info($digest, 'digest');
 		$fp->info($nonce, 'nonce');
