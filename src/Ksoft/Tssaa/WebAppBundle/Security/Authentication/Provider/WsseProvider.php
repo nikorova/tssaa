@@ -48,7 +48,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 
 				return $authenticatedToken;
 			}
-			$fp->info($is_valid, "digest is valid?");
+			$fp->info($isDigestValid, "digest is valid?");
 
 			throw new AuthenticationException('WSSE failed');
 
