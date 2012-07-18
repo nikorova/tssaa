@@ -20,7 +20,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 		$this->cacheDir = $cacheDir;
 
 		// for great logs	
-		$this->fireLogger = new FireLogger('WsseProvider');
+		$this->fireLogger = new \FireLogger('WsseProvider');
 	}
 
 	public function authenticate(TokenInterface $token) {
