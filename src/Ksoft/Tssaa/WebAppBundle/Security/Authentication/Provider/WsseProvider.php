@@ -84,12 +84,9 @@ class WsseProvider implements AuthenticationProviderInterface {
 			$created.
 			$secret, true));
 
-		$fp->info($expected, 'expected');
-
-		$returnVal = $digest === $expected;
 
 		$fp->groupEnd();
-		return $returnVal;
+		return $digest === $expected;
 	}
 
 	public function supports(TokenInterface $token) {
