@@ -359,7 +359,7 @@ function login_call(user_name, password) {
 	var created = ISODateString(new Date());
 	
 	var clientShaInput = nonce + created + password;
-	console.log(clientShaInput);
+	console.debug(clientShaInput);
 	
 	var digest = b64_sha1(clientShaInput);
 
