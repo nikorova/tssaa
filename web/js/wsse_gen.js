@@ -23,17 +23,14 @@ function generateNonce(length) {
     return result;
 }
 
-function getW3CDate(date) {
-    var yyyy = date.getUTCFullYear();
-    var mm = (date.getUTCMonth() + 1);
-    if (mm < 10) mm = "0" + mm;
-    var dd = (date.getUTCDate());
-    if (dd < 10) dd = "0" + dd;
-    var hh = (date.getUTCHours());
-    if (hh < 10) hh = "0" + hh;
-    var mn = (date.getUTCMinutes());
-    if (mn < 10) mn = "0" + mn;
-    var ss = (date.getUTCSeconds());
-    if (ss < 10) ss = "0" + ss;
-    return yyyy+"-"+mm+"-"+dd+"T"+hh+":"+mn+":"+ss+"Z";
+function ISODateString(d) {
+	function pad(n) {
+		return n<10 ? '0'+n : n;
+	}
+	return d.getUTCFullYear() + '-'
+		+ pad(d.getUTCMonth() +1) + '-'
+		+ pad(d.getUTCDate()) + 'T'
+		+ pad(d.getUTCHours()) + ':'
+		+ pad(d.getUTCMinutes()) + ':'
+		+ pad(d.getUTCSeconds()) + 'Z'
 }
