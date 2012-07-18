@@ -81,6 +81,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 		$result = (1 == 1);
 		$fp->info($result, 'result');
 
+		$fp->groupEnd();
 		ob_end_flush();
 		return $result;
 	}
