@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\Exception\NonceExpiredException;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Ksoft\Tssaa\WebAppBundle\Security\Authentication\Token\WsseUserToken;
 
-require_once('firelogger.php');
+require_once('firelogger.php/firelogger.php');
 
 class WsseProvider implements AuthenticationProviderInterface {
 	private $userProvider;
