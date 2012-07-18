@@ -26,6 +26,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 	public function authenticate(TokenInterface $token) {
 		$fp = $this->firePHPLogger;
 		$fp->setOption('maxDepth', 5);
+		$fp->group('authenticate()');
 		
 		// authenticate() log group
 
@@ -43,7 +44,9 @@ class WsseProvider implements AuthenticationProviderInterface {
 		if ($user && $isDigestValid) {
 			$authenticatedToken = new WsseUserToken($user->getRoles());
 			$authenticatedToken->setUser($user);
+
 			$fp->info($authenticatedToken, "auth'd token");
+			$fp->groupEnd();
 
 			return $authenticatedToken;
 		}
@@ -51,6 +54,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 		throw new AuthenticationException('WSSE failed');
 
 		// end authenticate() log group
+		$fp->groupEnd();
 	}
 
 	protected function validateDigest($digest, $nonce, $created, $secret) {
@@ -61,6 +65,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 		$fp->info($created, 'created');
 		$fp->info($secret, 'secret');
 
+		// check timestamp on token
 		if (time() - strtotime($created) > 300) {
 			return false;
 		}

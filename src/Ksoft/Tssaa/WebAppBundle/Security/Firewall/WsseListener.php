@@ -15,7 +15,10 @@ class WsseListener implements ListenerInterface {
 	protected $securityContext;
 	protected $authenticationManager;
 
-	public function __construct(SecurityContextInterface $securityContext, AuthenticationManagerInterface $authenticationManager) {
+	public function __construct(
+		SecurityContextInterface $securityContext, 
+		AuthenticationManagerInterface $authenticationManager
+	) {
 		$this->securityContext = $securityContext;
 		$this->authenticationManager = $authenticationManager;
 	}
@@ -24,9 +27,16 @@ class WsseListener implements ListenerInterface {
 		$request = $event->getRequest();
 
 		if ($request->headers->has('X-WSSE')) {
-			$wsseRegex = '/UsernameToken Username="([^"]+)", PasswordDigest="([^"]+)", Nonce="([^"]+)", Created="([^"]+)"/';
+			$wsseRegex = '/UsernameToken Username="([^"]+)", ' .
+				'PasswordDigest="([^"]+)", ' .
+				'Nonce="([^"]+)", ' .
+				'Created="([^"]+)"/';
 
-			if (preg_match($wsseRegex, $request->headers->get('X-WSSE'), $matches)) {
+			if (preg_match(
+				$wsseRegex, 
+				$request->headers->get('X-WSSE'), 
+				$matches
+			)) {
 				$token = new WsseUserToken();
 				$token->setUser($matches[1]);
 
@@ -35,7 +45,8 @@ class WsseListener implements ListenerInterface {
 				$token->created = $matches[4];
 
 				try {
-					$returnValue = $this->authenticationManager->authenticate($token);
+					$returnValue = $this->
+						authenticationManager->authenticate($token);
 
 					if ($returnValue instanceof TokenInterface) {
 						return $this->securityContext->setToken($returnValue);
