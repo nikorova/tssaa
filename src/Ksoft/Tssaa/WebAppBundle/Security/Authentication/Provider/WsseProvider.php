@@ -29,7 +29,6 @@ class WsseProvider implements AuthenticationProviderInterface {
 		
 		// authenticate() log group
 		$fp->group('authenticate()');
-		ob_start();
 
 		$user = $this->userProvider->loadUserByUsername($token->getUsername());
 		$fp->info($user, "user object");
@@ -48,7 +47,6 @@ class WsseProvider implements AuthenticationProviderInterface {
 			$fp->info($authenticatedToken, "auth'd token");
 
 			$fp->groupEnd(); 
-			ob_end_flush();
 			return $authenticatedToken;
 		}
 
@@ -56,13 +54,11 @@ class WsseProvider implements AuthenticationProviderInterface {
 
 		// end authenticate() log group
 		$fp->groupEnd(); 
-		ob_end_flush();
 	}
 
 	protected function validateDigest($digest, $nonce, $created, $secret) {
 		$fp = $this->firePHPLogger;
 		$fp->group('validateDigest()');
-		ob_start();
 
 		$fp->info($nonce, 'nonce');
 		$fp->info($created, 'created');
@@ -86,7 +82,6 @@ class WsseProvider implements AuthenticationProviderInterface {
 		$fp->info($result, 'result');
 
 		$fp->groupEnd();
-		ob_end_flush();
 		return $result;
 	}
 
