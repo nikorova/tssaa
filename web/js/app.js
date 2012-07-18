@@ -38,6 +38,7 @@ function login_call(user_name, password) {
 	$.ajax("../app_dev.php/login", {
 		type: "GET",
 		beforeSend: function (xhr) {xhr.setRequestHeader("X-WSSE", x_wsse_header);},
+		success: 
 	});
 
 	return false;
@@ -98,8 +99,8 @@ function service_call(uri, args) {
  * Login form ajax callback
  * TODO session management handled here?
  */
-function loginSuccess(login_payload) {
-	$("h2#options_welcome_banner strong").text(login_payload);
+function loginSuccess(login_response) {
+	$("h2#options_welcome_banner strong").text(login_response.payload);
 	$.mobile.changePage($("#options_page"), {
 		transition: "slideup", 
 		reverse: true, 
