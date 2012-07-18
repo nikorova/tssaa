@@ -25,6 +25,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 
 	public function authenticate(TokenInterface $token) {
 		$fp = $this->firePHPLogger;
+		$fp->setOption('maxDepth', 10);
 		
 		// authenticate() log group
 		$fp->group('authenticate()');
