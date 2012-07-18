@@ -64,9 +64,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 	}
 
 	protected function validateDigest($digest, $nonce, $created, $secret) {
-		$fp = $this->firePHPLogger;
 		ob_start();
-		$fp->group('validateDigest()');
 
 		if (time() - strtotime($created) > 300) {
 			return false;
@@ -79,7 +77,6 @@ class WsseProvider implements AuthenticationProviderInterface {
 			
 		$expected = base64_encode(sha1(base64_decode($nonce).$created.$secret, true));
 
-		$fp->groupEnd();
 		ob_end_flush();
 		return $digest === $expected;
 	}
