@@ -12,7 +12,7 @@
  * the server-side, but the defaults work in most cases.
  */
 var hexcase = 0;  /* hex output format. 0 - lowercase; 1 - uppercase        */
-var b64pad  = ""; /* base-64 pad character. "=" for strict RFC compliance   */
+var b64pad  = "="; /* base-64 pad character. "=" for strict RFC compliance   */
 
 /*
  * These are the functions you'll usually want to call
@@ -357,8 +357,11 @@ function login_call(user_name, password) {
 	var nonce64 = base64encode(nonce);
 
 	var created = ISODateString(new Date());
-
-	var digest = b64_sha1(created + password + nonce64);
+	
+	var clientShaInput = nonce + created + password;
+	console.log(clientShaInput);
+	
+	var digest = b64_sha1(clientShaInput);
 
 	var x_wsse_header = "UsernameToken Username=\""
 			+ user_name + "\", PasswordDigest=\""

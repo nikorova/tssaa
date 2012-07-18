@@ -70,8 +70,11 @@ class WsseProvider implements AuthenticationProviderInterface {
 			throw new NonceExpiredException('Previously used nonce detected');
 		}
 		file_put_contents($this->cacheDir.'/'.$nonce, time());
-			
-		$expected = base64_encode(sha1(base64_decode($nonce).$created.$secret, true));
+
+		$unShaString = base64_decode($nonce).$created.$secret;
+		$fl->log($unShaString, 'unShaString');
+
+		$expected = base64_encode(sha1($unShaString, true));
 		$fl->log($expected, 'expected');
 		$fl->log($digest, 'digest');
 
