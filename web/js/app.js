@@ -32,7 +32,7 @@ function login_call(user_name, password) {
 			+ nonce64 + "\", Created=\""
 			+ created + "\"";
 
-	$.ajax("app_dev.php/login_check", {
+	$.ajax("app_dev.php", {
 		type: "GET",
 		beforeSend: function (xhr) {xhr.setRequestHeader("X-WSSE", x_wsse_header);},
 		success: loginSuccess,
