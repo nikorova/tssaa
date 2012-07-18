@@ -28,7 +28,6 @@ class WsseProvider implements AuthenticationProviderInterface {
 		$fp->setOption('maxDepth', 5);
 		
 		// authenticate() log group
-		$fp->group('authenticate()');
 
 		$user = $this->userProvider->loadUserByUsername($token->getUsername());
 		$fp->info($user, "user object");
@@ -46,14 +45,12 @@ class WsseProvider implements AuthenticationProviderInterface {
 			$authenticatedToken->setUser($user);
 			$fp->info($authenticatedToken, "auth'd token");
 
-			$fp->groupEnd(); 
 			return $authenticatedToken;
 		}
 
 		throw new AuthenticationException('WSSE failed');
 
 		// end authenticate() log group
-		$fp->groupEnd(); 
 	}
 
 	protected function validateDigest($digest, $nonce, $created, $secret) {
