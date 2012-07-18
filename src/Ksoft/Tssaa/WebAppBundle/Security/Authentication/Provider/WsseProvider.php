@@ -40,7 +40,6 @@ class WsseProvider implements AuthenticationProviderInterface {
 				$authenticatedToken = new WsseUserToken($user->getRoles());
 				$authenticatedToken->setUser($user);
 
-				$fp->info($authenticatedToken, "auth'd token");
 
 				return $authenticatedToken;
 			}
