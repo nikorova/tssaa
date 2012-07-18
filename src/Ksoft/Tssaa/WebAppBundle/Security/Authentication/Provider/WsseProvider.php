@@ -70,7 +70,10 @@ class WsseProvider implements AuthenticationProviderInterface {
 			return false;
 		}
 
-		if (file_exists($this->cacheDir.'/'.$nonce) && file_get_contents($this->cacheDir.'/'.$nonce) + 300 < time()) {
+		if (file_exists($this->cacheDir.'/'.$nonce) && 
+			file_get_contents($this->cacheDir.'/'.$nonce) 
+			+ 300 < time()
+		) {
 			throw new NonceExpiredException('Previously used nonce detected');
 		}
 		file_put_contents($this->cacheDir.'/'.$nonce, time());
