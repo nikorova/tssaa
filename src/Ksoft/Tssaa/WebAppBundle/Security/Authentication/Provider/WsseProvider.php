@@ -36,12 +36,7 @@ class WsseProvider implements AuthenticationProviderInterface {
 
 		try {
 			$is_valid = NULL;
-			if ($user && $is_valid = $this->validateDigest(
-				$token->digest, 
-				$token->nonce, 
-				$token->created, 
-				$user->getPassword()
-			)) {
+			if ($user && $is_valid = $this->validateDigest($token->digest, $token->nonce, $token->created, $user->getPassword())) {
 				$authenticatedToken = new WsseUserToken($user->getRoles());
 				$authenticatedToken->setUser($user);
 
