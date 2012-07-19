@@ -52,8 +52,7 @@ function service_call(uri, args) {
 	}
 
 	$.ajax(uri, { 
-		//type: args.hasOwnProperty("request_params") ? "POST" : "GET",
-		type: 'POST',
+		type: args.hasOwnProperty("request_params") ? "POST" : "GET",
 		// JSON.stringify will return undefined if args.request_params is undef 
 		//data: ,//JSON.stringify(args.request_params),
 		beforeSend: function (xhr) {
@@ -180,11 +179,8 @@ $(document).on("pageinit", function(e, obj) {
 	 */
 	$("#login_page").on("submit", function(e, obj) {
 		var args = {};
-		args.creds = {
-			user: $("#login_input").val(),
-			password: $("#pass_input").val()
-		};
-		console.info("serialized obj", $.serializeObject(args.creds));
+		args.creds = $("#login_form").serializeObject();	
+		console.info("serialized creds.arg", args.creds);
 
 		service_call("app_dev/login", args);
 		console.info('post service_call');
