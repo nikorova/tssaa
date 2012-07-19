@@ -63,7 +63,7 @@ function service_call(uri, args) {
 		},
 		success: on_success,
 		error: console.err(err),
-		complete: on_complete,
+		complete: on_complete
 	});
 	console.debug('and then here we are after');
 
