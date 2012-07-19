@@ -59,7 +59,7 @@ function service_call(uri, args) {
 		//data: ,//JSON.stringify(args.request_params),
 		dummyKey: console.debug('hai gais'),
 		beforeSend: function (xhr) {
-			xhr.setRequestHeader('X-WSSE', generateAuthHeader(args.creds));
+			xhr.setRequestHeader('X-WSSE', generateAuthHeader(args.creds.user, args.creds.pass));
 			console.info('we have set some headers');
 		},
 		success: on_success,
