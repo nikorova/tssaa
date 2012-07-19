@@ -30,10 +30,10 @@ function generateAuthHeader(creds) {
 
 	var created = ISODateString(new Date());
 
-	var digest = b64_sha1(nonce + created + creds.secret);
+	var digest = b64_sha1(nonce + created + creds.password);
 
 	var x_wsse_header = "UsernameToken Username=\""
-		+ creds.user + "\", PasswordDigest=\""
+		+ creds.username + "\", PasswordDigest=\""
 		+ digest + "\", Nonce=\""
 		+ nonce64 + "\", Created=\""
 		+ created + "\"";
