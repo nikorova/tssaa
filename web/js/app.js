@@ -184,7 +184,7 @@ $(document).on("pageinit", function(e, obj) {
 			user: $("#login_input").val(),
 			password: $("#pass_input").val()
 		};
-		console.info(serializeObject(args.creds, "creds"));
+		console.info(serializeObject("serialized obj", args.creds));
 
 		service_call("app_dev/login", args);
 		console.info('post service_call');
