@@ -58,14 +58,16 @@ class WsseProvider implements AuthenticationProviderInterface {
 		$fl->log($created, 'created');
 		$fl->log($secret, 'secret');
 
-		// check timestamp on token
+		// check timestamp on token is not older than 5m
 		if (time() - strtotime($created) > 300) {
 			return false;
 		}
-
+			//true             	//false 	
+		// nonce exists AND nonce timestamp + 5m < current time
+		//     throw UsedNonceException 
 		if (file_exists($this->cacheDir.'/'.$nonce) && 
 			file_get_contents($this->cacheDir.'/'.$nonce) 
-			+ 300 < time()
+			+ 300 > time()
 		) {
 			throw new NonceExpiredException('Previously used nonce detected');
 		}
