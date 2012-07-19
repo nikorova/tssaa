@@ -63,7 +63,7 @@ function service_call(uri, args) {
 			console.info('we have set some headers');
 		},
 		success: on_success,
-		error: function (err) {console.err(err)},
+		error: function (err) {console.error(err)},
 		complete: on_complete
 	});
 	console.debug('and then here we are after');
@@ -187,7 +187,7 @@ $(document).on("pageinit", function(e, obj) {
 		args.creds = $("#login_form").serializeObject();	
 		console.info("serialized args.creds", args.creds);
 
-		service_call("app_dev/login", args);
+		service_call("app_dev.php/login", args);
 		console.info('post service_call');
 
 		return false;
