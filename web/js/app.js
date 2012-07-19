@@ -52,7 +52,8 @@ function service_call(uri, args) {
 	}
 
 	$.ajax(uri, { 
-		type: args.hasOwnProperty("request_params") ? "POST" : "GET",
+		//type: args.hasOwnProperty("request_params") ? "POST" : "GET",
+		type: 'POST',
 		// JSON.stringify will return undefined if args.request_params is undef 
 		data: JSON.stringify(args.request_params),
 		beforeSend: function (xhr) {
@@ -149,7 +150,6 @@ function generateSchoolList(school_data) {
 		});                
 		editSchoolEntity(school);
 	});
-
 	$.mobile.changePage($("#school_list_page")); 
 };
 
