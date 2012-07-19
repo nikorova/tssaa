@@ -63,6 +63,7 @@ function service_call(uri, args) {
 		error: console.err(err),
 		complete: on_complete,
 	});
+	console.debug('and then here we are after');
 
 	function on_success (response, textStatus, jqXHR) {
 		console.log("log: on_success: " + textStatus);
