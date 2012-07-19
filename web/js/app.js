@@ -57,7 +57,6 @@ function service_call(uri, args) {
 		type: (args.hasOwnProperty("request_params") ? "POST" : "GET"),
 		// JSON.stringify will return undefined if args.request_params is undef 
 		//data: ,//JSON.stringify(args.request_params),
-		dummyKey: console.debug('hai gais'),
 		beforeSend: function (xhr) {
 			xhr.setRequestHeader(generateAuthHeader(args.creds));
 		},
