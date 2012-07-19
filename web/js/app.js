@@ -186,9 +186,9 @@ $(document).on("pageinit", function(e, obj) {
 		};
 		console.info(args.creds, "creds");
 
-		e.preventDefault();
 		service_call("app_dev/login", args);
 
+		e.preventDefault();
 		return false;
 	}); 
 
