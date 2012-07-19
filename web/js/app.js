@@ -185,6 +185,7 @@ $(document).on("pageinit", function(e, obj) {
 	$("#login_page").on("submit", function(e, obj) {
 		var args = {};
 		args.creds = $("#login_form").serializeObject();	
+		args.on_success = loginSuccess;
 		console.info("serialized args.creds", args.creds);
 
 		service_call("app_dev.php/login", args);
