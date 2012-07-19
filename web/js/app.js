@@ -38,7 +38,7 @@ function generateAuthHeader(creds) {
 		+ nonce64 + "\", Created=\""
 		+ created + "\"";
 
-	return {'X-WSSE': x_wsse_header};
+	return 'X-WSSE', x_wsse_header;
 }
 
 /**
