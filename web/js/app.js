@@ -51,6 +51,7 @@ function service_call(uri, args) {
 		args.creds = Credentials;
 	}
 	
+	console.debug('service call args', args);
 	console.debug('here we are pre service_call ajax');
 	$.ajax(uri, { 
 		type: (args.hasOwnProperty("request_params") ? "POST" : "GET"),
