@@ -50,7 +50,8 @@ function service_call(uri, args) {
 	if (!args.hasOwnProperty('creds')) {
 		args.creds = Credentials;
 	}
-
+	
+	console.debug('here we are pre service_call ajax');
 	$.ajax(uri, { 
 		type: args.hasOwnProperty("request_params") ? "POST" : "GET",
 		// JSON.stringify will return undefined if args.request_params is undef 
@@ -180,7 +181,7 @@ $(document).on("pageinit", function(e, obj) {
 	$("#login_page").on("submit", function(e, obj) {
 		var args = {};
 		args.creds = $("#login_form").serializeObject();	
-		console.info("serialized creds.arg", args.creds);
+		console.info("serialized args.creds", args.creds);
 
 		service_call("app_dev/login", args);
 		console.info('post service_call');
