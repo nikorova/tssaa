@@ -47,6 +47,10 @@ function generateAuthHeader(creds) {
  * @param args object comprised of args for ajax call 
  */
 function service_call(uri, args) {
+	if (!args.hasOwnProperty('creds')) {
+		args.creds = Credentials;
+	}
+
 	$.ajax(uri, { 
 		type: args.hasOwnProperty("request_params") ? "POST" : "GET",
 		// JSON.stringify will return undefined if args.request_params is undef 
