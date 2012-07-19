@@ -55,12 +55,12 @@ function service_call(uri, args) {
 		//type: args.hasOwnProperty("request_params") ? "POST" : "GET",
 		type: 'POST',
 		// JSON.stringify will return undefined if args.request_params is undef 
-		//data: ,//JSON.stringify(args.request_params),
+		data: ,//JSON.stringify(args.request_params),
 		beforeSend: function (xhr) {
 			xhr.setRequestHeader(generateAuthHeader(args.creds));
 		},
 		success: on_success,
-		error: on_failure,
+		error: console.err(err),
 		complete: on_complete,
 	});
 
@@ -187,6 +187,7 @@ $(document).on("pageinit", function(e, obj) {
 		console.info(args.creds, "creds");
 
 		service_call("app_dev/login", args);
+		console.info('post service_call');
 
 		return false;
 	}); 
