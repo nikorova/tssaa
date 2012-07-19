@@ -38,7 +38,7 @@ function generateAuthHeader(creds) {
 		+ nonce64 + "\", Created=\""
 		+ created + "\"";
 
-	return 'X-WSSE', x_wsse_header;
+	return x_wsse_header;
 }
 
 /**
@@ -59,7 +59,7 @@ function service_call(uri, args) {
 		//data: ,//JSON.stringify(args.request_params),
 		dummyKey: console.debug('hai gais'),
 		beforeSend: function (xhr) {
-			xhr.setRequestHeader(generateAuthHeader(args.creds));
+			xhr.setRequestHeader('X-WSSE', generateAuthHeader(args.creds));
 			console.info('we have set some headers');
 		},
 		success: on_success,
