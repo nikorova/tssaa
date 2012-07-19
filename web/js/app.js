@@ -24,16 +24,16 @@ $.fn.serializeObject = function () {
 	return o;
 };
 
-function generateAuthHeader(user_name, secret) {
+function generateAuthHeader(creds) {
 	var nonce = generateNonce(16);
 	var nonce64 = base64encode(nonce);
 
 	var created = ISODateString(new Date());
 
-	var digest = b64_sha1(nonce + created + secret);
+	var digest = b64_sha1(nonce + created + creds.secret);
 
 	var x_wsse_header = "UsernameToken Username=\""
-		+ user_name + "\", PasswordDigest=\""
+		+ creds.user + "\", PasswordDigest=\""
 		+ digest + "\", Nonce=\""
 		+ nonce64 + "\", Created=\""
 		+ created + "\"";
@@ -52,7 +52,7 @@ function service_call(uri, args) {
 		// JSON.stringify will return undefined if args.request_params is undef 
 		data: JSON.stringify(args.request_params),
 		beforeSend: function (xhr) {
-			xhr.setRequestHeader(generateAuthHeader(args.request_params.user, ...password));
+			xhr.setRequestHeader(generateAuthHeader(args.creds));
 		},
 		success: on_success,
 		error: on_failure,
@@ -175,10 +175,14 @@ $(document).on("pageinit", function(e, obj) {
 	 * Login form handler
 	 */
 	$("#login_page").on("submit", function(e, obj) {
-		var user_name = $("#login_input").val();
-		var password = $("#pass_input").val();
+		var args = {};
+		args.creds = {
+			user: $("#login_input").val(),
+			password: $("#pass_input").val()
+		};
+		console.info(args.creds, "creds");
 
-		login_call(user_name, password);
+		service_call("app_dev/login", args);
 
 		return false;
 	}); 
