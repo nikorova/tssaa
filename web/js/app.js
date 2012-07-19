@@ -24,16 +24,16 @@ $.fn.serializeObject = function () {
 	return o;
 };
 
-function generateAuthHeader(creds) {
+function generateAuthHeader(user, pass) {
 	var nonce = generateNonce(16);
 	var nonce64 = base64encode(nonce);
 
 	var created = ISODateString(new Date());
 
-	var digest = b64_sha1(nonce + created + creds.password);
+	var digest = b64_sha1(nonce + created + pass);
 
 	var x_wsse_header = "UsernameToken Username=\""
-		+ creds.username + "\", PasswordDigest=\""
+		+ user + "\", PasswordDigest=\""
 		+ digest + "\", Nonce=\""
 		+ nonce64 + "\", Created=\""
 		+ created + "\"";
@@ -51,7 +51,7 @@ function service_call(uri, args) {
 		args.creds = Credentials;
 	}
 	
-	console.debug('service call args.creds.user', args.creds.user);
+	console.info('service call args.creds.user', args.creds.user);
 	console.debug('here we are pre service_call ajax');
 	$.ajax(uri, { 
 		type: (args.hasOwnProperty("request_params") ? "POST" : "GET"),
