@@ -3,8 +3,8 @@
  * generators for TSSAA WebApp Fat Client *
  *****************************************/
 var Credentials = {
-	username: "", 
-	secret: ""
+	user: "", 
+	pass: ""
 };
 
 $.fn.serializeObject = function () {
@@ -47,26 +47,23 @@ function generateAuthHeader(user, pass) {
  * @param args object comprised of args for ajax call 
  */
 function service_call(uri, args) {
-	if (!args.hasOwnProperty('creds')) {
-		args.creds = Credentials;
-	}
-	
-	console.info('service call args.creds.user', args.creds.user);
-	console.debug('here we are pre service_call ajax');
+	if (args.hasOwnProperty('creds')) {
+		 Credentials.user = args.creds.user;
+		 Credentials.pass = args.creds.pass;
+	} 
+	console.info('service call Credentials', Credentials);
 	$.ajax(uri, { 
 		type: (args.hasOwnProperty("request_params") ? "POST" : "GET"),
 		// JSON.stringify will return undefined if args.request_params is undef 
-		//data: ,//JSON.stringify(args.request_params),
+		data: JSON.stringify(args.request_params),
 		dummyKey: console.debug('hai gais'),
 		beforeSend: function (xhr) {
-			xhr.setRequestHeader('X-WSSE', generateAuthHeader(args.creds.user, args.creds.pass));
-			console.info('we have set some headers');
+			xhr.setRequestHeader('X-WSSE', generateAuthHeader(Credentials.user, Credentials.pass));
 		},
 		success: on_success,
 		error: function (err) {console.error(err)},
 		complete: on_complete
 	});
-	console.debug('and then here we are after');
 
 	function on_success (response, textStatus, jqXHR) {
 		console.log("log: on_success: " + textStatus);
@@ -186,10 +183,10 @@ $(document).on("pageinit", function(e, obj) {
 		var args = {};
 		args.creds = $("#login_form").serializeObject();	
 		args.on_success = loginSuccess;
+
 		console.info("serialized args.creds", args.creds);
 
 		service_call("app_dev.php/login", args);
-		console.info('post service_call');
 
 		return false;
 	}); 
