@@ -60,6 +60,7 @@ function service_call(uri, args) {
 		dummyKey: console.debug('hai gais'),
 		beforeSend: function (xhr) {
 			xhr.setRequestHeader(generateAuthHeader(args.creds));
+			console.info('we have set some headers');
 		},
 		success: on_success,
 		error: function (err) {console.err(err)},
