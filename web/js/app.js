@@ -53,7 +53,7 @@ function service_call(uri, args) {
 	
 	console.debug('here we are pre service_call ajax');
 	$.ajax(uri, { 
-		type: args.hasOwnProperty("request_params") ? "POST" : "GET",
+		type: (args.hasOwnProperty("request_params") ? "POST" : "GET"),
 		// JSON.stringify will return undefined if args.request_params is undef 
 		//data: ,//JSON.stringify(args.request_params),
 		beforeSend: function (xhr) {
