@@ -2,6 +2,11 @@
  * Form Handlers and page                 *
  * generators for TSSAA WebApp Fat Client *
  *****************************************/
+var Credentials = {
+	username: "", 
+	secret: ""
+};
+
 $.fn.serializeObject = function () {
 	var o = {};
 	var a = this.serializeArray();
@@ -19,15 +24,13 @@ $.fn.serializeObject = function () {
 	return o;
 };
 
-function login_call(user_name, password) {
+function generateAuthHeader(user_name, secret) {
 	var nonce = generateNonce(16);
 	var nonce64 = base64encode(nonce);
 
 	var created = ISODateString(new Date());
 
-	var clientShaInput = nonce + created + password;
-
-	var digest = b64_sha1(clientShaInput);
+	var digest = b64_sha1(nonce + created + secret);
 
 	var x_wsse_header = "UsernameToken Username=\""
 		+ user_name + "\", PasswordDigest=\""
@@ -35,13 +38,7 @@ function login_call(user_name, password) {
 		+ nonce64 + "\", Created=\""
 		+ created + "\"";
 
-	$.ajax("../app_dev.php/login", {
-		type: "POST",
-		beforeSend: function (xhr) {xhr.setRequestHeader("X-WSSE", x_wsse_header);},
-		success: loginSuccess,
-	});
-
-	return false;
+	return {'X-WSSE': x_wsse_header};
 }
 
 /**
@@ -52,11 +49,14 @@ function login_call(user_name, password) {
 function service_call(uri, args) {
 	$.ajax(uri, { 
 		type: args.hasOwnProperty("request_params") ? "POST" : "GET",
-	// JSON.stringify will return undefined if args.request_params is undef 
-	data: JSON.stringify(args.request_params),
-	success: on_success,
-	error: on_failure,
-	complete: on_complete,
+		// JSON.stringify will return undefined if args.request_params is undef 
+		data: JSON.stringify(args.request_params),
+		beforeSend: function (xhr) {
+			xhr.setRequestHeader(generateAuthHeader(args.request_params.user, ...password));
+		},
+		success: on_success,
+		error: on_failure,
+		complete: on_complete,
 	});
 
 	function on_success (response, textStatus, jqXHR) {
