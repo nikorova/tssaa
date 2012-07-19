@@ -62,7 +62,7 @@ function service_call(uri, args) {
 			xhr.setRequestHeader(generateAuthHeader(args.creds));
 		},
 		success: on_success,
-		error: console.err(err),
+		error: function (err) {console.err(err)},
 		complete: on_complete
 	});
 	console.debug('and then here we are after');
