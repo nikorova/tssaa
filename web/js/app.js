@@ -106,7 +106,8 @@ function service_call(uri, args) {
  * TODO session management handled here?
  */
 function loginSuccess(login_response) {
-	$("h2#options_welcome_banner strong").text(login_response.user.username);
+	console.log(login_response);
+	$("h2#options_welcome_banner strong").text('blah');
 	$.mobile.changePage($("#options_page"), {
 		transition: "slideup", 
 		reverse: true, 
