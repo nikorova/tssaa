@@ -7,11 +7,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+use Symfony\Component\Security\Core\SecurityContextInterface;
+
 class LoginController extends Controller {
 	/**
 	 * @Route("login"), requirements={"_method" = "POST"}
 	 */
 	public function loginAction(){
-		return "FLEH EW AH MAI GAWD";
+		$token = $this->get('security.context')->getToken();
+
+		return $token->getUsername();
 	}
 }
