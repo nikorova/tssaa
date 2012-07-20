@@ -22,12 +22,13 @@ class LoginController extends Controller {
 		$fl->log('le token', $token);
 		$fl->log('user obj from token', $user = $token->getUser());
 		
-		$userData = new array(
+		$userData = array(
 			'id' => $user->getId(),
 			'username' => $user->getUsername(),
 			'email' 	=> $user->getmail(),
 			'isActive'	=> $user->getIsActive(),
 		);
+
 		return $userData;
 	}
 }
