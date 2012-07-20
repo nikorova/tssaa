@@ -20,8 +20,14 @@ class LoginController extends Controller {
 		$token = $this->get('security.context')->getToken();
 
 		$fl->log('le token', $token);
-		$fl->log('user obj from token', $token->getUser());
-
-		return ($token->getUser());
+		$fl->log('user obj from token', $user = $token->getUser());
+		
+		$userData = new array(
+			'id' => $user->getId(),
+			'username' => $user->getUsername(),
+			'email' 	=> $user->getmail(),
+			'isActive'	=> $user->getIsActive(),
+		);
+		return $userData;
 	}
 }
