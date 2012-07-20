@@ -66,8 +66,6 @@ function service_call(uri, args) {
 	});
 
 	function on_success (response, textStatus, jqXHR) {
-		console.log("log: on_success: " + textStatus);
-
 		data = JSON.parse(response);
 
 		if (data.status === "success") {

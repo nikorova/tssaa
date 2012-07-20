@@ -18,6 +18,7 @@ class TssaaResponseListener {
 		);
 		
 		$response = new Response(json_encode($server_data));
+		$fl->log($response);
 
 		$event->setResponse($response);
 	}
