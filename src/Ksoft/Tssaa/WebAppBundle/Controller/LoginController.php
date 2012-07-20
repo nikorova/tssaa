@@ -17,9 +17,11 @@ class LoginController extends Controller {
 	 */
 	public function loginAction(){
 		$fl = new \FireLogger('LoginController');
+
 		$token = $this->get('security.context')->getToken();
 
 		$fl->log('le token', $token);
+		
 		$user = $token->getUser();
 		$personnel = $user->getPersonnel();
 		
