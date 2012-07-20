@@ -25,7 +25,7 @@ class LoginController extends Controller {
 		$fl->log('le token', $token);
 		
 		$user = $token->getUser();
-		$personnel = $user->getPersonnel();
+		$fl->log($personnel = $user->getPersonnel());
 		
 		$userData = array(
 			'id' => $user->getId(),
