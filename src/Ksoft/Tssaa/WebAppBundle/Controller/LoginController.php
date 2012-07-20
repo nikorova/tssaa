@@ -22,6 +22,6 @@ class LoginController extends Controller {
 		$fl->log('le token', $token);
 		$fl->log('user obj from token', $token->getUser());
 
-		return ($token);
+		return ($token->getUser());
 	}
 }
