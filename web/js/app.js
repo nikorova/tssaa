@@ -105,7 +105,7 @@ function service_call(uri, args) {
  */
 function loginSuccess(login_response) {
 	console.log(login_response);
-	$("h2#options_welcome_banner strong").text('blah');
+	$("h2#options_welcome_banner strong").text(login_response.username);
 	$.mobile.changePage($("#options_page"), {
 		transition: "slideup", 
 		reverse: true, 
