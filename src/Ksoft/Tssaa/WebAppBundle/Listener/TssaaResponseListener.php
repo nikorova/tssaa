@@ -14,7 +14,7 @@ class TssaaResponseListener {
 		$server_data = array(
 			"status" => "success",
 			"exception" => NULL,
-			"payload" => $fl->log('getContRes', $event->getControllerResult()),
+			"payload" => $event->getControllerResult(),
 		);
 		
 		$response = new Response(json_encode($server_data));
