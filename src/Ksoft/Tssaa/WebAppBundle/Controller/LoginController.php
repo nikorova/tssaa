@@ -20,7 +20,8 @@ class LoginController extends Controller {
 		$token = $this->get('security.context')->getToken();
 
 		$fl->log('le token', $token);
-		$fl->log('user obj from token', $user = $token->getUser());
+		$user = $token->getUser();
+		$personnel = $user->getPersonnel();
 		
 		$userData = array(
 			'id' => $user->getId(),
@@ -29,6 +30,19 @@ class LoginController extends Controller {
 			'isActive'	=> $user->getIsActive(),
 		);
 
-		return $userData;
+		$personnelData = array(
+			'id'	=> $personnel->getId(),
+			'name' 	=> $personnel->getName(),
+			'phone' => $personnel->getPhone(),
+			'email' => $personnel->getEmail(),
+			'address'	=> $personnel->getAddress(),
+			'coaching_position'	=> $personnel->getCoachingPosition(),
+			'school'			=> $personnel->getSchool(),
+		);
+			
+		return array(
+			'userData' => $userData, 
+			'personnelData' => $personnelData
+		);	
 	}
 }

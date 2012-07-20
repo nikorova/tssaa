@@ -43,6 +43,11 @@ class User implements UserInterface {
 	 */
 	private $isActive;
 
+	/**
+	 * @ORM\OneToOne(targetEntity="Personnel", mappedBy="user")
+	 */
+	protected $personnel;
+
 	public function __construct() {
 		$this->isActive = true;
 		$this->salt = md5(uniqid(null, true));
@@ -162,5 +167,25 @@ class User implements UserInterface {
      */
     public function getIsActive() {
         return $this->isActive;
+    }
+
+    /**
+     * Set personnel
+     *
+     * @param Ksoft\Tssaa\WebAppBundle\Entity\Personnel $personnel
+     */
+    public function setPersonnel(\Ksoft\Tssaa\WebAppBundle\Entity\Personnel $personnel)
+    {
+        $this->personnel = $personnel;
+    }
+
+    /**
+     * Get personnel
+     *
+     * @return Ksoft\Tssaa\WebAppBundle\Entity\Personnel 
+     */
+    public function getPersonnel()
+    {
+        return $this->personnel;
     }
 }
