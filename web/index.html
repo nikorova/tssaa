@@ -119,7 +119,7 @@
             <br />
 
             <button type="submit"
-                id="add_user_submit"
+                id="add_coach_submit"
                 data-role="button"
                 data-theme="b"
                 data-inline="true"
@@ -129,19 +129,30 @@
     <div data-role="footer"> &copy; TSSAA </div>	
 </div><!-- /ADD_USER_PAGE -->
 
-<div data-role="page" id="edit_personnel_page" data-theme="b">
-    <div data-role="header"><h1>Edit Personnel</h1></div>
+<div data-role="page" id="edit_coach_page" data-theme="b">
+    <div data-role="header"><h1>Edit Coach</h1></div>
 
     <div data-role="content">
-        <form id="edit_personnel_form">
-           <label for="name">Name</label>
-           <input type="text" id="name" name="name"/> 
+        <form id="edit_coach_form">
+            <label for="add_email"><strong>Email:</strong></label>
+            <input type="text" name="email" id="add_email"/>
+            <br />
+            <label for="add_phone"><strong>Phone number:</strong></label>
+            <input type="text" name="phone_number" id="add_phone_number" />
+            <br />
+            <label for="add_phone"><strong>First Name:</strong></label>
+            <input type="text" name="first_name" id="add_first_name" />
+            <br />
+            <label for="add_phone"><strong>Last Name:</strong></label>
+            <input type="text" name="last_name" id="add_last_name" />
+            <br />
 
-           <label for="position">Position</label>
-           <input type="text" id="position" name="position"/> 
-
-           <label for="email">Name</label>
-           <input type="email" id="email" name="email"/> 
+            <button type="submit"
+                id="edit_coach_submit"
+                data-role="button"
+                data-theme="b"
+                data-inline="true"
+                data-rel="dialog">Submit</button>
         </form>
     </div>
 
