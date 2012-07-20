@@ -51,10 +51,9 @@
 		<h2 id="options_welcome_banner">Welcome <strong></strong></h2>
         <ul data-role="listview" 
             data-inset="true" data-autodividers="true"> 
-            <li><a href="#add_user_page" >Add New Personnel</a></li>
-            <li><a href="#edit_personnel_page" >Edit Personnel</a></li>
-            <li><a href="#add_school_page" >Add New School</a></li>
-            <li><a href="#school_list_page" id="school_list_page_a">View/Edit Schools</a></li>
+            <li><a href="#manage_coaches_page" >Manage Coaches</a></li>
+            <li><a href="#edit_school_page" >Edit School Info</a></li>
+            <li><a href="#manage_athletic_director_page" >Athletic Director</a></li>
         </ul>
         <a href="#login_page"
             id="logout_button"
@@ -65,6 +64,14 @@
     <div data-role="footer"> &copy; TSSAA </div>
 </div><!-- /OPTIONS_PAGE -->
 
+<div data-role="page" id="manage_coaches_page" data-theme="b">
+    <div data-role="header"><h1> Manage Coacges </h1></div>
+    <div data-role="content">
+        <div data-role="collapsible-set" id="coaches_list">
+        </div>
+    </div>
+    <div data-role="footer"> &copy; TSSAA </div>
+</div><!-- /MANAGE_COACHES_PAGE -->
 
 <div data-role="page" id="add_school_page" data-theme="b">
     <div data-role="header"><h1> Add New School </h1></div>
@@ -90,7 +97,7 @@
 </div><!-- /ADD_SCHOOL_PAGE -->			
 
 
-<div data-role="page" id="add_user_page" data-theme="b">
+<div data-role="page" id="add_coach_page" data-theme="b">
     <div data-role="header"><h1> Add New Personnel</h1></div>
     <div data-role="content">
         <form id="add_user_form">
