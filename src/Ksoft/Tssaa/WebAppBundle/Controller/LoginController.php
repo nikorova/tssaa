@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
+use Ksoft\Tssaa\WebAppBundle\Entity\Personnel;
+
 require_once('firelogger.php/firelogger.php');
 
 class LoginController extends Controller {
