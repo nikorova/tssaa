@@ -16,6 +16,6 @@ class LoginController extends Controller {
 	public function loginAction(){
 		$token = $this->get('security.context')->getToken();
 
-		return $token->getUsername();
+		return ('1' . $token->getUsername());
 	}
 }
