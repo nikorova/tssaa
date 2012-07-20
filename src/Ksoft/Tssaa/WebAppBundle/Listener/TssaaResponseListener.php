@@ -9,12 +9,12 @@ require_once('firelogger.php/firelogger.php');
 class TssaaResponseListener {
 	public function onKernelResponse (GetResponseForControllerResultEvent $event) {
 		$fl = new \FireLogger('TssaaResponseListener');
-		$fl->log($event);
+		$fl->log('event', $event);
 
 		$server_data = array(
 			"status" => "success",
 			"exception" => NULL,
-			"payload" => $fl->log($event->getControllerResult()),
+			"payload" => $fl->log('getContRes', $event->getControllerResult()),
 		);
 		
 		$response = new Response(json_encode($server_data));
