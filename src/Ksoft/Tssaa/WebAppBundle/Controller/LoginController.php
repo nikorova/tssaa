@@ -25,7 +25,7 @@ class LoginController extends Controller {
 		$userData = array(
 			'id' => $user->getId(),
 			'username' => $user->getUsername(),
-			'email' 	=> $user->getmail(),
+			'email' 	=> $user->getEmail(),
 			'isActive'	=> $user->getIsActive(),
 		);
 
