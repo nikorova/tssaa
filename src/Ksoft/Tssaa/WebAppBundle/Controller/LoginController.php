@@ -30,11 +30,11 @@ class LoginController extends Controller {
 		);
 
 		$personnelData = array(
-			'id'	=> $personnel->getId(),
-			'name' 	=> $personnel->getName(),
-			'phone' => $personnel->getPhone(),
-			'email' => $personnel->getEmail(),
-			'address'	=> $personnel->getAddress(),
+			'id'				=> $personnel->getId(),
+			'name' 				=> $personnel->getName(),
+			'phone' 			=> $personnel->getPhone(),
+			'email' 			=> $personnel->getEmail(),
+			'address'			=> $personnel->getAddress(),
 			'coaching_position'	=> $personnel->getCoachingPosition(),
 			'school'			=> $personnel->getSchool(),
 		);

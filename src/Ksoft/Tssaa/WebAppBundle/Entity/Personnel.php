@@ -43,7 +43,7 @@ class Personnel {
 	protected $coaching_position;
 
 	/**
-	 * @ORM\OnetoMany(targetEntity="School", mappedBy="personnel")
+	 * @ORM\ManyToOne(targetEntity="School", inversedBy="personnel")
 	 */
 	protected $school;
 

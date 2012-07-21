@@ -39,7 +39,7 @@ class School {
     protected $created;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Personnel", inversedBy="school")
+	 * @ORM\OneToMany(targetEntity="Personnel", mappedBy="school")
 	 */
 	protected $personnel;
 
