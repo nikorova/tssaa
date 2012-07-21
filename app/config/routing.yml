@@ -1,5 +1,7 @@
-KsoftTssaaWebAppBundle:
-    resource: "@WebAppBundle/Resources/config/routing.yml"
+WebApp:
+    resource: "@WebAppBundle/Controller"
+    type: annotation
+    prefix: /
 
 # Internal routing configuration to handle ESI
 #_internal:
