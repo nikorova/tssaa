@@ -12,7 +12,6 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 use Ksoft\Tssaa\WebAppBundle\Entity\Personnel;
 use Ksoft\Tssaa\WebAppBundle\Entity\User;
 
-require_once('firelogger.php/firelogger.php');
 
 class LoginController extends Controller {
 	/**
