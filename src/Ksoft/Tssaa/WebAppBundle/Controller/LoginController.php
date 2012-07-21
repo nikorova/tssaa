@@ -18,14 +18,9 @@ class LoginController extends Controller {
 	 * @Route("login"), requirements={"_method" = "POST"}
 	 */
 	public function loginAction(){
-		$fl = new \FireLogger('LoginController');
-
 		$token = $this->get('security.context')->getToken();
-
-		$fl->log('le token', $token);
 		
 		$user = $token->getUser();
-		$fl->log("personnel obj", $personnel = $user->getPersonnel());
 		
 		$userData = array(
 			'id' => $user->getId(),
