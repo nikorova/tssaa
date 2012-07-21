@@ -23,11 +23,11 @@ class LoginController extends Controller {
 		
 		$user = $token->getUser();
 		$fl = new \FireLogger('LoginController');
-		$fl->log($user);
+		$fl->log('user obj from token', $user);
 		
 		$userData = array(
-			'id' => $user->getId(),
-			'username' => $user->getUsername(),
+			'id' 		=> $user->getId(),
+			'username' 	=> $user->getUsername(),
 			'email' 	=> $user->getEmail(),
 			'isActive'	=> $user->getIsActive(),
 		);
