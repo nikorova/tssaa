@@ -53,7 +53,7 @@
             data-inset="true" data-autodividers="true"> 
             <li><a href="#manage_coaches_page" >Manage Coaches</a></li>
             <li><a href="#edit_school_page" >Edit School Info</a></li>
-            <li><a href="#manage_athletic_director_page" >Athletic Director</a></li>
+            <li><a href="#edit_athletic_director_page" >Athletic Director</a></li>
         </ul>
         <a href="#login_page"
             id="logout_button"
@@ -128,6 +128,36 @@
     </div>
     <div data-role="footer"> &copy; TSSAA </div>	
 </div><!-- /ADD_USER_PAGE -->
+
+<div data-role="page" id="edit_coach_page" data-theme="b">
+    <div data-role="header"><h1>Edit Coach</h1></div>
+
+    <div data-role="content">
+        <form id="edit_coach_form">
+            <label for="add_email"><strong>Email:</strong></label>
+            <input type="text" name="email" id="add_email"/>
+            <br />
+            <label for="add_phone"><strong>Phone number:</strong></label>
+            <input type="text" name="phone_number" id="add_phone_number" />
+            <br />
+            <label for="add_phone"><strong>First Name:</strong></label>
+            <input type="text" name="first_name" id="add_first_name" />
+            <br />
+            <label for="add_phone"><strong>Last Name:</strong></label>
+            <input type="text" name="last_name" id="add_last_name" />
+            <br />
+
+            <button type="submit"
+                id="edit_coach_submit"
+                data-role="button"
+                data-theme="b"
+                data-inline="true"
+                data-rel="dialog">Submit</button>
+        </form>
+    </div>
+
+    <div data-role="footer"> &copy; TSSAA </div>
+</div><!-- /EDIT_ATHLETIC_DIRECTOR_PAGE -->
 
 <div data-role="page" id="edit_coach_page" data-theme="b">
     <div data-role="header"><h1>Edit Coach</h1></div>
