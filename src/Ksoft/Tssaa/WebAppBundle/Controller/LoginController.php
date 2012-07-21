@@ -20,6 +20,7 @@ class LoginController extends Controller {
 		$token = $this->get('security.context')->getToken();
 		
 		$user = $token->getUser();
+		$personnel = $user->getPersonnel();
 
 		$userData = array(
 			'id' 		=> $user->getId(),
