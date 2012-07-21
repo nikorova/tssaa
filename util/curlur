@@ -26,14 +26,7 @@ VERB="POST"
 DATA='{"name":"boob","occupation":"doctor","command":"barf"}'
 
 # Target URI
-if [ 0 -eq $# ]
-then
-    TARGET="http://tssaa.nikorova.korovasoft.com/app_dev.php/login_check"
-else
-    DOMAIN=$1
-    URI=$2
-    TARGET="$DOMAIN/$URI"
-fi
+TARGET="http://tssaa.nikorova.korovasoft.com/app_dev.php/get_school_by_id"
 
 # File for curl output
 OUTPUT="out.curlur.html"
