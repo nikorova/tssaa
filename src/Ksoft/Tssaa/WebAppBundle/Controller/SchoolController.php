@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class SchoolController extends Controller {
     /**
-     * @Route('add_school'), requirements={'_method' = 'POST'}
+     * @Route("add_school"), requirements={"_method" = "POST"}
      */
     public function addSchoolAction() {
 		$reqBag = $this->getRequest()->request;
