@@ -12,7 +12,6 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 use Ksoft\Tssaa\WebAppBundle\Entity\Personnel;
 use Ksoft\Tssaa\WebAppBundle\Entity\User;
 
-
 class LoginController extends Controller {
 	/**
 	 * @Route("login")
@@ -22,6 +21,7 @@ class LoginController extends Controller {
 		
 		$user = $token->getUser();
 
+		return $user->getId();
 		return gettype($user); 
 		
 		$userData = array(
