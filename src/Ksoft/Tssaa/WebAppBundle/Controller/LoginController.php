@@ -15,7 +15,7 @@ require_once('firelogger.php/firelogger.php');
 
 class LoginController extends Controller {
 	/**
-	 * @Route("login"), requirements={"_method" = "POST"}
+	 * @Route("login")
 	 */
 	public function loginAction(){
 		$token = $this->get('security.context')->getToken();
