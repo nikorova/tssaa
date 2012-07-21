@@ -70,7 +70,7 @@ class SchoolController extends Controller {
 
 	/**
 	 * @Route("get_school_by_id/{id}")
-	 * @Method("GET)
+	 * @Method("GET")
 	 */
 	public function getSchoolByIdAction($id) {
 		$em = $this->getDoctrine()->getEntityManager();
