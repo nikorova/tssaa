@@ -9,26 +9,42 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
+use Ksoft\Tssaa\WebAppBundle\Entity\Personnel;
+use Ksoft\Tssaa\WebAppBundle\Entity\User;
+
 require_once('firelogger.php/firelogger.php');
 
 class LoginController extends Controller {
 	/**
-	 * @Route("login"), requirements={"_method" = "POST"}
+	 * @Route("login")
 	 */
 	public function loginAction(){
-		$fl = new \FireLogger('LoginController');
 		$token = $this->get('security.context')->getToken();
-
-		$fl->log('le token', $token);
-		$fl->log('user obj from token', $user = $token->getUser());
+		
+		$user = $token->getUser();
+		$fl = new \FireLogger('LoginController');
+		$fl->log('user obj from token', $user);
 		
 		$userData = array(
-			'id' => $user->getId(),
-			'username' => $user->getUsername(),
+			'id' 		=> $user->getId(),
+			'username' 	=> $user->getUsername(),
 			'email' 	=> $user->getEmail(),
 			'isActive'	=> $user->getIsActive(),
 		);
 
-		return $userData;
+		$personnelData = array(
+			'id'	=> $personnel->getId(),
+			'name' 	=> $personnel->getName(),
+			'phone' => $personnel->getPhone(),
+			'email' => $personnel->getEmail(),
+			'address'	=> $personnel->getAddress(),
+			'coaching_position'	=> $personnel->getCoachingPosition(),
+			'school'			=> $personnel->getSchool(),
+		);
+			
+		return array(
+			'userData' => $userData, 
+			'personnelData' => $personnelData
+		);	
 	}
 }

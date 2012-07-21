@@ -10,14 +10,14 @@ class TssaaExceptionListener {
 		
 		// build our exception flavored response object
 		$exception_array = array(
-			"status" => "failure",
-			"exception" => array(
-				"message" 		=> $exception->getMessage(),
-				"type" 			=> get_class($exception),
-				"code" 			=> $exception->getCode(),
-				"stack_trace" 	=> $exception->getTraceAsString(),
+			'status' => 'failure',
+			'exception' => array(
+				'message' 		=> $exception->getMessage(),
+				'type' 			=> get_class($exception),
+				'code' 			=> $exception->getCode(),
+				'stack_trace' 	=> $exception->getTraceAsString(),
 			),
-		   	"payload" => NULL,	
+		   	'payload' => NULL,	
 		);	
 		
 		// encode array a la json, make new Response of it

@@ -46,6 +46,12 @@ class Personnel {
 	 * @ORM\OnetoMany(targetEntity="School", mappedBy="personnel")
 	 */
 	protected $school;
+
+	/**
+	 * @ORM\OneToOne(targetEntity="User", inversedBy="personnel")
+	 */
+	protected $user;
+
     public function __construct()
     {
         $this->school = new \Doctrine\Common\Collections\ArrayCollection();
@@ -179,5 +185,25 @@ class Personnel {
     public function getSchool()
     {
         return $this->school;
+    }
+
+    /**
+     * Set user
+     *
+     * @param Ksoft\Tssaa\WebAppBundle\Entity\User $user
+     */
+    public function setUser(\Ksoft\Tssaa\WebAppBundle\Entity\User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Ksoft\Tssaa\WebAppBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

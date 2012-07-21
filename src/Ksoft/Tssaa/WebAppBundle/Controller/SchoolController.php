@@ -3,33 +3,20 @@
 namespace Ksoft\Tssaa\WebAppBundle\Controller;
 
 use Ksoft\Tssaa\WebAppBundle\Entity\School;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class SchoolController extends Controller {
-    
     /**
      * @Route('add_school'), requirements={'_method' = 'POST'}
      */
     public function addSchoolAction() {
-		$req = $this->getRequest();
+		$reqBag = $this->getRequest()->request;
 
-		$content = array();
+		$content = $reqBag->get('client_data');
 
-		try {
-			$content = json_decode($req->getContent(), true);
-		} catch (Exception $err) {
-			$err_response = array(
-				'status' => 'failure',
-				'exception' => $err,
-				'payload' => NULL,
-			);
-			return new Respose(json_encode($err_response));
-		}
 
         $school = new school();
         $school->setSchoolName($content['name']);
@@ -39,47 +26,48 @@ class SchoolController extends Controller {
 
         $em = $this->getDoctrine()->getEntityManager();
         $em->persist($school);
-        $em->flush();
 
         $school_data = array(
-			'status' => 'success', 
+			'status' 	=> 'success', 
 		   	'exception' => NULL, 
-			'payload' => NULL	
+			'payload' 	=>'Successfully added '.$content['name'].'.',
         );
 
-        return new Response(json_encode($school_data));
+        $em->flush();
+
+		return $school_data;
     }
 
     /**
-     * @Route('get_school_list'), requirements={'_method' = 'GET'}
+     * @Route("get_school_list"), requirements={"_method" = "GET"}
      */
     public function getSchoolList() {
-        $repo = $this->getDoctrine()->getRepository('WebAppBundle:School');
+        $repo = $this->getDoctrine()->getRepository("WebAppBundle:School");
         $school_objects = $repo->findAll();
 
         $schools = array();
         
         foreach ($school_objects as $school){
 			$s = array(
-				'id' =>	$school->getId(), 	
-                'name' => $school->getName(), 
-                'phone' => $school->getPhone(), 
-				'address' => $school->getAddress()
+				"id" =>	$school->getId(), 	
+                "name" => $school->getName(), 
+                "phone" => $school->getPhone(), 
+				"address" => $school->getAddress()
 			);
 
             $schools[$school->getId()] = $s;
         }
 
 		$get_schools_response = array(
-			'status' => 'success',
-			'exception' => NULL,
-			'payload' => $schools,
+			"status" => "success",
+			"exception" => NULL,
+			"payload" => $schools,
 		);
         return new Response(json_encode($get_schools_response));
     }
 
     /**
-     * @Route('update_school'), requirements={'_method' = 'POST'}
+     * @Route("update_school"), requirements={"_method" = "POST"}
      */
     public function updateSchool() {
         $req = $this->getRequest();        
