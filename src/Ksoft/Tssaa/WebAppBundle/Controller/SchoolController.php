@@ -7,37 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class SchoolController extends Controller {
-    /**
-     * @Route("add_school"), requirements={"_method" = "POST"}
-     */
-    public function addSchoolAction() {
-		$reqBag = $this->getRequest()->request;
-
-		$content = $reqBag->get('client_data');
-
-
-        $school = new school();
-        $school->setSchoolName($content['name']);
-        $school->setAddress($content['address']);
-        $school->setPhone($content['phone']);
-        $school->setCreated(new \DateTime());
-
-        $em = $this->getDoctrine()->getEntityManager();
-        $em->persist($school);
-
-        $school_data = array(
-			'status' 	=> 'success', 
-		   	'exception' => NULL, 
-			'payload' 	=>'Successfully added '.$content['name'].'.',
-        );
-
-        $em->flush();
-
-		return $school_data;
-    }
-
     /**
      * @Route("get_school_list"), requirements={"_method" = "GET"}
      */
@@ -67,38 +39,18 @@ class SchoolController extends Controller {
     }
 
     /**
-     * @Route("update_school"), requirements={"_method" = "POST"}
+     * @Route("update_school/{id}")
+	 * @Method("POST")
      */
-    public function updateSchool() {
-        $req = $this->getRequest();        
-		$content = array();
+    public function updateSchool($id) {
+        $reqBag = $this->getRequest()->request;        
+		$content = $reqBag->get('client_data'); 
 		
-		$update_school_response = array(
-			'status' => NULL,
-			'exception' => NULL,
-			'payload' => NULL,
-		);
-
-		try {
-			$content = json_decode($req->getContent(), true);
-		} catch (Exception $err) {
-			$update_school_response['status'] = 'failure';
-			$update_school_response['exception'] = $err;
-			return new Response(json_encode($update_school_response));
-		}
-
+		
         $em = $this->getDoctrine()->getEntityManager();
-
         $school = $em->getRepository('WebAppBundle:School')
-            ->find($content['id']);
+            ->find($id);
 
-        if (!$school) {
-			$update_school_response['status'] = 'failure';
-			$update_school_response['exception'] = $this->
-				createNotFoundException('No school for' . 
-                $content['id']);
-			return new Response(json_encode($update_school_response));
-        }
 
         $school->setSchoolName($content['name']);
         $school->setAddress($content['address']);
@@ -106,7 +58,12 @@ class SchoolController extends Controller {
 
 		$em->flush();
 
-		$update_school_response['status'] = 'success';
-        return new Response(json_encode($update_school_response));
+		$update_school_response = array(
+			'status' => 'success',
+			'exception' => NULL,
+			'payload' => $school,
+		);
+
+        return $update_school_response;
     }
 }
