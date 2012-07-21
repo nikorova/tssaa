@@ -62,7 +62,7 @@ class SchoolController extends Controller {
 		$update_school_response = array(
 			'status' => 'success',
 			'exception' => NULL,
-			'payload' => var_dump($content),
+			'payload' => $content['name'].' updated!', 
 		);
 
         return $update_school_response;
