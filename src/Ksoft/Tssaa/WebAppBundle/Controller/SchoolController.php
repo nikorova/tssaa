@@ -42,7 +42,7 @@ class SchoolController extends Controller {
      * @Route("update_school/{id}")
 	 * @Method("POST")
      */
-    public function updateSchool($id) {
+    public function updateSchoolAction($id) {
         $reqBag = $this->getRequest()->request;        
 		$content = $reqBag->get('client_data'); 
 		
@@ -66,4 +66,23 @@ class SchoolController extends Controller {
 
         return $update_school_response;
     }
+
+	/**
+	 * @Route("get_school_by_id/{id}")
+	 * @Method("GET)
+	 */
+	public function getSchoolByIdAction($id) {
+		$em = $this->getDoctrine()->getEntityManager();
+		$school = $em->getRepository('WebAppBundle:School')
+			->find($id);
+		
+		$response = array(
+			'id'		=> $school->getId(),
+			'name'		=> $school->getName(),
+			'address'	=> $school->getAddress(),	
+			'phone'		=> $school->getPhone(),
+		);
+
+		return $response;		
+	}
 }
