@@ -61,13 +61,11 @@ class SchoolController extends Controller {
 
 		$em->flush();
 
-		$update_school_response = array(
-			'status' => 'success',
-			'exception' => NULL,
-			'payload' => $content['name'].' updated!', 
+			$content['name'].' updated!', 
 		);
 
-        return $update_school_response;
+        return $content['name'].' updated!'; 
+			
     }
 
 	/**
