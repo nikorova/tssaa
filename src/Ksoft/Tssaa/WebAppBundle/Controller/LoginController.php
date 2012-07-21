@@ -21,9 +21,6 @@ class LoginController extends Controller {
 		
 		$user = $token->getUser();
 
-		return $user->getId();
-		return gettype($user); 
-		
 		$userData = array(
 			'id' 		=> $user->getId(),
 			'username' 	=> $user->getUsername(),
