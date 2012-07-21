@@ -61,11 +61,7 @@ class SchoolController extends Controller {
 
 		$em->flush();
 
-			$content['name'].' updated!', 
-		);
-
         return $content['name'].' updated!'; 
-			
     }
 
 	/**
