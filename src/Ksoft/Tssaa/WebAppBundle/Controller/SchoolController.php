@@ -20,6 +20,8 @@ class SchoolController extends Controller {
 
 		$content = $reqBag->get('client_data');
 
+		throw new Exception('oh hey this is an excpecitoentaotinion');
+
         $school = new school();
         $school->setSchoolName($content['name']);
         $school->setAddress($content['address']);
