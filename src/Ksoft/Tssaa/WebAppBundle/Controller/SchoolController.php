@@ -6,14 +6,15 @@ use Ksoft\Tssaa\WebAppBundle\Entity\School;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class SchoolController extends Controller {
     /**
-     * @Route("get_school_list"), requirements={"_method" = "GET"}
+     * @Route("get_school_list")
      */
-    public function getSchoolList() {
+    public function getSchoolListAction() {
         $repo = $this->getDoctrine()->getRepository("WebAppBundle:School");
         $school_objects = $repo->findAll();
 
