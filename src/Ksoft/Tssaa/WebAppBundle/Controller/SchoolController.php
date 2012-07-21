@@ -44,8 +44,10 @@ class SchoolController extends Controller {
 	 * @Method("POST")
      */
     public function updateSchoolAction($id) {
+		$fl = new \FireLogger('SchoolController');
+
         $reqBag = $this->getRequest()->request;        
-		$content = $reqBag->get('client_data'); 
+		$content = $reqBag->get('clientData'); 
 		
 		
         $em = $this->getDoctrine()->getEntityManager();
