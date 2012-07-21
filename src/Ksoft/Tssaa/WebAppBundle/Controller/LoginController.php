@@ -22,6 +22,8 @@ class LoginController extends Controller {
 		$token = $this->get('security.context')->getToken();
 		
 		$user = $token->getUser();
+		$fl = new \FireLogger('LoginController');
+		$fl->log($user);
 		
 		$userData = array(
 			'id' => $user->getId(),
