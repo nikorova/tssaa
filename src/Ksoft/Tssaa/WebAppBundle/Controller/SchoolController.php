@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class SchoolController extends Controller {
     /**
-     * @Route('add_school'), requirements={'_method' = 'POST'}
+     * @Route("add_school"), requirements={"_method" = "POST"}
      */
     public function addSchoolAction() {
 		$reqBag = $this->getRequest()->request;
@@ -40,7 +40,7 @@ class SchoolController extends Controller {
     }
 
     /**
-     * @Route('get_school_list'), requirements={'_method' = 'GET'}
+     * @Route("get_school_list"), requirements={"_method" = "GET"}
      */
     public function getSchoolList() {
         $repo = $this->getDoctrine()->getRepository('WebAppBundle:School');
@@ -68,7 +68,7 @@ class SchoolController extends Controller {
     }
 
     /**
-     * @Route('update_school'), requirements={'_method' = 'POST'}
+     * @Route("update_school"), requirements={"_method" = "POST"}
      */
     public function updateSchool() {
         $req = $this->getRequest();        
