@@ -24,7 +24,7 @@ class LoginController extends Controller {
 		$user = $token->getUser();
 
 		$fl = new \FireLogger('LoginController');
-		$fl->(gettype($user));
+		$fl->log(gettype($user));
 		return "oh lawd";
 		
 		$userData = array(
