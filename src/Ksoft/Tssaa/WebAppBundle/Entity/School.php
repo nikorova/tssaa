@@ -166,4 +166,14 @@ class School {
     {
         return $this->personnel;
     }
+
+    /**
+     * Add personnel
+     *
+     * @param Ksoft\Tssaa\WebAppBundle\Entity\Personnel $personnel
+     */
+    public function addPersonnel(\Ksoft\Tssaa\WebAppBundle\Entity\Personnel $personnel)
+    {
+        $this->personnel[] = $personnel;
+    }
 }

@@ -36,7 +36,7 @@ class LoginController extends Controller {
 			'email' 			=> $personnel->getEmail(),
 			'address'			=> $personnel->getAddress(),
 			'coaching_position'	=> $personnel->getCoachingPosition(),
-			'school'			=> $personnel->getSchool(),
+			'school'			=> $personnel->getSchoolId(),
 		);
 			
 		return array(

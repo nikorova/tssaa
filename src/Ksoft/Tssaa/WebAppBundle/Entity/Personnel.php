@@ -38,6 +38,11 @@ class Personnel {
 	protected $address;
 
 	/**
+	 * @ORM\Column(type="integer")
+	 */
+	protected $school_id;
+
+	/**
 	 * @ORM\OneToOne(targetEntity="Coach", inversedBy="peronnel")
 	 */
 	protected $coaching_position;
@@ -205,5 +210,35 @@ class Personnel {
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set school_id
+     *
+     * @param integer $schoolId
+     */
+    public function setSchoolId($schoolId)
+    {
+        $this->school_id = $schoolId;
+    }
+
+    /**
+     * Get school_id
+     *
+     * @return integer 
+     */
+    public function getSchoolId()
+    {
+        return $this->school_id;
+    }
+
+    /**
+     * Set school
+     *
+     * @param Ksoft\Tssaa\WebAppBundle\Entity\School $school
+     */
+    public function setSchool(\Ksoft\Tssaa\WebAppBundle\Entity\School $school)
+    {
+        $this->school = $school;
     }
 }
