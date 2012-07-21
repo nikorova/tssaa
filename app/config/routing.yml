@@ -1,4 +1,4 @@
-WebApp:
+web_app:
     resource: "@WebAppBundle/Controller"
     type: annotation
     prefix: /
