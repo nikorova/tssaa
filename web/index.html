@@ -45,14 +45,13 @@
 </div><!-- /LOGIN_PAGE -->
 
 
-<div data-role="page" id="options_page" data-theme="b">
-    <div data-role="header" data-backbtn="false"><h1> Manage School Menu </h2></div>
+<div data-role="page" id="manage_administrators_page" data-theme="b">
+    <div data-role="header" data-backbtn="false"><h1> Manage Administrators Menu </h2></div>
     <div data-role="content">
-		<h2 id="options_welcome_banner">Welcome <strong></strong></h2>
         <ul data-role="listview" 
             data-inset="true" data-autodividers="true"> 
-            <li><a href="#manage_coaches_page" >Manage Coaches</a></li>
-            <li><a href="#edit_school_page" >Edit School Info</a></li>
+            <li><a href="#edit_principal_page" >Principal</a></li>
+            <li><a href="#edit_assistant_principal_page" >Assistant Principal</a></li>
             <li><a href="#edit_athletic_director_page" >Athletic Director</a></li>
         </ul>
         <a href="#login_page"
@@ -63,6 +62,26 @@
     </div>
     <div data-role="footer"> &copy; TSSAA </div>
 </div><!-- /OPTIONS_PAGE -->
+
+<div data-role="page" id="options_page" data-theme="b">
+    <div data-role="header" data-backbtn="false"><h1> Manage School Menu </h2></div>
+    <div data-role="content">
+		<h2 id="options_welcome_banner">Welcome <strong></strong></h2>
+        <ul data-role="listview" 
+            data-inset="true" data-autodividers="true"> 
+            <li><a href="#manage_coaches_page" >Manage Coaches</a></li>
+            <li><a href="#edit_school_page" >Edit School Info</a></li>
+            <li><a href="#manage_administrators_page" >Manage Administrators</a></li>
+        </ul>
+        <a href="#login_page"
+            id="logout_button"
+            data-role="button"
+            data-rel="back"
+            data-theme="a">Logout</a>
+    </div>
+    <div data-role="footer"> &copy; TSSAA </div>
+</div><!-- /OPTIONS_PAGE -->
+
 
 <div data-role="page" id="manage_coaches_page" data-theme="b">
     <div data-role="header"><h1> Manage Coaches </h1></div>
@@ -104,6 +123,66 @@
     </div>
     <div data-role="footer"> &copy; TSSAA </div>	
 </div><!-- /ADD_COACH_PAGE -->
+
+<div data-role="page" id="edit_principal_page" data-theme="b">
+    <div data-role="header"><h1>Edit Principal</h1></div>
+
+    <div data-role="content">
+        <form id="edit_principal_form">
+            <label for="add_email"><strong>Email:</strong></label>
+            <input type="text" name="email" id="add_email"/>
+            <br />
+            <label for="add_phone"><strong>Phone number:</strong></label>
+            <input type="text" name="phone_number" id="add_phone_number" />
+            <br />
+            <label for="add_phone"><strong>First Name:</strong></label>
+            <input type="text" name="first_name" id="add_first_name" />
+            <br />
+            <label for="add_phone"><strong>Last Name:</strong></label>
+            <input type="text" name="last_name" id="add_last_name" />
+            <br />
+
+            <button type="submit"
+                id="edit_principal_submit"
+                data-role="button"
+                data-theme="b"
+                data-inline="true"
+                data-rel="dialog">Submit</button>
+        </form>
+    </div>
+
+    <div data-role="footer"> &copy; TSSAA </div>
+</div><!-- /EDIT_PRINCIPAL_PAGE -->
+
+<div data-role="page" id="edit_assistant_principal_page" data-theme="b">
+    <div data-role="header"><h1>Edit Assistant Principal</h1></div>
+
+    <div data-role="content">
+        <form id="edit_assistant_principal_form">
+            <label for="add_email"><strong>Email:</strong></label>
+            <input type="text" name="email" id="add_email"/>
+            <br />
+            <label for="add_phone"><strong>Phone number:</strong></label>
+            <input type="text" name="phone_number" id="add_phone_number" />
+            <br />
+            <label for="add_phone"><strong>First Name:</strong></label>
+            <input type="text" name="first_name" id="add_first_name" />
+            <br />
+            <label for="add_phone"><strong>Last Name:</strong></label>
+            <input type="text" name="last_name" id="add_last_name" />
+            <br />
+
+            <button type="submit"
+                id="edit_assistant_principal_submit"
+                data-role="button"
+                data-theme="b"
+                data-inline="true"
+                data-rel="dialog">Submit</button>
+        </form>
+    </div>
+
+    <div data-role="footer"> &copy; TSSAA </div>
+</div><!-- /EDIT_ASSISTANT_PRINCIPAL_PAGE -->
 
 <div data-role="page" id="edit_athletic_director_page" data-theme="b">
     <div data-role="header"><h1>Edit Athletic Director</h1></div>
