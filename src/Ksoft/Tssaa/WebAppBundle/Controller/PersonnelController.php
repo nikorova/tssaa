@@ -20,11 +20,11 @@ class PersonnelController extends Controller {
 			->find($id);
 		
 		return $response = array(
-			'name' 		=> $personnel->getName(),	
-			'phone' 	=> $personnel->getPhone(),
-			'email' 	=> $personnel->getEmail(),
-			'address' 	=> $personnel->getAddress(),
-			'school_id'	=> $personnel->getSchoolId(),
+			'name' 				=> $personnel->getName(),	
+			'phone' 			=> $personnel->getPhone(),
+			'email' 			=> $personnel->getEmail(),
+			'address' 			=> $personnel->getAddress(),
+			'school_id'			=> $personnel->getSchoolId(),
 			'coaching_position'	=> $personnel->getCoachingPosition(),
 			'school'			=> $personnel->getSchool(),
 		);
