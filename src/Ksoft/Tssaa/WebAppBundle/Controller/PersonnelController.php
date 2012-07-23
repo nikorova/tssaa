@@ -40,7 +40,7 @@ class PersonnelController extends Controller {
 		$clientData = $reqBag->get('clientData');
 
 		$personnel = new Personnel();
-		$personnel->setName($clientData['name'];
+		$personnel->setPersonnelName($clientData['name'];
 		$personnel->setPhone($clientData['phone'];
 		$personnel->setAddress($clientData['address'];
 		$personnel->setEmail($clientData['email'];
