@@ -35,8 +35,20 @@ class PersonnelController extends Controller {
 	 * @Method("POST")
 	 */
 	public function createPersonnelAction() {
+		$reqBag = $this->getRequest()->request;
 
+		$clientData = $reqBag->get('clientData');
+
+		$personnel = new Personnel();
+		$personnel->setName($clientData['name'];
+		$personnel->setPhone($clientData['phone'];
+		$personnel->setAddress($clientData['address'];
+		$personnel->setEmail($clientData['email'];
+		$personnel->setSchoolId($clientData['school_id'];
+
+		$em = $this->getDoctrine()->getEntityManager();
 	}
+
 
 	/**
 	 * @Route("update_personnel/{id}")
