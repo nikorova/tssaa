@@ -47,6 +47,10 @@ class PersonnelController extends Controller {
 		$personnel->setSchoolId($clientData['school_id'];
 
 		$em = $this->getDoctrine()->getEntityManager();
+		$em->persist($personnel);
+		$em->flush();
+
+		return 'Successfully created new personnel entry.'
 	}
 
 
@@ -55,7 +59,24 @@ class PersonnelController extends Controller {
 	 * @Method("POST")
 	 */
 	public function updatePersonnelAction($id) {
+		$reqBag = $this->getRequest()->request;
+		$clientData = $reqBag->get('clientData');
 
+		$em = $this->getDoctrine()->getEntityManager();
+
+		$personnel = $em->getRepository('WebAppBundle:Personnel')
+			->find($id);
+
+		$personnel->setName($clientData['name'];
+		$personnel->setPhone($clientData['phone'];
+		$personnel->setAddress($clientData['address'];
+		$personnel->setEmail($clientData['email'];
+		$personnel->setSchoolId($clientData['school_id'];
+
+		$em->flush();
+	
+		return 'Successfully updated record for ' .
+			$clientData['name'];
 	}
 
 	/**
@@ -63,6 +84,17 @@ class PersonnelController extends Controller {
 	 * @Method("GET")
 	 */
 	public function removePeronnelAction($id) {
+		$em = $this->getDoctrine()->getEntityManager();
 
+		$personnel = $em->getRepository('WebAppBundle:Personnel')
+			->find($id);
+
+		$name = $personnel->getName();
+
+		$em->remove($personnel);
+		$em->flush();
+
+		return 'Successfully deleted record for ' .
+			$name;
 	}
 }
