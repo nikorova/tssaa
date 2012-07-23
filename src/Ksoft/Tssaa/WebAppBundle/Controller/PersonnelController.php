@@ -40,11 +40,11 @@ class PersonnelController extends Controller {
 		$clientData = $reqBag->get('clientData');
 
 		$personnel = new Personnel();
-		$personnel->setPersonnelName($clientData['name'];
-		$personnel->setPhone($clientData['phone'];
-		$personnel->setAddress($clientData['address'];
-		$personnel->setEmail($clientData['email'];
-		$personnel->setSchoolId($clientData['school_id'];
+		$personnel->setName($clientData['name']);
+		$personnel->setPhone($clientData['phone']);
+		$personnel->setAddress($clientData['address']);
+		$personnel->setEmail($clientData['email']);
+		$personnel->setSchoolId($clientData['school_id']);
 
 		$em = $this->getDoctrine()->getEntityManager();
 		$em->persist($personnel);
@@ -67,11 +67,11 @@ class PersonnelController extends Controller {
 		$personnel = $em->getRepository('WebAppBundle:Personnel')
 			->find($id);
 
-		$personnel->setName($clientData['name'];
-		$personnel->setPhone($clientData['phone'];
-		$personnel->setAddress($clientData['address'];
-		$personnel->setEmail($clientData['email'];
-		$personnel->setSchoolId($clientData['school_id'];
+		$personnel->setName($clientData['name']);
+		$personnel->setPhone($clientData['phone']);
+		$personnel->setAddress($clientData['address']);
+		$personnel->setEmail($clientData['email']);
+		$personnel->setSchoolId($clientData['school_id']);
 
 		$em->flush();
 	
