@@ -18,6 +18,10 @@ class PersonnelController extends Controller {
 		$em = $this->getDoctrine()->getEntityManager();
 		$personnel = $em->getRepository('WebAppBundle:Personnel')
 			->find($id);
+
+		if (!$personnel) {
+			throw new EntityNotFoundException();
+		}
 		
 		return $response = array(
 			'name' 				=> $personnel->getName(),	
