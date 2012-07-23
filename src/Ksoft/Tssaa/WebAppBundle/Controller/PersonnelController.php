@@ -5,6 +5,7 @@ namespace Ksoft\Tssaa\WebAppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Componenent\HttpFoundation\Request;
 use Ksoft\Tssaa\WebAppBundle\Entity\Personnel;
+use Doctrine\ORM\EntityNotFoundException;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
