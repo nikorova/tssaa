@@ -50,7 +50,7 @@ class PersonnelController extends Controller {
 		$em->persist($personnel);
 		$em->flush();
 
-		return 'Successfully created new personnel entry.'
+		return 'Successfully created new personnel entry.';
 	}
 
 
