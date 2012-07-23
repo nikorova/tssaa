@@ -72,6 +72,10 @@ class PersonnelController extends Controller {
 		$personnel = $em->getRepository('WebAppBundle:Personnel')
 			->find($id);
 
+		if (!$personnel) {
+			throw new EntityNotFoundException();
+		}
+
 		$personnel->setName($clientData['name']);
 		$personnel->setPhone($clientData['phone']);
 		$personnel->setAddress($clientData['address']);
@@ -93,6 +97,10 @@ class PersonnelController extends Controller {
 
 		$personnel = $em->getRepository('WebAppBundle:Personnel')
 			->find($id);
+
+		if (!$personnel) {
+			throw new EntityNotFoundException();
+		}
 
 		$name = $personnel->getName();
 
